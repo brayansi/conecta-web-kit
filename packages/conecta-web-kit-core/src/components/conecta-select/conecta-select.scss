@@ -1,0 +1,229 @@
+/* Variáveis e container principal, alinhado ao conecta-input */
+:host {
+  display: block;
+
+  --conecta-select-bg: var(--conecta-color-bg-primary, #ffffff);
+  --conecta-select-bg-disabled: var(--conecta-color-bg-disabled, #f9fafb);
+  --conecta-select-text: var(--conecta-color-text-primary, #111827);
+  --conecta-select-text-disabled: var(--conecta-color-text-disabled, #6b7280);
+  --conecta-select-text-placeholder: var(--conecta-color-text-placeholder, #9ca3af);
+
+  --conecta-select-border: var(--conecta-color-border, #d1d5db);
+  --conecta-select-border-focus: var(--conecta-color-border-focus, #3b82f6);
+  --conecta-select-border-error: var(--conecta-color-border-error, #ef4444);
+  --conecta-select-border-disabled: var(--conecta-color-border-disabled, #e5e7eb);
+
+  --conecta-select-label-color: var(--conecta-color-text-secondary, #374151);
+  --conecta-select-error-color: var(--conecta-color-border-error, #ef4444);
+  --conecta-select-help-color: var(--conecta-color-text-disabled, #6b7280);
+
+  --conecta-select-shadow-focus: var(--conecta-shadow-focus);
+  --conecta-select-shadow-focus-error: var(--conecta-shadow-focus-error);
+}
+
+.conecta-select {
+  display: flex;
+  flex-direction: column;
+  gap: var(--conecta-spacing-sm);
+  font-family: var(--conecta-font-family, sans-serif);
+  color: var(--conecta-select-text);
+}
+
+.conecta-select__label {
+  font-family: var(--conecta-font-family);
+  font-size: var(--conecta-font-size-sm);
+  font-weight: var(--conecta-font-weight-medium);
+  color: var(--conecta-select-label-color);
+  display: flex;
+  align-items: center;
+  gap: var(--conecta-spacing-xs);
+}
+
+.conecta-select__required {
+  color: var(--conecta-select-error-color);
+  font-weight: var(--conecta-font-weight-semibold);
+}
+
+.conecta-select__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--conecta-select-border);
+  border-radius: var(--conecta-radius-md);
+  background-color: var(--conecta-select-bg);
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.conecta-select__wrapper:hover:not(.conecta-select__wrapper--disabled):not(.conecta-select__wrapper--error) {
+  border-color: var(--conecta-select-border-focus);
+}
+
+.conecta-select__wrapper--error:hover:not(.conecta-select__wrapper--disabled) {
+  border-color: var(--conecta-select-border-error);
+}
+
+.conecta-select__wrapper--small {
+  padding: var(--conecta-spacing-xs) var(--conecta-spacing-md);
+  gap: var(--conecta-spacing-sm);
+}
+
+.conecta-select__wrapper--medium {
+  padding: var(--conecta-spacing-sm) var(--conecta-spacing-md);
+  gap: var(--conecta-spacing-sm);
+}
+
+.conecta-select__wrapper--large {
+  padding: var(--conecta-spacing-md) var(--conecta-spacing-lg);
+  gap: var(--conecta-spacing-md);
+}
+
+.conecta-select__wrapper--focused:not(.conecta-select__wrapper--error) {
+  border-color: var(--conecta-select-border-focus);
+  box-shadow: var(--conecta-select-shadow-focus);
+  outline: none;
+}
+
+.conecta-select__wrapper--error {
+  border-color: var(--conecta-select-border-error);
+}
+
+.conecta-select__wrapper--error:focus-within,
+.conecta-select__wrapper--error.conecta-select__wrapper--focused {
+  border-color: var(--conecta-select-border-error);
+  box-shadow: var(--conecta-select-shadow-focus-error);
+  outline: none;
+}
+
+.conecta-select__wrapper--disabled {
+  background-color: var(--conecta-select-bg-disabled);
+  border-color: var(--conecta-select-border-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.conecta-select__field {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--conecta-font-family);
+  font-size: var(--conecta-font-size-md);
+  color: var(--conecta-select-text);
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: var(--conecta-spacing-sm);
+  cursor: pointer;
+}
+
+.conecta-select__wrapper--disabled .conecta-select__field {
+  color: var(--conecta-select-text-disabled);
+  cursor: not-allowed;
+}
+
+.conecta-select__chevron {
+  position: absolute;
+  right: var(--conecta-spacing-md);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: var(--conecta-select-text-disabled);
+  transition:
+    transform 0.15s ease-in-out,
+    color 0.15s ease-in-out;
+}
+
+.conecta-select__field[aria-expanded='true'] ~ .conecta-select__chevron {
+  transform: rotate(180deg);
+  color: var(--conecta-select-text);
+}
+
+.conecta-select__value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conecta-select__native {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+/* Dropdown customizado */
+.conecta-select__dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: var(--conecta-select-bg);
+  border: 1px solid var(--conecta-select-border);
+  border-radius: var(--conecta-radius-md);
+  box-shadow: var(--conecta-shadow-dropdown);
+  max-height: 240px;
+  overflow: auto;
+  animation: conecta-select-fade-in 120ms ease-out;
+}
+
+.conecta-select__dropdown--down {
+  top: calc(100% + var(--conecta-spacing-xs));
+}
+.conecta-select__dropdown--up {
+  bottom: calc(100% + var(--conecta-spacing-xs));
+}
+
+.conecta-select__option {
+  padding: var(--conecta-spacing-sm) var(--conecta-spacing-md);
+  cursor: pointer;
+  color: var(--conecta-select-text);
+}
+.conecta-select__option:hover,
+.conecta-select__option--highlighted {
+  background: var(--conecta-color-bg-hover, #f3f4f6);
+}
+.conecta-select__option--selected {
+  background: var(--conecta-color-bg-selected, #eff6ff);
+  font-weight: var(--conecta-font-weight-medium);
+}
+
+@keyframes conecta-select-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.conecta-select__field:disabled {
+  color: var(--conecta-select-text-disabled);
+  cursor: not-allowed;
+}
+
+.conecta-select__error {
+  font-family: var(--conecta-font-family);
+  font-size: var(--conecta-font-size-sm);
+  color: var(--conecta-select-error-color);
+  display: flex;
+  align-items: center;
+  gap: var(--conecta-spacing-xs);
+}
+
+.conecta-select__error::before {
+  content: '⚠';
+  font-size: var(--conecta-font-size-xs);
+}
+
+.conecta-select__help {
+  font-family: var(--conecta-font-family);
+  font-size: var(--conecta-font-size-sm);
+  color: var(--conecta-select-help-color);
+}

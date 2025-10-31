@@ -1,0 +1,203 @@
+:host {
+  display: inline-block;
+
+  /* Variáveis CSS customizáveis */
+  --conecta-button-width: fit-content;
+  --conecta-button-radius: var(--conecta-radius-md, 6px);
+
+  --conecta-button-primary-bg: var(--conecta-color-primary, #172f57);
+  --conecta-button-primary-bg-hover: var(--conecta-color-primary-hover, #1a3a6b);
+  --conecta-button-primary-bg-active: var(--conecta-color-primary-active, #1d457f);
+  --conecta-button-primary-color: var(--conecta-color-text-inverse, #ffffff);
+
+  --conecta-button-secondary-bg: var(--conecta-color-secondary, #f1f5f9);
+  --conecta-button-secondary-bg-hover: var(--conecta-color-secondary-hover, #e2e8f0);
+  --conecta-button-secondary-bg-active: var(--conecta-color-secondary-active, #cbd5e1);
+  --conecta-button-secondary-color: var(--conecta-color-text-brand, #111827);
+  --conecta-button-secondary-border: var(--conecta-color-secondary-border, #e2e8f0);
+
+  --conecta-button-danger-bg: var(--conecta-color-danger, #ef4444);
+  --conecta-button-danger-bg-hover: var(--conecta-color-danger-hover, #dc2626);
+  --conecta-button-danger-bg-active: var(--conecta-color-danger-active, #b91c1c);
+  --conecta-button-danger-color: var(--conecta-color-text-inverse, #ffffff);
+
+  --conecta-button-success-bg: var(--conecta-color-success, #10b981);
+  --conecta-button-success-bg-hover: var(--conecta-color-success-hover, #059669);
+  --conecta-button-success-bg-active: var(--conecta-color-success-active, #047857);
+  --conecta-button-success-color: var(--conecta-color-text-inverse, #ffffff);
+
+  --conecta-button-warning-bg: var(--conecta-color-warning, #f59e0b);
+  --conecta-button-warning-bg-hover: var(--conecta-color-warning-hover, #d97706);
+  --conecta-button-warning-bg-active: var(--conecta-color-warning-active, #b45309);
+  --conecta-button-warning-color: var(--conecta-color-text-inverse, #ffffff);
+
+  --conecta-button-info-bg: var(--conecta-color-info, #3b82f6);
+  --conecta-button-info-bg-hover: var(--conecta-color-info-hover, #2563eb);
+  --conecta-button-info-bg-active: var(--conecta-color-info-active, #1d4ed8);
+  --conecta-button-info-color: var(--conecta-color-text-inverse, #ffffff);
+
+  --conecta-button-disabled-opacity: var(--conecta-opacity-disabled, 0.5);
+  --conecta-button-focus-outline: var(--conecta-color-border-focus);
+
+  width: var(--conecta-button-width, fit-content);
+}
+
+/* Estilos base */
+.conecta-button {
+  display: inline-flex;
+  width: var(--conecta-button-width, fit-content);
+  align-items: center;
+  justify-content: center;
+  gap: var(--conecta-spacing-sm);
+  border: none;
+  border-radius: var(--conecta-button-radius);
+  font-family: var(--conecta-font-family);
+  font-weight: var(--conecta-font-weight-medium);
+  cursor: pointer;
+  transition: var(--conecta-transition);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estados de foco */
+.conecta-button:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.conecta-button:focus-visible {
+  outline: 2px solid var(--conecta-button-focus-outline);
+  outline-offset: 2px;
+}
+
+.conecta-button:disabled {
+  opacity: var(--conecta-button-disabled-opacity);
+  cursor: not-allowed;
+}
+
+/* Tamanhos */
+.conecta-button--small {
+  padding: var(--conecta-spacing-xs) var(--conecta-spacing-md);
+  font-size: var(--conecta-font-size-sm);
+  line-height: 1.25rem;
+}
+
+.conecta-button--medium {
+  padding: var(--conecta-spacing-sm) var(--conecta-spacing-lg);
+  font-size: var(--conecta-font-size-md);
+  line-height: 1.5rem;
+}
+
+.conecta-button--large {
+  padding: var(--conecta-spacing-md) var(--conecta-spacing-xl);
+  font-size: var(--conecta-font-size-lg);
+  line-height: 1.75rem;
+}
+
+/* Variante Primary */
+.conecta-button--primary {
+  background-color: var(--conecta-button-primary-bg);
+  color: var(--conecta-button-primary-color);
+}
+
+.conecta-button--primary:hover:not(:disabled) {
+  background-color: var(--conecta-button-primary-bg-hover);
+}
+
+.conecta-button--primary:active:not(:disabled) {
+  background-color: var(--conecta-button-primary-bg-active);
+}
+
+/* Variante Secondary */
+.conecta-button--secondary {
+  background-color: var(--conecta-button-secondary-bg);
+  color: var(--conecta-button-secondary-color);
+  border: 1px solid var(--conecta-button-secondary-border);
+}
+
+.conecta-button--secondary:hover:not(:disabled) {
+  background-color: var(--conecta-button-secondary-bg-hover);
+}
+
+.conecta-button--secondary:active:not(:disabled) {
+  background-color: var(--conecta-button-secondary-bg-active);
+}
+
+/* Variante Danger */
+.conecta-button--danger {
+  background-color: var(--conecta-button-danger-bg);
+  color: var(--conecta-button-danger-color);
+}
+
+.conecta-button--danger:hover:not(:disabled) {
+  background-color: var(--conecta-button-danger-bg-hover);
+}
+
+.conecta-button--danger:active:not(:disabled) {
+  background-color: var(--conecta-button-danger-bg-active);
+}
+
+/* Variante Success */
+.conecta-button--success {
+  background-color: var(--conecta-button-success-bg);
+  color: var(--conecta-button-success-color);
+}
+
+.conecta-button--success:hover:not(:disabled) {
+  background-color: var(--conecta-button-success-bg-hover);
+}
+
+.conecta-button--success:active:not(:disabled) {
+  background-color: var(--conecta-button-success-bg-active);
+}
+
+/* Variante Warning */
+.conecta-button--warning {
+  background-color: var(--conecta-button-warning-bg);
+  color: var(--conecta-button-warning-color);
+}
+
+.conecta-button--warning:hover:not(:disabled) {
+  background-color: var(--conecta-button-warning-bg-hover);
+}
+
+.conecta-button--warning:active:not(:disabled) {
+  background-color: var(--conecta-button-warning-bg-active);
+}
+
+/* Variante Info */
+.conecta-button--info {
+  background-color: var(--conecta-button-info-bg);
+  color: var(--conecta-button-info-color);
+}
+
+.conecta-button--info:hover:not(:disabled) {
+  background-color: var(--conecta-button-info-bg-hover);
+}
+
+.conecta-button--info:active:not(:disabled) {
+  background-color: var(--conecta-button-info-bg-active);
+}
+
+/* Spinner de loading */
+.conecta-button__spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  will-change: transform;
+}
+
+/* Estado de loading */
+.conecta-button--loading {
+  pointer-events: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

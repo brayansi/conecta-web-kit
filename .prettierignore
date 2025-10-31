@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+packages/*/node_modules/
+
+# Build outputs
+packages/*/dist/
+packages/*/www/
+packages/*/loader/
+
+# Generated files
+*.d.ts
+*.js.map
+*.esm.js.map
+*.cjs.js.map
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+*.log
+
+# Documentation files
+*.md
+
+# Wrappers
+packages/conecta-web-kit-angular/**
+packages/conecta-web-kit-react/**

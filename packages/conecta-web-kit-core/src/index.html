@@ -1,0 +1,2300 @@
+<!doctype html>
+<html dir="ltr" lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>conecta Web Kit - Exemplos de Uso</title>
+
+    <!-- Google Fonts - Source Sans Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link href="/build/conecta-web-kit.css" rel="stylesheet" />
+
+    <style>
+      /* Estilos para a documentação dos componentes */
+      .component-docs {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid var(--conecta-color-primary, #172f57);
+      }
+
+      .component-docs h3 {
+        color: var(--conecta-color-primary, #172f57);
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+      }
+
+      .component-docs h4 {
+        color: var(--conecta-color-text-primary, #111827);
+        margin: 1.5rem 0 1rem 0;
+        font-size: 1.2rem;
+        border-bottom: 2px solid var(--conecta-color-border, #d1d5db);
+        padding-bottom: 0.5rem;
+      }
+
+      .component-docs h5 {
+        color: var(--conecta-color-text-secondary, #374151);
+        margin: 1rem 0 0.5rem 0;
+        font-size: 1rem;
+      }
+
+      .props-table,
+      .events-table {
+        margin: 1rem 0;
+        overflow-x: auto;
+      }
+
+      .props-table table,
+      .events-table table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #ffffff;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .props-table th,
+      .events-table th {
+        background: var(--conecta-color-primary, #172f57);
+        color: #ffffff;
+        padding: 0.75rem;
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.875rem;
+      }
+
+      .props-table td,
+      .events-table td {
+        padding: 0.75rem;
+        border-bottom: 1px solid var(--conecta-color-border, #d1d5db);
+        font-size: 0.875rem;
+      }
+
+      .props-table tr:nth-child(even),
+      .events-table tr:nth-child(even) {
+        background: var(--conecta-color-bg-secondary, #f9fafb);
+      }
+
+      .props-table tr:hover,
+      .events-table tr:hover {
+        background: var(--conecta-color-secondary, #f1f5f9);
+      }
+
+      .props-table code,
+      .events-table code {
+        background: var(--conecta-color-secondary, #f1f5f9);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--conecta-color-primary, #172f57);
+        font-weight: 600;
+      }
+
+      .usage-examples {
+        margin: 1.5rem 0;
+      }
+
+      .example-item {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: var(--conecta-color-bg-secondary, #f9fafb);
+        border-radius: 6px;
+        border-left: 3px solid var(--conecta-color-primary, #172f57);
+      }
+
+      .example-item h5 {
+        margin-top: 0;
+        color: var(--conecta-color-primary, #172f57);
+        font-weight: 600;
+      }
+
+      .code-block {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        overflow-x: auto;
+        margin: 0.5rem 0;
+        border: 1px solid #334155;
+      }
+
+      /* estilos movidos para src/index.scss */
+
+      .code-block code {
+        background: none;
+        padding: 0;
+        color: inherit;
+        font-weight: normal;
+      }
+
+      /* Layout Principal */
+      .main-layout {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      /* Menu Lateral Inline */
+      .sidebar-inline {
+        width: 280px;
+        min-width: 280px;
+        background: var(--conecta-color-bg-primary, #ffffff);
+        border-right: 1px solid var(--conecta-color-border, #d1d5db);
+        overflow-y: auto;
+        max-height: 100vh;
+        position: sticky;
+        top: 0;
+      }
+
+      .sidebar-header {
+        padding: 1.5rem 1rem;
+        background: var(--conecta-color-primary, #172f57);
+        color: #ffffff;
+        border-bottom: 1px solid var(--conecta-color-border, #d1d5db);
+      }
+
+      .sidebar-header h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar-menu li {
+        border-bottom: 1px solid var(--conecta-color-border, #d1d5db);
+      }
+
+      .sidebar-link {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: var(--conecta-color-text-primary, #111827);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        border-left: 3px solid transparent;
+      }
+
+      .sidebar-link:hover {
+        background: var(--conecta-color-secondary, #f1f5f9);
+        color: var(--conecta-color-primary, #172f57);
+        border-left-color: var(--conecta-color-primary, #172f57);
+      }
+
+      .sidebar-link.active {
+        background: var(--conecta-color-primary, #172f57);
+        color: #ffffff;
+        border-left-color: var(--conecta-color-primary, #172f57);
+      }
+
+      /* Divisor */
+      .divider {
+        width: 1px;
+        background: var(--conecta-color-border, #d1d5db);
+        min-height: 100vh;
+      }
+
+      /* Container do conteúdo */
+      .container {
+        flex: 1;
+        padding: 2rem;
+        max-width: calc(100% - 281px);
+      }
+
+      /* Responsividade */
+      @media (max-width: 768px) {
+        .main-layout {
+          flex-direction: column;
+        }
+
+        .sidebar-inline {
+          width: 100%;
+          min-width: auto;
+          max-height: none;
+          position: static;
+          border-right: none;
+          border-bottom: 1px solid var(--conecta-color-border, #d1d5db);
+        }
+
+        .divider {
+          width: 100%;
+          height: 1px;
+          min-height: auto;
+        }
+
+        .container {
+          max-width: 100%;
+          padding: 1rem;
+        }
+
+        .component-docs {
+          padding: 1rem;
+          margin: 1rem 0;
+        }
+
+        .props-table,
+        .events-table {
+          font-size: 0.8rem;
+        }
+
+        .props-table th,
+        .events-table th,
+        .props-table td,
+        .events-table td {
+          padding: 0.5rem;
+        }
+
+        .code-block {
+          font-size: 0.8rem;
+          padding: 0.75rem;
+        }
+      }
+    </style>
+
+    <script nomodule src="/build/conecta-web-kit.js"></script>
+    <script type="module" src="/build/conecta-web-kit.esm.js"></script>
+    <script nomodule src="/build/conecta-web-kit.js"></script>
+
+    <script>
+      // Adicionar event listener quando o DOM carregar
+      document.addEventListener('DOMContentLoaded', () => {
+        // Funcionalidade do Menu Inline
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        // Navegação suave para links do sidebar
+        sidebarLinks.forEach(link => {
+          link.addEventListener('click', e => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+              // Remover classe active de todos os links
+              sidebarLinks.forEach(l => l.classList.remove('active'));
+              // Adicionar classe active ao link clicado
+              link.classList.add('active');
+
+              // Scroll suave para o elemento
+              targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            }
+          });
+        });
+
+        // Detectar seção ativa baseada no scroll
+        function updateActiveLink() {
+          const sections = document.querySelectorAll('.section, .component-docs');
+          const scrollPos = window.scrollY + 100;
+
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+              // Remover classe active de todos os links
+              sidebarLinks.forEach(l => l.classList.remove('active'));
+              // Adicionar classe active ao link correspondente
+              const activeLink = document.querySelector(`.sidebar-link[href="#${sectionId}"]`);
+              if (activeLink) {
+                activeLink.classList.add('active');
+              }
+            }
+          });
+        }
+
+        // Atualizar link ativo no scroll
+        window.addEventListener('scroll', updateActiveLink);
+
+        // Atualizar link ativo no carregamento da página
+        updateActiveLink();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="main-layout">
+      <!-- Menu Lateral Inline -->
+      <nav class="sidebar-inline">
+        <div class="sidebar-header">
+          <h3>📚 Navegação</h3>
+        </div>
+        <ul class="sidebar-menu">
+          <li><a href="#documentacao" class="sidebar-link">📚 Documentação</a></li>
+          <li><a href="#conecta-button" class="sidebar-link">🔘 conecta Button</a></li>
+          <li><a href="#conecta-checkbox" class="sidebar-link">☑️ conecta Checkbox</a></li>
+          <li><a href="#conecta-input" class="sidebar-link">📝 conecta Input</a></li>
+          <li><a href="#conecta-select" class="sidebar-link">📋 conecta Select</a></li>
+          <li><a href="#conecta-icon" class="sidebar-link">🎨 conecta Icon</a></li>
+          <li><a href="#conecta-tag" class="sidebar-link">🏷️ conecta Tag</a></li>
+          <li><a href="#conecta-toggle-icon" class="sidebar-link">🔄 conecta Toggle Icon</a></li>
+          <li><a href="#sistema-temas" class="sidebar-link">🎨 Sistema de Temas</a></li>
+        </ul>
+      </nav>
+
+      <!-- Divisor -->
+      <div class="divider"></div>
+
+      <!-- Conteúdo Principal -->
+      <div class="container">
+        <h1>🎨 Conecta Web Kit - Documentação</h1>
+        <p>Documentação completa dos componentes do conecta Web Kit, incluindo propriedades, eventos, exemplos de uso e sistema de temas.</p>
+
+        <!-- Documentação dos Componentes -->
+        <div class="section" id="documentacao">
+          <h2>🧩 Documentação dos Componentes</h2>
+          <p>Esta seção contém a documentação completa de cada componente do conecta Web Kit, incluindo propriedades, eventos e exemplos de uso.</p>
+
+          <!-- Documentação do conecta Button -->
+          <div class="component-docs" id="conecta-button">
+            <h3>🔘 conecta-button</h3>
+            <p>Componente de botão com suporte a múltiplas variantes, tamanhos e estados. Oferece interface moderna e acessível para ações do usuário.</p>
+
+            <h4>📋 Propriedades</h4>
+            <div class="props-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Propriedade</th>
+                    <th>Atributo</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                    <th>Padrão</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td><code>disabled</code></td>
+                    <td>Se o botão está desabilitado</td>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>loading</code></td>
+                    <td><code>loading</code></td>
+                    <td>Se o botão está em estado de loading</td>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>size</code></td>
+                    <td><code>size</code></td>
+                    <td>Tamanho do botão</td>
+                    <td><code>"large" | "medium" | "small"</code></td>
+                    <td><code>'medium'</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>type</code></td>
+                    <td><code>type</code></td>
+                    <td>Tipo do botão HTML</td>
+                    <td><code>"button" | "reset" | "submit"</code></td>
+                    <td><code>'button'</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>variant</code></td>
+                    <td><code>variant</code></td>
+                    <td>Tipo do botão</td>
+                    <td><code>"danger" | "primary" | "secondary" | "success" | "warning" | "info"</code></td>
+                    <td><code>'primary'</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>🎯 Slots</h4>
+            <div class="props-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Slot</th>
+                    <th>Descrição</th>
+                    <th>Posição</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>(default)</code></td>
+                    <td>Conteúdo exibido dentro do botão</td>
+                    <td>Centro</td>
+                  </tr>
+                  <tr>
+                    <td><code>prefix</code></td>
+                    <td>Conteúdo exibido antes do texto (ícone, símbolo, etc.). Quando o botão está em estado de loading, o prefix é substituído pelo spinner. <strong>Nota:</strong> Ícones <code>conecta-icon</code> no slot prefix herdam automaticamente a cor do texto do botão, não sendo necessário especificar a variant do ícone.</td>
+                    <td>Início</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>📡 Eventos</h4>
+            <div class="events-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Evento</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>buttonClick</code></td>
+                    <td>Evento emitido quando o botão é clicado</td>
+                    <td><code>CustomEvent&lt;MouseEvent&gt;</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>💻 Exemplos de Uso</h4>
+            <div class="usage-examples">
+              <div class="example-item">
+                <h5>1. Botão Básico</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-button&gt;Clique aqui&lt;/conecta-button&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>2. Botão com Variantes</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-button variant="primary"&gt;Primário&lt;/conecta-button&gt;
+&lt;conecta-button variant="secondary"&gt;Secundário&lt;/conecta-button&gt;
+&lt;conecta-button variant="danger"&gt;Perigo&lt;/conecta-button&gt;
+&lt;conecta-button variant="success"&gt;Sucesso&lt;/conecta-button&gt;
+&lt;conecta-button variant="warning"&gt;Aviso&lt;/conecta-button&gt;
+&lt;conecta-button variant="info"&gt;Informação&lt;/conecta-button&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>3. Botão com Estados</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-button loading&gt;Carregando&lt;/conecta-button&gt;
+&lt;conecta-button disabled&gt;Desabilitado&lt;/conecta-button&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>4. Botão com Prefix (Ícone)</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-button variant="primary"&gt;
+  &lt;conecta-icon name="save" slot="prefix"&gt;&lt;/conecta-icon&gt;
+  Salvar
+&lt;/conecta-button&gt;</code></pre>
+                </div>
+                <p><strong>Nota:</strong> O ícone <code>conecta-icon</code> no slot prefix herda automaticamente a cor do texto do botão. Não é necessário especificar a variant do ícone - ele usará a mesma cor do texto baseada na variant do botão (primary, secondary, danger, success).</p>
+              </div>
+              <div class="example-item">
+                <h5>5. Botão com Prefix e Loading</h5>
+                <div class="code-block">
+                  <pre><code>&lt;!-- Quando loading está ativo, o prefix é substituído pelo spinner --&gt;
+&lt;conecta-button variant="primary" loading&gt;
+  &lt;conecta-icon name="save" slot="prefix"&gt;&lt;/conecta-icon&gt;
+  Salvando...
+&lt;/conecta-button&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>6. Botão com Prefix Customizado</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-button variant="secondary"&gt;
+  &lt;span slot="prefix"&gt;➕&lt;/span&gt;
+  Adicionar
+&lt;/conecta-button&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <h4>🎨 Exemplos Visuais</h4>
+            <p>Teste os componentes abaixo com o tema padrão (Default).</p>
+
+            <div class="demo-grid">
+              <div class="demo-item">
+                <h4>Botões - Variantes</h4>
+                <conecta-button variant="primary">Primário</conecta-button>
+                <conecta-button variant="secondary">Secundário</conecta-button>
+                <conecta-button variant="danger">Perigo</conecta-button>
+                <conecta-button variant="success">Sucesso</conecta-button>
+                <conecta-button variant="warning">Aviso</conecta-button>
+                <conecta-button variant="info">Informação</conecta-button>
+              </div>
+
+              <div class="demo-item">
+                <h4>Botões - Tamanhos</h4>
+                <conecta-button variant="primary" size="small">Pequeno</conecta-button>
+                <conecta-button variant="primary" size="medium">Médio</conecta-button>
+                <conecta-button variant="primary" size="large">Grande</conecta-button>
+              </div>
+
+              <div class="demo-item">
+                <h4>Botões - Estados</h4>
+                <conecta-button variant="primary">Normal</conecta-button>
+                <conecta-button variant="primary" disabled>Desabilitado</conecta-button>
+                <conecta-button variant="primary" loading>Carregando</conecta-button>
+              </div>
+
+              <div class="demo-item">
+                <h4>Botões - Com Prefix</h4>
+                <conecta-button variant="primary">
+                  <conecta-icon name="save" slot="prefix"></conecta-icon>
+                  Salvar
+                </conecta-button>
+                <conecta-button variant="success">
+                  <conecta-icon name="check" slot="prefix"></conecta-icon>
+                  Confirmar
+                </conecta-button>
+                <conecta-button variant="danger">
+                  <conecta-icon name="trash" slot="prefix"></conecta-icon>
+                  Excluir
+                </conecta-button>
+                <conecta-button variant="secondary">
+                  <conecta-icon name="download" slot="prefix"></conecta-icon>
+                  Download
+                </conecta-button>
+              </div>
+
+              <div class="demo-item">
+                <h4>Botões - Prefix com Loading</h4>
+                <conecta-button variant="primary" loading>
+                  <conecta-icon name="save" slot="prefix"></conecta-icon>
+                  Salvando...
+                </conecta-button>
+                <conecta-button variant="success" loading>
+                  <conecta-icon name="check" slot="prefix"></conecta-icon>
+                  Processando...
+                </conecta-button>
+                <conecta-button variant="secondary" loading>
+                  <conecta-icon name="download" slot="prefix"></conecta-icon>
+                  Baixando...
+                </conecta-button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Documentação do conecta Checkbox -->
+          <div class="component-docs" id="conecta-checkbox">
+            <h3>☑️ conecta-checkbox</h3>
+            <p>Componente de checkbox com suporte a estados indeterminados, múltiplas variantes e tamanhos. Interface moderna e acessível para seleção de opções.</p>
+
+            <h4>📋 Propriedades</h4>
+            <div class="props-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Propriedade</th>
+                    <th>Atributo</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                    <th>Padrão</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>checkboxId</code></td>
+                    <td><code>checkbox-id</code></td>
+                    <td>ID do checkbox (gerado automaticamente se não fornecido)</td>
+                    <td><code>string</code></td>
+                    <td><code>auto</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>checked</code></td>
+                    <td><code>checked</code></td>
+                    <td>Se o checkbox está marcado</td>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td><code>disabled</code></td>
+                    <td>Se o checkbox está desabilitado</td>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>indeterminate</code></td>
+                    <td><code>indeterminate</code></td>
+                    <td>Se o checkbox está em estado indeterminado</td>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>name</code></td>
+                    <td><code>name</code></td>
+                    <td>Nome do checkbox</td>
+                    <td><code>string</code></td>
+                    <td><code>''</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>size</code></td>
+                    <td><code>size</code></td>
+                    <td>Tamanho do checkbox</td>
+                    <td><code>"large" | "medium" | "small"</code></td>
+                    <td><code>'medium'</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>value</code></td>
+                    <td><code>value</code></td>
+                    <td>Valor do checkbox</td>
+                    <td><code>string</code></td>
+                    <td><code>''</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>variant</code></td>
+                    <td><code>variant</code></td>
+                    <td>Variante do checkbox</td>
+                    <td><code>"danger" | "primary" | "secondary" | "success" | "warning" | "info"</code></td>
+                    <td><code>'primary'</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>🎯 Slots</h4>
+            <div class="props-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Slot</th>
+                    <th>Descrição</th>
+                    <th>Posição</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>(default)</code></td>
+                    <td>Texto/descrição exibido ao lado do checkbox</td>
+                    <td>Após a caixa</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>📡 Eventos</h4>
+            <div class="events-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Evento</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>checkboxBlur</code></td>
+                    <td>Evento emitido quando o checkbox perde foco</td>
+                    <td><code>CustomEvent&lt;FocusEvent&gt;</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>checkboxChange</code></td>
+                    <td>Evento emitido quando o estado do checkbox muda</td>
+                    <td><code>CustomEvent&lt;boolean&gt;</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>checkboxFocus</code></td>
+                    <td>Evento emitido quando o checkbox recebe foco</td>
+                    <td><code>CustomEvent&lt;FocusEvent&gt;</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>💻 Exemplos de Uso</h4>
+            <div class="usage-examples">
+              <div class="example-item">
+                <h5>1. Checkbox Básico</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-checkbox&gt;Aceito os termos&lt;/conecta-checkbox&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>2. Checkbox com Estados</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-checkbox checked&gt;Marcado por padrão&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox indeterminate&gt;Estado indeterminado&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox disabled&gt;Desabilitado&lt;/conecta-checkbox&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>3. Checkbox com Variantes</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-checkbox variant="primary"&gt;Primário&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox variant="secondary"&gt;Secundário&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox variant="success"&gt;Sucesso&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox variant="danger"&gt;Perigo&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox variant="warning"&gt;Aviso&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox variant="info"&gt;Informação&lt;/conecta-checkbox&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <h4>🎨 Exemplos Visuais</h4>
+            <p>Teste os componentes abaixo com o tema padrão (Default).</p>
+
+            <div class="demo-grid">
+              <div class="demo-item">
+                <h4>Checkboxes - Estados</h4>
+                <conecta-checkbox>Checkbox Normal</conecta-checkbox>
+                <conecta-checkbox checked>Checkbox Marcado</conecta-checkbox>
+                <conecta-checkbox indeterminate>Checkbox Indeterminado</conecta-checkbox>
+                <conecta-checkbox disabled>Checkbox Desabilitado</conecta-checkbox>
+                <conecta-checkbox checked disabled>Checkbox Marcado e Desabilitado</conecta-checkbox>
+              </div>
+
+              <div class="demo-item">
+                <h4>Checkboxes - Tamanhos</h4>
+                <conecta-checkbox size="small">Pequeno</conecta-checkbox>
+                <conecta-checkbox size="medium">Médio</conecta-checkbox>
+                <conecta-checkbox size="large">Grande</conecta-checkbox>
+              </div>
+
+              <div class="demo-item">
+                <h4>Checkboxes - Variantes</h4>
+                <conecta-checkbox variant="primary">Primário</conecta-checkbox>
+                <conecta-checkbox variant="secondary">Secundário</conecta-checkbox>
+                <conecta-checkbox variant="danger">Perigo</conecta-checkbox>
+                <conecta-checkbox variant="success">Sucesso</conecta-checkbox>
+                <conecta-checkbox variant="warning">Aviso</conecta-checkbox>
+                <conecta-checkbox variant="info">Informação</conecta-checkbox>
+              </div>
+            </div>
+          </div>
+
+          <!-- Documentação do conecta Input -->
+          <div class="component-docs" id="conecta-input">
+            <h3>📝 conecta-input</h3>
+            <p>Componente de input com suporte a múltiplos tipos, validação, mensagens de erro e ajuda. Interface moderna e acessível para entrada de dados.</p>
+
+            <h4>📋 Propriedades</h4>
+            <div class="props-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Propriedade</th>
+                    <th>Atributo</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                    <th>Padrão</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td><code>disabled</code></td>
+                    <td>Se o input está desabilitado</td>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>error</code></td>
+                    <td><code>error</code></td>
+                    <td>Estado de erro</td>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>errorMessage</code></td>
+                    <td><code>error-message</code></td>
+                    <td>Mensagem de erro</td>
+                    <td><code>string</code></td>
+                    <td><code>''</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>helpText</code></td>
+                    <td><code>help-text</code></td>
+                    <td>Mensagem de ajuda</td>
+                    <td><code>string</code></td>
+                    <td><code>''</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>inputId</code></td>
+                    <td><code>input-id</code></td>
+                    <td>ID do input (gerado automaticamente se não fornecido)</td>
+                    <td><code>string</code></td>
+                    <td><code>auto</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>label</code></td>
+                    <td><code>label</code></td>
+                    <td>Label do input</td>
+                    <td><code>string</code></td>
+                    <td><code>''</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>name</code></td>
+                    <td><code>name</code></td>
+                    <td>Nome do input</td>
+                    <td><code>string</code></td>
+                    <td><code>''</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>placeholder</code></td>
+                    <td><code>placeholder</code></td>
+                    <td>Placeholder do input</td>
+                    <td><code>string</code></td>
+                    <td><code>''</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>required</code></td>
+                    <td><code>required</code></td>
+                    <td>Se o input é obrigatório</td>
+                    <td><code>boolean</code></td>
+                    <td><code>false</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>size</code></td>
+                    <td><code>size</code></td>
+                    <td>Tamanho do input</td>
+                    <td><code>"large" | "medium" | "small"</code></td>
+                    <td><code>'medium'</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>type</code></td>
+                    <td><code>type</code></td>
+                    <td>Tipo do input</td>
+                    <td><code>"email" | "number" | "password" | "tel" | "text" | "url"</code></td>
+                    <td><code>'text'</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>value</code></td>
+                    <td><code>value</code></td>
+                    <td>Valor do input</td>
+                    <td><code>string</code></td>
+                    <td><code>''</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>🎯 Slots</h4>
+            <div class="props-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Slot</th>
+                    <th>Descrição</th>
+                    <th>Posição</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>prefix</code></td>
+                    <td>Conteúdo exibido no início do input (antes do campo de texto)</td>
+                    <td>Início</td>
+                  </tr>
+                  <tr>
+                    <td><code>suffix</code></td>
+                    <td>Conteúdo exibido no final do input (após o campo de texto)</td>
+                    <td>Final</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>📡 Eventos</h4>
+            <div class="events-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Evento</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>inputBlur</code></td>
+                    <td>Evento emitido quando o input perde foco</td>
+                    <td><code>CustomEvent&lt;FocusEvent&gt;</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>inputChange</code></td>
+                    <td>Evento emitido quando o valor muda</td>
+                    <td><code>CustomEvent&lt;string&gt;</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>inputFocus</code></td>
+                    <td>Evento emitido quando o input recebe foco</td>
+                    <td><code>CustomEvent&lt;FocusEvent&gt;</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>💻 Exemplos de Uso</h4>
+            <div class="usage-examples">
+              <div class="example-item">
+                <h5>1. Input Básico</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-input label="Nome" placeholder="Digite seu nome"&gt;&lt;/conecta-input&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>2. Input com Validação</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-input
+  label="Email"
+  type="email"
+  required
+  error
+  error-message="Email é obrigatório"&gt;
+&lt;/conecta-input&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>3. Input com Ajuda</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-input
+  label="Senha"
+  type="password"
+  help-text="Mínimo 8 caracteres"&gt;
+&lt;/conecta-input&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>4. Input Desabilitado</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-input
+  label="Campo Desabilitado"
+  disabled
+  placeholder="Não editável"&gt;
+&lt;/conecta-input&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>5. Input com Prefix (Slot no início)</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-input label="Usuário"&gt;
+  &lt;conecta-icon name="user" slot="prefix"&gt;&lt;/conecta-icon&gt;
+&lt;/conecta-input&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>6. Input com Suffix (Slot no final)</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-input label="Buscar"&gt;
+  &lt;conecta-icon name="search" slot="suffix"&gt;&lt;/conecta-icon&gt;
+&lt;/conecta-input&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>7. Input com Prefix e Suffix</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-input label="Email" type="email"&gt;
+  &lt;conecta-icon name="mail" slot="prefix"&gt;&lt;/conecta-icon&gt;
+  &lt;conecta-icon name="check" slot="suffix"&gt;&lt;/conecta-icon&gt;
+&lt;/conecta-input&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>8. Input com Slot Prefix Customizado</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-input label="Preço"&gt;
+  &lt;span slot="prefix"&gt;R$&lt;/span&gt;
+&lt;/conecta-input&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>9. Input com Slot Suffix Customizado</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-input label="Percentual"&gt;
+  &lt;span slot="suffix"&gt;%&lt;/span&gt;
+&lt;/conecta-input&gt;</code></pre>
+                </div>
+              </div>
+              <div class="example-item">
+                <h5>10. Input com Múltiplos Elementos no Slot</h5>
+                <div class="code-block">
+                  <pre><code>&lt;conecta-input label="Busca Avançada"&gt;
+  &lt;div slot="prefix"&gt;
+    &lt;conecta-icon name="search"&gt;&lt;/conecta-icon&gt;
+    &lt;span&gt;Filtrar:&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div slot="suffix"&gt;
+    &lt;conecta-icon name="filter"&gt;&lt;/conecta-icon&gt;
+    &lt;conecta-icon name="settings"&gt;&lt;/conecta-icon&gt;
+  &lt;/div&gt;
+&lt;/conecta-input&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <h4>🎨 Exemplos Visuais</h4>
+            <p>Teste os componentes abaixo com o tema padrão (Default).</p>
+
+            <div class="demo-grid">
+              <div class="demo-item">
+                <h4>Inputs - Tipos</h4>
+                <conecta-input label="Texto" placeholder="Digite aqui"></conecta-input>
+                <conecta-input label="Email" type="email" placeholder="seu@email.com"></conecta-input>
+                <conecta-input label="Senha" type="password" placeholder="••••••••"></conecta-input>
+                <conecta-input label="Número" type="number" placeholder="123"></conecta-input>
+                <conecta-input label="Telefone" type="tel" placeholder="(11) 99999-9999"></conecta-input>
+                <conecta-input label="Data" type="date"></conecta-input>
+              </div>
+
+              <div class="demo-item">
+                <h4>Inputs - Tamanhos</h4>
+                <conecta-input label="Pequeno" size="small" placeholder="Input pequeno"></conecta-input>
+                <conecta-input label="Médio" size="medium" placeholder="Input médio"></conecta-input>
+                <conecta-input label="Grande" size="large" placeholder="Input grande"></conecta-input>
+              </div>
+
+              <div class="demo-item">
+                <h4>Inputs - Estados</h4>
+                <conecta-input label="Normal" placeholder="Estado normal"></conecta-input>
+                <conecta-input label="Obrigatório" required placeholder="Campo obrigatório"></conecta-input>
+                <conecta-input label="Desabilitado" disabled placeholder="Campo desabilitado"></conecta-input>
+                <conecta-input label="Com Erro" error error-message="Este campo é obrigatório" placeholder="Campo com erro"></conecta-input>
+                <conecta-input label="Com Ajuda" help-text="Digite seu nome completo" placeholder="Campo com ajuda"></conecta-input>
+              </div>
+
+              <div class="demo-item">
+                <h4>Inputs - Com Prefix e Suffix (Slots)</h4>
+                <conecta-input label="Email" placeholder="seu@email.com">
+                  <conecta-icon name="mail" slot="prefix"></conecta-icon>
+                </conecta-input>
+                <conecta-input label="Telefone" type="tel" placeholder="(11) 99999-9999">
+                  <conecta-icon name="phone" slot="prefix"></conecta-icon>
+                </conecta-input>
+                <conecta-input label="Buscar" placeholder="Digite para buscar">
+                  <conecta-icon name="search" slot="suffix"></conecta-icon>
+                </conecta-input>
+                <conecta-input label="Email validado" type="email" placeholder="seu@email.com">
+                  <conecta-icon name="mail" slot="prefix"></conecta-icon>
+                  <conecta-icon name="check" slot="suffix"></conecta-icon>
+                </conecta-input>
+              </div>
+
+              <div class="demo-item">
+                <h4>Inputs - Slots Customizados</h4>
+                <conecta-input label="Preço" placeholder="0,00">
+                  <span slot="prefix">R$</span>
+                </conecta-input>
+                <conecta-input label="Percentual" placeholder="0">
+                  <span slot="suffix">%</span>
+                </conecta-input>
+                <conecta-input label="Peso" placeholder="0">
+                  <span slot="suffix">kg</span>
+                </conecta-input>
+                <conecta-input label="Temperatura" placeholder="0">
+                  <span slot="suffix">°C</span>
+                </conecta-input>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentação do conecta Select -->
+        <div class="component-docs" id="conecta-select">
+          <h3>📋 conecta-select</h3>
+          <p>Componente de seleção (select) com label, placeholder, estados de erro/ajuda, tamanhos e slot de prefix. Usa dropdown customizado com direção automática (abrir para cima/baixo), animação de abertura/fechamento e mantém um select nativo oculto para integração com formulários. Aceita opções via Array ou string JSON.</p>
+
+          <h4>📋 Propriedades</h4>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Propriedade</th>
+                  <th>Atributo</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                  <th>Padrão</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>value</code></td>
+                  <td><code>value</code></td>
+                  <td>Valor selecionado</td>
+                  <td><code>string</code></td>
+                  <td><code>''</code></td>
+                </tr>
+                <tr>
+                  <td><code>label</code></td>
+                  <td><code>label</code></td>
+                  <td>Label do select</td>
+                  <td><code>string</code></td>
+                  <td><code>''</code></td>
+                </tr>
+                <tr>
+                  <td><code>placeholder</code></td>
+                  <td><code>placeholder</code></td>
+                  <td>Opção desabilitada exibida quando não há valor</td>
+                  <td><code>string</code></td>
+                  <td><code>''</code></td>
+                </tr>
+                <tr>
+                  <td><code>name</code></td>
+                  <td><code>name</code></td>
+                  <td>Nome do campo para formulários</td>
+                  <td><code>string</code></td>
+                  <td><code>''</code></td>
+                </tr>
+                <tr>
+                  <td><code>selectId</code></td>
+                  <td><code>select-id</code></td>
+                  <td>ID do select (gerado automaticamente se não fornecido)</td>
+                  <td><code>string</code></td>
+                  <td><code>auto</code></td>
+                </tr>
+                <tr>
+                  <td><code>disabled</code></td>
+                  <td><code>disabled</code></td>
+                  <td>Se está desabilitado</td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                </tr>
+                <tr>
+                  <td><code>required</code></td>
+                  <td><code>required</code></td>
+                  <td>Se é obrigatório</td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                </tr>
+                <tr>
+                  <td><code>size</code></td>
+                  <td><code>size</code></td>
+                  <td>Tamanho do componente</td>
+                  <td><code>"large" | "medium" | "small"</code></td>
+                  <td><code>'medium'</code></td>
+                </tr>
+                <tr>
+                  <td><code>error</code></td>
+                  <td><code>error</code></td>
+                  <td>Estado de erro</td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                </tr>
+                <tr>
+                  <td><code>errorMessage</code></td>
+                  <td><code>error-message</code></td>
+                  <td>Mensagem de erro</td>
+                  <td><code>string</code></td>
+                  <td><code>''</code></td>
+                </tr>
+                <tr>
+                  <td><code>helpText</code></td>
+                  <td><code>help-text</code></td>
+                  <td>Mensagem de ajuda</td>
+                  <td><code>string</code></td>
+                  <td><code>''</code></td>
+                </tr>
+                <tr>
+                  <td><code>options</code></td>
+                  <td><code>options</code></td>
+                  <td>Lista de opções (Array ou string JSON)</td>
+                  <td><code>Array&lt;{ label: string; value: string }&gt; | string</code></td>
+                  <td><code>[]</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>🎯 Slots</h4>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Slot</th>
+                  <th>Descrição</th>
+                  <th>Posição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>prefix</code></td>
+                  <td>Conteúdo exibido antes do campo (ex.: ícone)</td>
+                  <td>Início</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>📡 Eventos</h4>
+          <div class="events-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Evento</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>selectChange</code></td>
+                  <td>Emitido quando o valor muda</td>
+                  <td><code>CustomEvent&lt;string&gt;</code></td>
+                </tr>
+                <tr>
+                  <td><code>selectFocus</code></td>
+                  <td>Emitido quando o select recebe foco</td>
+                  <td><code>CustomEvent&lt;FocusEvent&gt;</code></td>
+                </tr>
+                <tr>
+                  <td><code>selectBlur</code></td>
+                  <td>Emitido quando o select perde foco</td>
+                  <td><code>CustomEvent&lt;FocusEvent&gt;</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>💻 Exemplos de Uso</h4>
+          <div class="usage-examples">
+            <div class="example-item">
+              <h5>1. Select Básico</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-select label="Status" placeholder="Selecione" options='[{"label":"Ativo","value":"active"},{"label":"Inativo","value":"inactive"},{"label":"Pendente","value":"pending"},{"label":"Arquivado","value":"archived"},{"label":"Suspenso","value":"suspended"},{"label":"Em análise","value":"review"}]'&gt;&lt;/conecta-select&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>2. Select com Erro</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-select label="Status" error error-message="Seleção obrigatória" options='[{"label":"Ativo","value":"active"},{"label":"Inativo","value":"inactive"},{"label":"Pendente","value":"pending"}]'&gt;&lt;/conecta-select&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>3. Select Desabilitado</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-select label="Status" disabled options='[{"label":"Ativo","value":"active"},{"label":"Inativo","value":"inactive"},{"label":"Arquivado","value":"archived"}]'&gt;&lt;/conecta-select&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>4. Select com Slot Prefix</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-select label="Buscar" placeholder="Selecione" options='[{"label":"Item A","value":"a"},{"label":"Item B","value":"b"},{"label":"Item C","value":"c"},{"label":"Item D","value":"d"},{"label":"Item E","value":"e"}]'&gt;
+  &lt;conecta-icon name="search" slot="prefix"&gt;&lt;/conecta-icon&gt;
+&lt;/conecta-select&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h4>🎨 Exemplos Visuais</h4>
+          <p>Teste os componentes abaixo com diferentes temas usando o botão de alternância no canto superior direito.</p>
+
+          <div class="demo-grid">
+            <div class="demo-item">
+              <h4>Selects - Estados</h4>
+              <conecta-select label="Normal" placeholder="Selecione" options='[{"label":"Opção 1","value":"1"},{"label":"Opção 2","value":"2"},{"label":"Opção 3","value":"3"},{"label":"Opção 4","value":"4"},{"label":"Opção 5","value":"5"},{"label":"Opção 6","value":"6"},{"label":"Opção 7","value":"7"},{"label":"Opção 8","value":"8"}]'></conecta-select>
+              <conecta-select label="Obrigatório" required placeholder="Selecione" options='[{"label":"Opção 1","value":"1"},{"label":"Opção 2","value":"2"},{"label":"Opção 3","value":"3"}]'></conecta-select>
+              <conecta-select label="Desabilitado" disabled placeholder="Selecione" options='[{"label":"Opção 1","value":"1"},{"label":"Opção 2","value":"2"},{"label":"Opção 3","value":"3"}]'></conecta-select>
+              <conecta-select label="Com Erro" error error-message="Campo obrigatório" placeholder="Selecione" options='[{"label":"Opção 1","value":"1"},{"label":"Opção 2","value":"2"},{"label":"Opção 3","value":"3"}]'></conecta-select>
+              <conecta-select label="Com Ajuda" help-text="Escolha uma opção" placeholder="Selecione" options='[{"label":"Opção 1","value":"1"},{"label":"Opção 2","value":"2"},{"label":"Opção 3","value":"3"}]'></conecta-select>
+            </div>
+
+            <div class="demo-item">
+              <h4>Selects - Tamanhos</h4>
+              <conecta-select label="Pequeno" size="small" placeholder="Selecione" options='[{"label":"Item 1","value":"1"},{"label":"Item 2","value":"2"},{"label":"Item 3","value":"3"}]'></conecta-select>
+              <conecta-select label="Médio" size="medium" placeholder="Selecione" options='[{"label":"Item 1","value":"1"},{"label":"Item 2","value":"2"},{"label":"Item 3","value":"3"}]'></conecta-select>
+              <conecta-select label="Grande" size="large" placeholder="Selecione" options='[{"label":"Item 1","value":"1"},{"label":"Item 2","value":"2"},{"label":"Item 3","value":"3"}]'></conecta-select>
+            </div>
+
+            <div class="demo-item">
+              <h4>Selects - Com Slot Prefix</h4>
+              <conecta-select label="Com Prefix" placeholder="Selecione" options='[{"label":"Item A","value":"a"},{"label":"Item B","value":"b"},{"label":"Item C","value":"c"},{"label":"Item D","value":"d"},{"label":"Item E","value":"e"}]'>
+                <conecta-icon name="search" slot="prefix"></conecta-icon>
+              </conecta-select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentação do conecta Icon -->
+        <div class="component-docs" id="conecta-icon">
+          <h3>🎨 conecta-icon</h3>
+          <p>Componente de ícone baseado no Lucide Icons com suporte a múltiplas variantes, tamanhos e cores customizadas. Oferece interface moderna e acessível para exibição de ícones SVG.</p>
+
+          <h4>📋 Propriedades</h4>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Propriedade</th>
+                  <th>Atributo</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                  <th>Padrão</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>name</code></td>
+                  <td><code>name</code></td>
+                  <td>Nome do ícone do Lucide</td>
+                  <td><code>string</code></td>
+                  <td><code>undefined</code></td>
+                </tr>
+                <tr>
+                  <td><code>variant</code></td>
+                  <td><code>variant</code></td>
+                  <td>Variante do ícone</td>
+                  <td><code>"primary" | "secondary" | "success" | "danger" | "warning" | "info" | "neutral" | "currentColor"</code></td>
+                  <td><code>'currentColor'</code></td>
+                </tr>
+                <tr>
+                  <td><code>size</code></td>
+                  <td><code>size</code></td>
+                  <td>Tamanho do ícone</td>
+                  <td><code>"small" | "medium" | "large" | "xlarge"</code></td>
+                  <td><code>'medium'</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>💻 Exemplos de Uso</h4>
+          <div class="usage-examples">
+            <div class="example-item">
+              <h5>1. Ícone Básico</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-icon name="home"&gt;&lt;/conecta-icon&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>2. Ícone com Variantes</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-icon name="user" variant="primary"&gt;&lt;/conecta-icon&gt;
+&lt;conecta-icon name="user" variant="secondary"&gt;&lt;/conecta-icon&gt;
+&lt;conecta-icon name="check" variant="success"&gt;&lt;/conecta-icon&gt;
+&lt;conecta-icon name="x" variant="danger"&gt;&lt;/conecta-icon&gt;
+&lt;conecta-icon name="star" variant="warning"&gt;&lt;/conecta-icon&gt;
+&lt;conecta-icon name="info" variant="info"&gt;&lt;/conecta-icon&gt;
+&lt;conecta-icon name="settings" variant="neutral"&gt;&lt;/conecta-icon&gt;
+&lt;conecta-icon name="settings" variant="currentColor"&gt;&lt;/conecta-icon&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>3. Ícone com Herança de Cor (currentColor - padrão)</h5>
+              <div class="code-block">
+                <pre><code>&lt;!-- O ícone herda automaticamente a cor do elemento pai --&gt;
+&lt;div style="color: blue;"&gt;
+  &lt;conecta-icon name="home"&gt;&lt;/conecta-icon&gt; &lt;!-- Azul --&gt;
+&lt;/div&gt;
+
+&lt;!-- Quando usado no botão, herda a cor do texto do botão --&gt;
+&lt;conecta-button variant="primary"&gt;
+  &lt;conecta-icon name="save" slot="prefix"&gt;&lt;/conecta-icon&gt;
+  Salvar
+&lt;/conecta-button&gt;</code></pre>
+              </div>
+              <p><strong>Nota:</strong> Por padrão, o ícone usa <code>variant="currentColor"</code>, o que faz com que ele herde automaticamente a cor do elemento pai. Isso é especialmente útil quando usado dentro de botões, onde o ícone automaticamente seguirá a cor do texto do botão.</p>
+            </div>
+            <div class="example-item">
+              <h5>4. Ícone com Tamanhos</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-icon name="settings" size="small"&gt;&lt;/conecta-icon&gt;
+&lt;conecta-icon name="settings" size="medium"&gt;&lt;/conecta-icon&gt;
+&lt;conecta-icon name="settings" size="large"&gt;&lt;/conecta-icon&gt;
+&lt;conecta-icon name="settings" size="xlarge"&gt;&lt;/conecta-icon&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h4>🎨 Exemplos Visuais</h4>
+          <p>Teste os componentes abaixo com diferentes temas usando o botão de alternância no canto superior direito.</p>
+
+          <div class="demo-grid">
+            <div class="demo-item">
+              <h4>Ícones - Variantes</h4>
+              <conecta-icon name="home" variant="primary"></conecta-icon>
+              <conecta-icon name="user" variant="secondary"></conecta-icon>
+              <conecta-icon name="check" variant="success"></conecta-icon>
+              <conecta-icon name="x" variant="danger"></conecta-icon>
+              <conecta-icon name="star" variant="warning"></conecta-icon>
+              <conecta-icon name="info" variant="info"></conecta-icon>
+            </div>
+
+            <div class="demo-item">
+              <h4>Ícones - Tamanhos</h4>
+              <conecta-icon name="settings" size="small"></conecta-icon>
+              <conecta-icon name="settings" size="medium"></conecta-icon>
+              <conecta-icon name="settings" size="large"></conecta-icon>
+              <conecta-icon name="settings" size="xlarge"></conecta-icon>
+            </div>
+
+            <div class="demo-item icons-grid">
+              <h4>Ícones - Tipos</h4>
+              <div class="icon-item">
+                <conecta-icon name="home"></conecta-icon>
+                <span>home</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="layout-dashboard"></conecta-icon>
+                <span>layout-dashboard</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="settings"></conecta-icon>
+                <span>settings</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="users"></conecta-icon>
+                <span>users</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="user"></conecta-icon>
+                <span>user</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="search"></conecta-icon>
+                <span>search</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="filter"></conecta-icon>
+                <span>filter</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="edit"></conecta-icon>
+                <span>edit</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="trash"></conecta-icon>
+                <span>trash</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="save"></conecta-icon>
+                <span>save</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="mail"></conecta-icon>
+                <span>mail</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="phone"></conecta-icon>
+                <span>phone</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="calendar"></conecta-icon>
+                <span>calendar</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="clock"></conecta-icon>
+                <span>clock</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="arrow-left"></conecta-icon>
+                <span>arrow-left</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="arrow-right"></conecta-icon>
+                <span>arrow-right</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="chevron-left"></conecta-icon>
+                <span>chevron-left</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="chevron-right"></conecta-icon>
+                <span>chevron-right</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="chevron-up"></conecta-icon>
+                <span>chevron-up</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="chevron-down"></conecta-icon>
+                <span>chevron-down</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="log-in"></conecta-icon>
+                <span>log-in</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="log-out"></conecta-icon>
+                <span>log-out</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="lock"></conecta-icon>
+                <span>lock</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="unlock"></conecta-icon>
+                <span>unlock</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="file-text"></conecta-icon>
+                <span>file-text</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="folder"></conecta-icon>
+                <span>folder</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="folder-open"></conecta-icon>
+                <span>folder-open</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="download"></conecta-icon>
+                <span>download</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="upload"></conecta-icon>
+                <span>upload</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="chevron-down"></conecta-icon>
+                <span>chevron-down</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="more-vertical"></conecta-icon>
+                <span>more-vertical</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="more-horizontal"></conecta-icon>
+                <span>more-horizontal</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="refresh-ccw"></conecta-icon>
+                <span>refresh-ccw</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="refresh-cw"></conecta-icon>
+                <span>refresh-cw</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="eye"></conecta-icon>
+                <span>eye</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="eye-off"></conecta-icon>
+                <span>eye-off</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="star"></conecta-icon>
+                <span>star</span>
+              </div>
+              <div class="icon-item">
+                <conecta-icon name="tag"></conecta-icon>
+                <span>tag</span>
+              </div>
+            </div>
+          </div>
+
+          <h4>🎨 Ícones Disponíveis</h4>
+          <p>Ícones mais utilizados em painéis administrativos (Lucide):</p>
+          <div class="code-block">
+            <pre><code>home, layout-dashboard, settings, users, user, user-plus, user-minus, bell,
+search, filter, edit, trash, save, download, upload, plus, minus, check, x,
+chevron-down, chevron-up, chevron-left, chevron-right, arrow-left, arrow-right,
+log-in, log-out, lock, unlock, calendar, clock, mail, phone, file-text, folder,
+folder-open, image, link, menu, more-vertical, more-horizontal, refresh-ccw,
+refresh-cw, eye, eye-off, star, tag</code></pre>
+          </div>
+
+          <h4>🎯 Variantes de Cor</h4>
+          <div class="variables-list">
+            <div class="variable-row">
+              <code>currentColor</code>
+              <span>Herda a cor do elemento pai (padrão)</span>
+            </div>
+            <div class="variable-row">
+              <code>primary</code>
+              <span>Cor primária do tema</span>
+            </div>
+            <div class="variable-row">
+              <code>secondary</code>
+              <span>Cor secundária</span>
+            </div>
+            <div class="variable-row">
+              <code>success</code>
+              <span>Cor de sucesso (verde)</span>
+            </div>
+            <div class="variable-row">
+              <code>danger</code>
+              <span>Cor de perigo (vermelho)</span>
+            </div>
+            <div class="variable-row">
+              <code>warning</code>
+              <span>Cor de aviso (amarelo)</span>
+            </div>
+            <div class="variable-row">
+              <code>info</code>
+              <span>Cor de informação (azul)</span>
+            </div>
+            <div class="variable-row">
+              <code>neutral</code>
+              <span>Cor neutra (cinza)</span>
+            </div>
+          </div>
+
+          <h4>📏 Tamanhos</h4>
+          <div class="variables-list">
+            <div class="variable-row">
+              <code>small</code>
+              <span>16px</span>
+            </div>
+            <div class="variable-row">
+              <code>medium</code>
+              <span>24px (padrão)</span>
+            </div>
+            <div class="variable-row">
+              <code>large</code>
+              <span>32px</span>
+            </div>
+            <div class="variable-row">
+              <code>xlarge</code>
+              <span>48px</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentação do conecta Tag -->
+        <div class="component-docs" id="conecta-tag">
+          <h3>🏷️ conecta-tag</h3>
+          <p>Componente de tag/badge para exibir rótulos e status. Suporta múltiplas variantes e tamanhos. Interface moderna e acessível para categorização e identificação.</p>
+
+          <h4>📋 Propriedades</h4>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Propriedade</th>
+                  <th>Atributo</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                  <th>Padrão</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>size</code></td>
+                  <td><code>size</code></td>
+                  <td>Tamanho da tag</td>
+                  <td><code>"large" | "medium" | "small"</code></td>
+                  <td><code>'medium'</code></td>
+                </tr>
+                <tr>
+                  <td><code>variant</code></td>
+                  <td><code>variant</code></td>
+                  <td>Variante da tag</td>
+                  <td><code>"danger" | "primary" | "secondary" | "success" | "warning" | "info"</code></td>
+                  <td><code>'primary'</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>🎯 Slots</h4>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Slot</th>
+                  <th>Descrição</th>
+                  <th>Posição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>(default)</code></td>
+                  <td>Conteúdo exibido dentro da tag</td>
+                  <td>Centro</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>💻 Exemplos de Uso</h4>
+          <div class="usage-examples">
+            <div class="example-item">
+              <h5>1. Tag Básica</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-tag&gt;Novo&lt;/conecta-tag&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>2. Tag com Variantes</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-tag variant="primary"&gt;Primário&lt;/conecta-tag&gt;
+&lt;conecta-tag variant="secondary"&gt;Secundário&lt;/conecta-tag&gt;
+&lt;conecta-tag variant="danger"&gt;Perigo&lt;/conecta-tag&gt;
+&lt;conecta-tag variant="success"&gt;Sucesso&lt;/conecta-tag&gt;
+&lt;conecta-tag variant="warning"&gt;Aviso&lt;/conecta-tag&gt;
+&lt;conecta-tag variant="info"&gt;Informação&lt;/conecta-tag&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>3. Tag com Tamanhos</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-tag size="small"&gt;Pequeno&lt;/conecta-tag&gt;
+&lt;conecta-tag size="medium"&gt;Médio&lt;/conecta-tag&gt;
+&lt;conecta-tag size="large"&gt;Grande&lt;/conecta-tag&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>4. Tag com Conteúdo Customizado</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-tag variant="success"&gt;Ativo&lt;/conecta-tag&gt;
+&lt;conecta-tag variant="danger"&gt;Pendente&lt;/conecta-tag&gt;
+&lt;conecta-tag variant="secondary"&gt;Em análise&lt;/conecta-tag&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h4>🎨 Exemplos Visuais</h4>
+          <p>Teste os componentes abaixo com diferentes temas usando o botão de alternância no canto superior direito.</p>
+
+          <div class="demo-grid">
+            <div class="demo-item">
+              <h4>Tags - Variantes</h4>
+              <conecta-tag variant="primary">Primário</conecta-tag>
+              <conecta-tag variant="secondary">Secundário</conecta-tag>
+              <conecta-tag variant="danger">Perigo</conecta-tag>
+              <conecta-tag variant="success">Sucesso</conecta-tag>
+              <conecta-tag variant="warning">Aviso</conecta-tag>
+              <conecta-tag variant="info">Informação</conecta-tag>
+            </div>
+
+            <div class="demo-item">
+              <h4>Tags - Tamanhos</h4>
+              <conecta-tag size="small" variant="primary">Pequeno</conecta-tag>
+              <conecta-tag size="medium" variant="primary">Médio</conecta-tag>
+              <conecta-tag size="large" variant="primary">Grande</conecta-tag>
+            </div>
+
+            <div class="demo-item">
+              <h4>Tags - Uso Prático</h4>
+              <conecta-tag variant="success">Aprovado</conecta-tag>
+              <conecta-tag variant="danger">Rejeitado</conecta-tag>
+              <conecta-tag variant="secondary">Em revisão</conecta-tag>
+              <conecta-tag variant="primary">VIP</conecta-tag>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentação do conecta Toggle Icon -->
+        <div class="component-docs" id="conecta-toggle-icon">
+          <h3>🔄 conecta-toggle-icon</h3>
+          <p>Componente de toggle icon que alterna entre ligado/desligado. Quando ligado, exibe ícone na cor da variante com fundo arredondado colorido.</p>
+
+          <h4>📋 Propriedades</h4>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Propriedade</th>
+                  <th>Atributo</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                  <th>Padrão</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>name</code></td>
+                  <td><code>name</code></td>
+                  <td>Nome do ícone do Lucide</td>
+                  <td><code>string</code></td>
+                  <td><code>undefined</code></td>
+                </tr>
+                <tr>
+                  <td><code>variant</code></td>
+                  <td><code>variant</code></td>
+                  <td>Variante quando ativo</td>
+                  <td><code>"primary" | "secondary" | "danger" | "success" | "warning" | "info"</code></td>
+                  <td><code>'primary'</code></td>
+                </tr>
+                <tr>
+                  <td><code>size</code></td>
+                  <td><code>size</code></td>
+                  <td>Tamanho do toggle</td>
+                  <td><code>"small" | "medium" | "large"</code></td>
+                  <td><code>'medium'</code></td>
+                </tr>
+                <tr>
+                  <td><code>active</code></td>
+                  <td><code>active</code></td>
+                  <td>Estado ativo do toggle</td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                </tr>
+                <tr>
+                  <td><code>disabled</code></td>
+                  <td><code>disabled</code></td>
+                  <td>Se está desabilitado</td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                </tr>
+                <tr>
+                  <td><code>readonly</code></td>
+                  <td><code>readonly</code></td>
+                  <td>Se é somente leitura (não alterna estado)</td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>📡 Eventos</h4>
+          <div class="events-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Evento</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>toggleChange</code></td>
+                  <td>Evento emitido quando o estado do toggle muda</td>
+                  <td><code>CustomEvent&lt;boolean&gt;</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>💻 Exemplos de Uso</h4>
+          <div class="usage-examples">
+            <div class="example-item">
+              <h5>1. Toggle Básico</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-toggle-icon name="mail"&gt;&lt;/conecta-toggle-icon&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>2. Toggle com Variantes</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-toggle-icon name="phone" variant="primary"&gt;&lt;/conecta-toggle-icon&gt;
+&lt;conecta-toggle-icon name="phone" variant="secondary"&gt;&lt;/conecta-toggle-icon&gt;
+&lt;conecta-toggle-icon name="phone" variant="danger"&gt;&lt;/conecta-toggle-icon&gt;
+&lt;conecta-toggle-icon name="phone" variant="success"&gt;&lt;/conecta-toggle-icon&gt;
+&lt;conecta-toggle-icon name="phone" variant="warning"&gt;&lt;/conecta-toggle-icon&gt;
+&lt;conecta-toggle-icon name="phone" variant="info"&gt;&lt;/conecta-toggle-icon&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>3. Toggle com Tamanhos</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-toggle-icon name="bell" size="small"&gt;&lt;/conecta-toggle-icon&gt;
+&lt;conecta-toggle-icon name="bell" size="medium"&gt;&lt;/conecta-toggle-icon&gt;
+&lt;conecta-toggle-icon name="bell" size="large"&gt;&lt;/conecta-toggle-icon&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>4. Estado Inicial Ativo</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-toggle-icon name="heart" active&gt;&lt;/conecta-toggle-icon&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>5. Estado Desabilitado</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-toggle-icon name="star" disabled&gt;&lt;/conecta-toggle-icon&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>6. Estado Readonly</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-toggle-icon name="bookmark" readonly&gt;&lt;/conecta-toggle-icon&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>7. Toggle com Evento</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-toggle-icon 
+  name="bookmark" 
+  onToggleChange="handleToggleChange(event)"&gt;
+&lt;/conecta-toggle-icon&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h4>🎨 Exemplos Visuais</h4>
+          <p>Teste os componentes abaixo com diferentes temas usando o botão de alternância no canto superior direito.</p>
+
+          <div class="demo-grid">
+            <div class="demo-item">
+              <h4>Toggles - Variantes</h4>
+              <conecta-toggle-icon name="mail" variant="primary" active></conecta-toggle-icon>
+              <conecta-toggle-icon name="phone" variant="secondary" active></conecta-toggle-icon>
+              <conecta-toggle-icon name="heart" variant="danger" active></conecta-toggle-icon>
+              <conecta-toggle-icon name="star" variant="success" active></conecta-toggle-icon>
+              <conecta-toggle-icon name="bell" variant="warning" active></conecta-toggle-icon>
+              <conecta-toggle-icon name="info" variant="info" active></conecta-toggle-icon>
+            </div>
+
+            <div class="demo-item">
+              <h4>Toggles - Tamanhos</h4>
+              <conecta-toggle-icon name="mail" size="small" variant="primary"></conecta-toggle-icon>
+              <conecta-toggle-icon name="mail" size="medium" variant="primary"></conecta-toggle-icon>
+              <conecta-toggle-icon name="mail" size="large" variant="primary"></conecta-toggle-icon>
+            </div>
+
+            <div class="demo-item">
+              <h4>Toggles - Estados</h4>
+              <conecta-toggle-icon name="bookmark" variant="primary"></conecta-toggle-icon>
+              <conecta-toggle-icon name="bookmark" variant="primary" active></conecta-toggle-icon>
+              <conecta-toggle-icon name="bookmark" variant="primary" disabled></conecta-toggle-icon>
+              <conecta-toggle-icon name="bookmark" variant="primary" disabled active></conecta-toggle-icon>
+              <conecta-toggle-icon name="bookmark" variant="primary" readonly active></conecta-toggle-icon>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentação do Sistema de Temas -->
+        <div class="section" id="sistema-temas">
+          <h2>📚 Sistema de Temas - Documentação</h2>
+          <p>O conecta Web Kit utiliza CSS Custom Properties (variáveis CSS) para permitir customização completa de temas. Este sistema permite alterar cores, espaçamentos, bordas e outros aspectos visuais de forma consistente.</p>
+
+          <h3>🎨 Como Funciona o Sistema de Temas</h3>
+          <p>O conecta Web Kit utiliza CSS Custom Properties (variáveis CSS) definidas no escopo `:root` para permitir customização completa. Todas as cores, espaçamentos, bordas e outros aspectos visuais são controlados por variáveis CSS, permitindo personalização total sem precisar criar temas pré-definidos.</p>
+
+          <p>O tema padrão (Default) define a cor primária como <code>#172F57</code> (azul escuro) e todas as demais variáveis necessárias para uma interface consistente.</p>
+
+          <h3>🔧 Variáveis CSS Disponíveis</h3>
+          <p>O sistema oferece variáveis organizadas por categoria para máxima flexibilidade:</p>
+
+          <h4>🎨 Cores Base</h4>
+          <div class="variables-grid">
+            <div class="variable-item">
+              <div class="variable-color" style="background-color: var(--conecta-color-primary, #172f57)"></div>
+              <div class="variable-info">
+                <code>--conecta-color-primary</code>
+                <p>Cor primária do tema</p>
+              </div>
+            </div>
+            <div class="variable-item">
+              <div class="variable-color" style="background-color: var(--conecta-color-primary-hover, #1a3a6b)"></div>
+              <div class="variable-info">
+                <code>--conecta-color-primary-hover</code>
+                <p>Cor primária no hover</p>
+              </div>
+            </div>
+            <div class="variable-item">
+              <div class="variable-color" style="background-color: var(--conecta-color-primary-active, #1d457f)"></div>
+              <div class="variable-info">
+                <code>--conecta-color-primary-active</code>
+                <p>Cor primária quando ativo</p>
+              </div>
+            </div>
+            <div class="variable-item">
+              <div class="variable-color" style="background-color: var(--conecta-color-secondary, #f1f5f9)"></div>
+              <div class="variable-info">
+                <code>--conecta-color-secondary</code>
+                <p>Cor secundária</p>
+              </div>
+            </div>
+            <div class="variable-item">
+              <div class="variable-color" style="background-color: var(--conecta-color-danger, #ef4444)"></div>
+              <div class="variable-info">
+                <code>--conecta-color-danger</code>
+                <p>Cor de perigo/erro</p>
+              </div>
+            </div>
+            <div class="variable-item">
+              <div class="variable-color" style="background-color: var(--conecta-color-success, #10b981)"></div>
+              <div class="variable-info">
+                <code>--conecta-color-success</code>
+                <p>Cor de sucesso</p>
+              </div>
+            </div>
+          </div>
+
+          <h4>📝 Cores de Texto</h4>
+          <div class="variables-list">
+            <div class="variable-row">
+              <code>--conecta-color-text-primary</code>
+              <span>Cor principal do texto (#111827)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-color-text-secondary</code>
+              <span>Cor secundária do texto (#374151)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-color-text-disabled</code>
+              <span>Cor do texto desabilitado (#6b7280)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-color-text-inverse</code>
+              <span>Cor do texto inverso (#ffffff)</span>
+            </div>
+          </div>
+
+          <h4>🎭 Backgrounds</h4>
+          <div class="variables-list">
+            <div class="variable-row">
+              <code>--conecta-color-bg-primary</code>
+              <span>Background principal (#ffffff)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-color-bg-secondary</code>
+              <span>Background secundário (#f9fafb)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-color-bg-disabled</code>
+              <span>Background desabilitado (#f9fafb)</span>
+            </div>
+          </div>
+
+          <h4>🔲 Bordas</h4>
+          <div class="variables-list">
+            <div class="variable-row">
+              <code>--conecta-color-border</code>
+              <span>Cor da borda padrão (#d1d5db)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-color-border-focus</code>
+              <span>Cor da borda em foco (#3b82f6)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-color-border-error</code>
+              <span>Cor da borda de erro (#ef4444)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-color-border-disabled</code>
+              <span>Cor da borda desabilitada (#e5e7eb)</span>
+            </div>
+          </div>
+
+          <h4>📏 Espaçamentos</h4>
+          <div class="variables-list">
+            <div class="variable-row">
+              <code>--conecta-spacing-xs</code>
+              <span>Espaçamento extra pequeno (0.25rem)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-spacing-sm</code>
+              <span>Espaçamento pequeno (0.5rem)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-spacing-md</code>
+              <span>Espaçamento médio (0.75rem)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-spacing-lg</code>
+              <span>Espaçamento grande (1rem)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-spacing-xl</code>
+              <span>Espaçamento extra grande (1.5rem)</span>
+            </div>
+          </div>
+
+          <h4>🔘 Border Radius</h4>
+          <div class="variables-list">
+            <div class="variable-row">
+              <code>--conecta-radius-sm</code>
+              <span>Border radius pequeno (4px)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-radius-md</code>
+              <span>Border radius médio (6px)</span>
+            </div>
+            <div class="variable-row">
+              <code>--conecta-radius-lg</code>
+              <span>Border radius grande (8px)</span>
+            </div>
+          </div>
+
+          <h3>🛠️ Como Criar um Tema Customizado</h3>
+          <p>Para criar seu próprio tema, defina as variáveis CSS necessárias:</p>
+
+          <div class="code-block">
+            <pre><code>/* Definir tema customizado */
+.meu-tema-custom {
+  /* Cores primárias */
+  --conecta-color-primary: #8b5cf6;
+  --conecta-color-primary-hover: #7c3aed;
+  --conecta-color-primary-active: #6d28d9;
+
+  /* Cores secundárias */
+  --conecta-color-secondary: #f3f4f6;
+  --conecta-color-secondary-hover: #e5e7eb;
+  --conecta-color-secondary-active: #d1d5db;
+
+  /* Cores de estado */
+  --conecta-color-danger: #f59e0b;
+  --conecta-color-success: #10b981;
+
+  /* Textos */
+  --conecta-color-text-primary: #1f2937;
+  --conecta-color-text-secondary: #4b5563;
+
+  /* Backgrounds */
+  --conecta-color-bg-primary: #ffffff;
+  --conecta-color-bg-secondary: #f9fafb;
+
+  /* Bordas */
+  --conecta-color-border: #d1d5db;
+  --conecta-color-border-focus: #8b5cf6;
+  --conecta-color-border-error: #f59e0b;
+}
+
+/* Aplicar o tema */
+&lt;div class="meu-tema-custom"&gt;
+  &lt;conecta-button variant="primary"&gt;Botão com tema customizado&lt;/conecta-button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <h3>📋 Componente Checkbox</h3>
+          <p>O componente <code>conecta-checkbox</code> oferece uma interface moderna e acessível para seleção de opções, com suporte completo ao sistema de temas.</p>
+
+          <h4>🔧 Propriedades do Checkbox</h4>
+          <div class="variables-list">
+            <div class="variable-row">
+              <code>checked</code>
+              <span>Se o checkbox está marcado (boolean)</span>
+            </div>
+            <div class="variable-row">
+              <code>indeterminate</code>
+              <span>Se o checkbox está em estado indeterminado (boolean)</span>
+            </div>
+            <div class="variable-row">
+              <code>disabled</code>
+              <span>Se o checkbox está desabilitado (boolean)</span>
+            </div>
+            <div class="variable-row">
+              <code>name</code>
+              <span>Nome do checkbox para formulários (string)</span>
+            </div>
+            <div class="variable-row">
+              <code>value</code>
+              <span>Valor do checkbox (string)</span>
+            </div>
+            <div class="variable-row">
+              <code>size</code>
+              <span>Tamanho: 'small' | 'medium' | 'large' (padrão: 'medium')</span>
+            </div>
+            <div class="variable-row">
+              <code>variant</code>
+              <span>Variante: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' (padrão: 'primary')</span>
+            </div>
+            <div class="variable-row">
+              <code>checkboxId</code>
+              <span>ID personalizado do checkbox (string)</span>
+            </div>
+          </div>
+
+          <h4>📡 Eventos do Checkbox</h4>
+          <div class="variables-list">
+            <div class="variable-row">
+              <code>checkboxChange</code>
+              <span>Emitido quando o estado do checkbox muda (boolean)</span>
+            </div>
+            <div class="variable-row">
+              <code>checkboxFocus</code>
+              <span>Emitido quando o checkbox recebe foco (FocusEvent)</span>
+            </div>
+            <div class="variable-row">
+              <code>checkboxBlur</code>
+              <span>Emitido quando o checkbox perde foco (FocusEvent)</span>
+            </div>
+          </div>
+
+          <h4>💻 Exemplos de Uso do Checkbox</h4>
+          <div class="usage-examples">
+            <div class="example-item">
+              <h4>1. Checkbox Básico</h4>
+              <div class="code-block">
+                <pre><code>&lt;conecta-checkbox&gt;Aceito os termos&lt;/conecta-checkbox&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="example-item">
+              <h4>2. Checkbox com Estados</h4>
+              <div class="code-block">
+                <pre><code>&lt;conecta-checkbox checked&gt;Marcado por padrão&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox indeterminate&gt;Estado indeterminado&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox disabled&gt;Desabilitado&lt;/conecta-checkbox&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="example-item">
+              <h4>3. Checkbox com Tamanhos e Variantes</h4>
+              <div class="code-block">
+                <pre><code>&lt;conecta-checkbox size="small" variant="primary"&gt;Pequeno Primário&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox size="large" variant="success"&gt;Grande Sucesso&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox size="medium" variant="danger"&gt;Médio Perigo&lt;/conecta-checkbox&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="example-item">
+              <h4>4. Checkbox com Eventos</h4>
+              <div class="code-block">
+                <pre><code>&lt;conecta-checkbox
+  onCheckboxChange="handleChange(event)"
+  onCheckboxFocus="handleFocus(event)"
+  onCheckboxBlur="handleBlur(event)"&gt;
+  Checkbox com eventos
+&lt;/conecta-checkbox&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="example-item">
+              <h4>5. Checkbox em Formulário</h4>
+              <div class="code-block">
+                <pre><code>&lt;form&gt;
+  &lt;conecta-checkbox name="newsletter" value="yes"&gt;
+    Quero receber newsletter
+  &lt;/conecta-checkbox&gt;
+  &lt;conecta-checkbox name="terms" value="accepted" required&gt;
+    Aceito os termos de uso
+  &lt;/conecta-checkbox&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h3>💡 Exemplos de Uso</h3>
+          <div class="usage-examples">
+            <div class="example-item">
+              <h4>1. Usar Variáveis CSS Globalmente</h4>
+              <div class="code-block">
+                <pre><code>/* Customizar variáveis no :root para aplicar globalmente */
+:root {
+  --conecta-color-primary: #8b5cf6;
+  --conecta-color-primary-hover: #7c3aed;
+  --conecta-color-primary-active: #6d28d9;
+}</code></pre>
+              </div>
+            </div>
+
+            <div class="example-item">
+              <h4>2. Customizar Tema em Seção Específica</h4>
+              <div class="code-block">
+                <pre><code>&lt;div style="--conecta-color-primary: #e01e5a;"&gt;
+  &lt;h2&gt;Minha Seção&lt;/h2&gt;
+  &lt;conecta-button variant="primary"&gt;Botão Customizado&lt;/conecta-button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="example-item">
+              <h4>3. Customização via Classe CSS</h4>
+              <div class="code-block">
+                <pre><code>/* Definir tema customizado com classe */
+.minha-secao {
+  --conecta-color-primary: #2cbe86;
+  --conecta-color-primary-hover: #26a871;
+  --conecta-color-primary-active: #20915c;
+}
+
+/* Aplicar */
+&lt;div class="minha-secao"&gt;
+  &lt;conecta-button variant="primary"&gt;Botão Customizado&lt;/conecta-button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,249 @@
+:host {
+  display: inline-block;
+  line-height: 0;
+
+  /* Variáveis CSS customizáveis */
+  --conecta-toggle-icon-size-small: 28px;
+  --conecta-toggle-icon-size-medium: 40px;
+  --conecta-toggle-icon-size-large: 56px;
+
+  --conecta-toggle-icon-icon-size-small: 14px;
+  --conecta-toggle-icon-icon-size-medium: 20px;
+  --conecta-toggle-icon-icon-size-large: 28px;
+
+  /* Cores das variantes quando ativo */
+  --conecta-toggle-icon-primary-color: var(--conecta-color-primary, #172f57);
+  --conecta-toggle-icon-primary-bg: var(--conecta-color-primary, #172f57);
+  --conecta-toggle-icon-primary-bg-hover: var(--conecta-color-primary-hover, #1a3a6b);
+
+  --conecta-toggle-icon-secondary-color: var(--conecta-color-text-brand, #111827);
+  --conecta-toggle-icon-secondary-bg: var(--conecta-color-secondary, #f1f5f9);
+  --conecta-toggle-icon-secondary-bg-hover: var(--conecta-color-secondary-hover, #e2e8f0);
+
+  --conecta-toggle-icon-danger-color: var(--conecta-color-danger, #ef4444);
+  --conecta-toggle-icon-danger-bg: var(--conecta-color-danger, #ef4444);
+  --conecta-toggle-icon-danger-bg-hover: var(--conecta-color-danger-hover, #dc2626);
+
+  --conecta-toggle-icon-success-color: var(--conecta-color-success, #10b981);
+  --conecta-toggle-icon-success-bg: var(--conecta-color-success, #10b981);
+  --conecta-toggle-icon-success-bg-hover: var(--conecta-color-success-hover, #059669);
+
+  --conecta-toggle-icon-warning-color: var(--conecta-color-warning, #f59e0b);
+  --conecta-toggle-icon-warning-bg: var(--conecta-color-warning, #f59e0b);
+  --conecta-toggle-icon-warning-bg-hover: var(--conecta-color-warning-hover, #d97706);
+
+  --conecta-toggle-icon-info-color: var(--conecta-color-info, #3b82f6);
+  --conecta-toggle-icon-info-bg: var(--conecta-color-info, #3b82f6);
+  --conecta-toggle-icon-info-bg-hover: var(--conecta-color-info-hover, #2563eb);
+
+  /* Estado desligado */
+  --conecta-toggle-icon-off-color: var(--conecta-color-text-disabled, #6b7280);
+
+  /* Estados */
+  --conecta-toggle-icon-disabled-opacity: var(--conecta-opacity-disabled, 0.5);
+  --conecta-toggle-icon-transition: var(--conecta-transition, all 0.2s ease-in-out);
+  --conecta-toggle-icon-border-radius: var(--conecta-radius-lg, 8px);
+}
+
+/* Container principal */
+.conecta-toggle-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--conecta-toggle-icon-border-radius);
+  transition: var(--conecta-toggle-icon-transition);
+  user-select: none;
+}
+
+/* Background colorido quando ativo */
+.conecta-toggle-icon__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--conecta-toggle-icon-border-radius);
+  opacity: 0;
+  transition: var(--conecta-toggle-icon-transition);
+}
+
+/* Ícone */
+.conecta-toggle-icon__icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--conecta-toggle-icon-off-color);
+  transition: var(--conecta-toggle-icon-transition);
+}
+
+.conecta-toggle-icon__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Tamanhos */
+.conecta-toggle-icon--small {
+  width: var(--conecta-toggle-icon-size-small);
+  height: var(--conecta-toggle-icon-size-small);
+}
+
+.conecta-toggle-icon--small .conecta-toggle-icon__icon {
+  width: var(--conecta-toggle-icon-icon-size-small);
+  height: var(--conecta-toggle-icon-icon-size-small);
+}
+
+.conecta-toggle-icon--medium {
+  width: var(--conecta-toggle-icon-size-medium);
+  height: var(--conecta-toggle-icon-size-medium);
+}
+
+.conecta-toggle-icon--medium .conecta-toggle-icon__icon {
+  width: var(--conecta-toggle-icon-icon-size-medium);
+  height: var(--conecta-toggle-icon-icon-size-medium);
+}
+
+.conecta-toggle-icon--large {
+  width: var(--conecta-toggle-icon-size-large);
+  height: var(--conecta-toggle-icon-size-large);
+}
+
+.conecta-toggle-icon--large .conecta-toggle-icon__icon {
+  width: var(--conecta-toggle-icon-icon-size-large);
+  height: var(--conecta-toggle-icon-icon-size-large);
+}
+
+/* Estado ativo */
+
+.conecta-toggle-icon--active .conecta-toggle-icon__background {
+  opacity: 0.15;
+}
+
+.conecta-toggle-icon--active:hover:not(.conecta-toggle-icon--disabled):not(.conecta-toggle-icon--readonly) .conecta-toggle-icon__background {
+  opacity: 0.3;
+}
+
+.conecta-toggle-icon--active.conecta-toggle-icon--secondary .conecta-toggle-icon__background {
+  opacity: 0.7;
+}
+
+.conecta-toggle-icon--active.conecta-toggle-icon--secondary:hover:not(.conecta-toggle-icon--disabled):not(.conecta-toggle-icon--readonly) .conecta-toggle-icon__background {
+  opacity: 1;
+}
+
+/* Variante Primary - Estado Ativo */
+
+.conecta-toggle-icon--primary.conecta-toggle-icon--active .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-primary-bg);
+}
+
+.conecta-toggle-icon--primary.conecta-toggle-icon--active .conecta-toggle-icon__icon {
+  color: var(--conecta-toggle-icon-primary-color);
+}
+
+/* Variante Primary - Hover */
+.conecta-toggle-icon--primary:hover:not(.conecta-toggle-icon--disabled):not(.conecta-toggle-icon--readonly) .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-primary-bg-hover);
+}
+
+/* Variante Secondary - Estado Ativo */
+.conecta-toggle-icon--secondary.conecta-toggle-icon--active .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-secondary-bg);
+}
+
+.conecta-toggle-icon--secondary.conecta-toggle-icon--active .conecta-toggle-icon__icon {
+  color: var(--conecta-toggle-icon-secondary-color);
+}
+
+/* Variante Secondary - Hover */
+.conecta-toggle-icon--secondary:hover:not(.conecta-toggle-icon--disabled) .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-secondary-bg-hover);
+}
+
+/* Variante Danger - Estado Ativo */
+.conecta-toggle-icon--danger.conecta-toggle-icon--active .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-danger-bg);
+}
+
+.conecta-toggle-icon--danger.conecta-toggle-icon--active .conecta-toggle-icon__icon {
+  color: var(--conecta-toggle-icon-danger-color);
+}
+
+/* Variante Danger - Hover */
+.conecta-toggle-icon--danger:hover:not(.conecta-toggle-icon--disabled) .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-danger-bg-hover);
+}
+
+/* Variante Success - Estado Ativo */
+.conecta-toggle-icon--success.conecta-toggle-icon--active .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-success-bg);
+}
+
+.conecta-toggle-icon--success.conecta-toggle-icon--active .conecta-toggle-icon__icon {
+  color: var(--conecta-toggle-icon-success-color);
+}
+
+/* Variante Success - Hover */
+.conecta-toggle-icon--success:hover:not(.conecta-toggle-icon--disabled) .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-success-bg-hover);
+}
+
+/* Variante Warning - Estado Ativo */
+.conecta-toggle-icon--warning.conecta-toggle-icon--active .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-warning-bg);
+}
+
+.conecta-toggle-icon--warning.conecta-toggle-icon--active .conecta-toggle-icon__icon {
+  color: var(--conecta-toggle-icon-warning-color);
+}
+
+/* Variante Warning - Hover */
+.conecta-toggle-icon--warning:hover:not(.conecta-toggle-icon--disabled) .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-warning-bg-hover);
+}
+
+/* Variante Info - Estado Ativo */
+.conecta-toggle-icon--info.conecta-toggle-icon--active .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-info-bg);
+}
+
+.conecta-toggle-icon--info.conecta-toggle-icon--active .conecta-toggle-icon__icon {
+  color: var(--conecta-toggle-icon-info-color);
+}
+
+/* Variante Info - Hover */
+.conecta-toggle-icon--info:hover:not(.conecta-toggle-icon--disabled) .conecta-toggle-icon__background {
+  background-color: var(--conecta-toggle-icon-info-bg-hover);
+}
+
+/* Estado desabilitado */
+.conecta-toggle-icon--disabled {
+  cursor: not-allowed;
+  opacity: var(--conecta-toggle-icon-disabled-opacity);
+}
+
+.conecta-toggle-icon--disabled .conecta-toggle-icon__icon {
+  color: var(--conecta-toggle-icon-off-color);
+}
+
+/* Hover effects removidos */
+
+/* Focus para acessibilidade */
+.conecta-toggle-icon:focus-visible {
+  outline: 2px solid var(--conecta-color-border-focus, #3b82f6);
+  outline-offset: 2px;
+}
+
+/* Estado desligado - força cor neutra do ícone quando inativo */
+.conecta-toggle-icon:not(.conecta-toggle-icon--active) .conecta-toggle-icon__icon {
+  /* conecta-icon usa currentColor interno; definimos explicitamente */
+  color: var(--conecta-toggle-icon-off-color);
+}

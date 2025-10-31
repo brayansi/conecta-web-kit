@@ -1,0 +1,310 @@
+:host {
+  display: inline-flex;
+
+  /* Variáveis CSS customizáveis */
+  --conecta-checkbox-primary-bg: var(--conecta-color-primary, #172f57);
+  --conecta-checkbox-primary-bg-hover: var(--conecta-color-primary-hover, #1a3a6b);
+  --conecta-checkbox-primary-bg-active: var(--conecta-color-primary-active, #1d457f);
+  --conecta-checkbox-primary-border: var(--conecta-color-primary, #172f57);
+  --conecta-checkbox-primary-color: var(--conecta-color-text-inverse, #ffffff);
+
+  --conecta-checkbox-secondary-bg: var(--conecta-color-secondary, #f1f5f9);
+  --conecta-checkbox-secondary-bg-hover: var(--conecta-color-secondary-hover, #e2e8f0);
+  --conecta-checkbox-secondary-bg-active: var(--conecta-color-secondary-active, #cbd5e1);
+  --conecta-checkbox-secondary-border: var(--conecta-color-secondary-border, #e2e8f0);
+  --conecta-checkbox-secondary-color: var(--conecta-color-text-brand, #111827);
+
+  --conecta-checkbox-danger-bg: var(--conecta-color-danger, #ef4444);
+  --conecta-checkbox-danger-bg-hover: var(--conecta-color-danger-hover, #dc2626);
+  --conecta-checkbox-danger-bg-active: var(--conecta-color-danger-active, #b91c1c);
+  --conecta-checkbox-danger-border: var(--conecta-color-danger, #ef4444);
+  --conecta-checkbox-danger-color: var(--conecta-color-text-inverse, #ffffff);
+
+  --conecta-checkbox-success-bg: var(--conecta-color-success, #10b981);
+  --conecta-checkbox-success-bg-hover: var(--conecta-color-success-hover, #059669);
+  --conecta-checkbox-success-bg-active: var(--conecta-color-success-active, #047857);
+  --conecta-checkbox-success-border: var(--conecta-color-success, #10b981);
+  --conecta-checkbox-success-color: var(--conecta-color-text-inverse, #ffffff);
+
+  --conecta-checkbox-warning-bg: var(--conecta-color-warning, #f59e0b);
+  --conecta-checkbox-warning-bg-hover: var(--conecta-color-warning-hover, #d97706);
+  --conecta-checkbox-warning-bg-active: var(--conecta-color-warning-active, #b45309);
+  --conecta-checkbox-warning-border: var(--conecta-color-warning, #f59e0b);
+  --conecta-checkbox-warning-color: var(--conecta-color-text-inverse, #ffffff);
+
+  --conecta-checkbox-info-bg: var(--conecta-color-info, #3b82f6);
+  --conecta-checkbox-info-bg-hover: var(--conecta-color-info-hover, #2563eb);
+  --conecta-checkbox-info-bg-active: var(--conecta-color-info-active, #1d4ed8);
+  --conecta-checkbox-info-border: var(--conecta-color-info, #3b82f6);
+  --conecta-checkbox-info-color: var(--conecta-color-text-inverse, #ffffff);
+
+  --conecta-checkbox-disabled-bg: var(--conecta-color-bg-disabled, #f9fafb);
+  --conecta-checkbox-disabled-border: var(--conecta-color-border-disabled, #e5e7eb);
+  --conecta-checkbox-disabled-color: var(--conecta-color-text-disabled, #6b7280);
+  --conecta-checkbox-disabled-opacity: var(--conecta-opacity-disabled, 0.5);
+
+  --conecta-checkbox-focus-outline: var(--conecta-color-border-focus);
+  --conecta-checkbox-focus-shadow: var(--conecta-shadow-focus);
+
+  --conecta-checkbox-label-color: var(--conecta-color-text-primary);
+}
+
+/* Container principal */
+.conecta-checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--conecta-spacing-sm, 0.5rem);
+  cursor: pointer;
+}
+
+/* Input nativo oculto para acessibilidade */
+.conecta-checkbox__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Foco apenas durante navegação por teclado (:focus-visible) */
+.conecta-checkbox__input:focus-visible + .conecta-checkbox__label .conecta-checkbox__box {
+  outline: 2px solid var(--conecta-checkbox-focus-outline);
+  outline-offset: 2px;
+  box-shadow: var(--conecta-checkbox-focus-shadow);
+}
+
+/* Label do checkbox */
+.conecta-checkbox__label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--conecta-spacing-sm, 0.5rem);
+  cursor: pointer;
+  font-family: var(--conecta-font-family);
+  font-size: var(--conecta-font-size-sm);
+  line-height: 1.5;
+  color: var(--conecta-checkbox-label-color);
+  user-select: none;
+}
+
+.conecta-checkbox__label:has(.conecta-checkbox__input:disabled) {
+  cursor: not-allowed;
+  opacity: var(--conecta-checkbox-disabled-opacity);
+}
+
+/* Box customizado do checkbox */
+.conecta-checkbox__box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--conecta-color-border, #d1d5db);
+  border-radius: var(--conecta-radius-sm, 4px);
+  background-color: var(--conecta-color-bg-primary, #ffffff);
+  transition: var(--conecta-transition, all 0.2s ease-in-out);
+  position: relative;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* Tamanhos */
+.conecta-checkbox__box--small {
+  width: 16px;
+  height: 16px;
+}
+
+.conecta-checkbox__box--medium {
+  width: 20px;
+  height: 20px;
+}
+
+.conecta-checkbox__box--large {
+  width: 24px;
+  height: 24px;
+}
+
+/* Estados desabilitados */
+.conecta-checkbox__box--disabled {
+  background-color: var(--conecta-checkbox-disabled-bg);
+  border-color: var(--conecta-checkbox-disabled-border);
+  cursor: not-allowed;
+  opacity: var(--conecta-checkbox-disabled-opacity);
+}
+
+/* Variante Primary */
+.conecta-checkbox__box--primary {
+  border-color: var(--conecta-checkbox-primary-border);
+}
+
+.conecta-checkbox__box--primary:hover:not(.conecta-checkbox__box--disabled):not(.conecta-checkbox__box--checked):not(.conecta-checkbox__box--indeterminate) {
+  border-color: var(--conecta-checkbox-primary-bg-hover);
+}
+
+.conecta-checkbox__box--primary.conecta-checkbox__box--checked,
+.conecta-checkbox__box--primary.conecta-checkbox__box--indeterminate {
+  background-color: var(--conecta-checkbox-primary-bg);
+  border-color: var(--conecta-checkbox-primary-border);
+  color: var(--conecta-checkbox-primary-color);
+}
+
+.conecta-checkbox__box--primary.conecta-checkbox__box--checked:hover:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--primary.conecta-checkbox__box--indeterminate:hover:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-primary-bg-hover);
+  border-color: var(--conecta-checkbox-primary-bg-hover);
+}
+
+.conecta-checkbox__box--primary.conecta-checkbox__box--checked:active:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--primary.conecta-checkbox__box--indeterminate:active:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-primary-bg-active);
+  border-color: var(--conecta-checkbox-primary-bg-active);
+}
+
+/* Variante Secondary */
+.conecta-checkbox__box--secondary {
+  border-color: var(--conecta-checkbox-secondary-border);
+}
+
+.conecta-checkbox__box--secondary:hover:not(.conecta-checkbox__box--disabled):not(.conecta-checkbox__box--checked):not(.conecta-checkbox__box--indeterminate) {
+  border-color: var(--conecta-checkbox-secondary-bg-hover);
+}
+
+.conecta-checkbox__box--secondary.conecta-checkbox__box--checked,
+.conecta-checkbox__box--secondary.conecta-checkbox__box--indeterminate {
+  background-color: var(--conecta-checkbox-secondary-bg);
+  border-color: var(--conecta-checkbox-secondary-border);
+  color: var(--conecta-checkbox-secondary-color);
+}
+
+.conecta-checkbox__box--secondary.conecta-checkbox__box--checked:hover:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--secondary.conecta-checkbox__box--indeterminate:hover:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-secondary-bg-hover);
+  border-color: var(--conecta-checkbox-secondary-bg-hover);
+}
+
+.conecta-checkbox__box--secondary.conecta-checkbox__box--checked:active:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--secondary.conecta-checkbox__box--indeterminate:active:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-secondary-bg-active);
+  border-color: var(--conecta-checkbox-secondary-bg-active);
+}
+
+/* Variante Danger */
+.conecta-checkbox__box--danger {
+  border-color: var(--conecta-checkbox-danger-border);
+}
+
+.conecta-checkbox__box--danger:hover:not(.conecta-checkbox__box--disabled):not(.conecta-checkbox__box--checked):not(.conecta-checkbox__box--indeterminate) {
+  border-color: var(--conecta-checkbox-danger-bg-hover);
+}
+
+.conecta-checkbox__box--danger.conecta-checkbox__box--checked,
+.conecta-checkbox__box--danger.conecta-checkbox__box--indeterminate {
+  background-color: var(--conecta-checkbox-danger-bg);
+  border-color: var(--conecta-checkbox-danger-border);
+  color: var(--conecta-checkbox-danger-color);
+}
+
+.conecta-checkbox__box--danger.conecta-checkbox__box--checked:hover:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--danger.conecta-checkbox__box--indeterminate:hover:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-danger-bg-hover);
+  border-color: var(--conecta-checkbox-danger-bg-hover);
+}
+
+.conecta-checkbox__box--danger.conecta-checkbox__box--checked:active:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--danger.conecta-checkbox__box--indeterminate:active:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-danger-bg-active);
+  border-color: var(--conecta-checkbox-danger-bg-active);
+}
+
+/* Variante Success */
+.conecta-checkbox__box--success {
+  border-color: var(--conecta-checkbox-success-border);
+}
+
+.conecta-checkbox__box--success:hover:not(.conecta-checkbox__box--disabled):not(.conecta-checkbox__box--checked):not(.conecta-checkbox__box--indeterminate) {
+  border-color: var(--conecta-checkbox-success-bg-hover);
+}
+
+.conecta-checkbox__box--success.conecta-checkbox__box--checked,
+.conecta-checkbox__box--success.conecta-checkbox__box--indeterminate {
+  background-color: var(--conecta-checkbox-success-bg);
+  border-color: var(--conecta-checkbox-success-border);
+  color: var(--conecta-checkbox-success-color);
+}
+
+.conecta-checkbox__box--success.conecta-checkbox__box--checked:hover:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--success.conecta-checkbox__box--indeterminate:hover:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-success-bg-hover);
+  border-color: var(--conecta-checkbox-success-bg-hover);
+}
+
+.conecta-checkbox__box--success.conecta-checkbox__box--checked:active:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--success.conecta-checkbox__box--indeterminate:active:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-success-bg-active);
+  border-color: var(--conecta-checkbox-success-bg-active);
+}
+
+/* Variante Warning */
+.conecta-checkbox__box--warning {
+  border-color: var(--conecta-checkbox-warning-border);
+}
+
+.conecta-checkbox__box--warning:hover:not(.conecta-checkbox__box--disabled):not(.conecta-checkbox__box--checked):not(.conecta-checkbox__box--indeterminate) {
+  border-color: var(--conecta-checkbox-warning-bg-hover);
+}
+
+.conecta-checkbox__box--warning.conecta-checkbox__box--checked,
+.conecta-checkbox__box--warning.conecta-checkbox__box--indeterminate {
+  background-color: var(--conecta-checkbox-warning-bg);
+  border-color: var(--conecta-checkbox-warning-border);
+  color: var(--conecta-checkbox-warning-color);
+}
+
+.conecta-checkbox__box--warning.conecta-checkbox__box--checked:hover:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--warning.conecta-checkbox__box--indeterminate:hover:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-warning-bg-hover);
+  border-color: var(--conecta-checkbox-warning-bg-hover);
+}
+
+.conecta-checkbox__box--warning.conecta-checkbox__box--checked:active:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--warning.conecta-checkbox__box--indeterminate:active:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-warning-bg-active);
+  border-color: var(--conecta-checkbox-warning-bg-active);
+}
+
+/* Variante Info */
+.conecta-checkbox__box--info {
+  border-color: var(--conecta-checkbox-info-border);
+}
+
+.conecta-checkbox__box--info:hover:not(.conecta-checkbox__box--disabled):not(.conecta-checkbox__box--checked):not(.conecta-checkbox__box--indeterminate) {
+  border-color: var(--conecta-checkbox-info-bg-hover);
+}
+
+.conecta-checkbox__box--info.conecta-checkbox__box--checked,
+.conecta-checkbox__box--info.conecta-checkbox__box--indeterminate {
+  background-color: var(--conecta-checkbox-info-bg);
+  border-color: var(--conecta-checkbox-info-border);
+  color: var(--conecta-checkbox-info-color);
+}
+
+.conecta-checkbox__box--info.conecta-checkbox__box--checked:hover:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--info.conecta-checkbox__box--indeterminate:hover:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-info-bg-hover);
+  border-color: var(--conecta-checkbox-info-bg-hover);
+}
+
+.conecta-checkbox__box--info.conecta-checkbox__box--checked:active:not(.conecta-checkbox__box--disabled),
+.conecta-checkbox__box--info.conecta-checkbox__box--indeterminate:active:not(.conecta-checkbox__box--disabled) {
+  background-color: var(--conecta-checkbox-info-bg-active);
+  border-color: var(--conecta-checkbox-info-bg-active);
+}
+
+/* Ícones SVG */
+.conecta-checkbox__icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

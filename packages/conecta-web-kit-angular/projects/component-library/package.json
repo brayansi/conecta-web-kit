@@ -1,0 +1,13 @@
+{
+  "name": "component-library",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@techconecta/conecta-web-kit-core": "*"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

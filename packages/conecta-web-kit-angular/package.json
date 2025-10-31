@@ -1,0 +1,47 @@
+{
+  "name": "@techconecta/conecta-web-kit-angular",
+  "version": "0.0.38",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "deploy": "npm run build && npm publish --access public",
+    "watch": "ng build --watch --configuration development"
+  },
+  "files": [
+    "dist/"
+  ],
+  "main": "dist/component-library/fesm2022/component-library.mjs",
+  "module": "dist/component-library/fesm2022/component-library.mjs",
+  "types": "dist/component-library/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/component-library/index.d.ts",
+      "import": "./dist/component-library/fesm2022/component-library.mjs"
+    },
+    "./dist/component-library": {
+      "types": "./dist/component-library/index.d.ts",
+      "import": "./dist/component-library/fesm2022/component-library.mjs"
+    }
+  },
+  "dependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/compiler": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/forms": "^19.2.0",
+    "@angular/platform-browser": "^19.2.0",
+    "@angular/platform-browser-dynamic": "^19.2.0",
+    "@angular/router": "^19.2.0",
+    "@techconecta/conecta-web-kit-core": "*",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.2.18",
+    "@angular/cli": "^19.2.18",
+    "@angular/compiler-cli": "^19.2.0",
+    "ng-packagr": "^19.2.0",
+    "typescript": "~5.7.2"
+  }
+}

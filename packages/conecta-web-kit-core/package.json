@@ -1,0 +1,39 @@
+{
+  "name": "@techconecta/conecta-web-kit-core",
+  "version": "0.0.38",
+  "description": "Biblioteca de componentes web reutilizáveis da conecta",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/conecta-web-kit/conecta-web-kit.esm.js",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "deploy": "npm run build && npm publish --access public"
+  },
+  "dependencies": {
+    "@stencil/core": "^4.18.2",
+    "lucide": "^0.469.0"
+  },
+  "devDependencies": {
+    "@stencil/angular-output-target": "^1.1.1",
+    "@stencil/core": "^4.27.1",
+    "@stencil/sass": "^3.2.2",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.5",
+    "eslint-plugin-stencil": "^0.0.1",
+    "jest": "^29.7.0",
+    "jest-cli": "^29.7.0",
+    "puppeteer": "^24.3.0",
+    "typescript": "^5.9.3"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,91 @@
+:host {
+  display: inline-block;
+  line-height: 0;
+
+  /* Variáveis CSS customizáveis */
+  --conecta-icon-size-small: var(--conecta-spacing-md, 16px);
+  --conecta-icon-size-medium: var(--conecta-spacing-lg, 24px);
+  --conecta-icon-size-large: var(--conecta-spacing-xl, 32px);
+  --conecta-icon-size-xlarge: calc(var(--conecta-spacing-xl, 32px) * 1.5);
+
+  --conecta-icon-color-primary: var(--conecta-color-primary, #172f57);
+  --conecta-icon-color-secondary: var(--conecta-color-text-secondary, #374151);
+  --conecta-icon-color-success: var(--conecta-color-success, #10b981);
+  --conecta-icon-color-danger: var(--conecta-color-danger, #ef4444);
+  --conecta-icon-color-warning: var(--conecta-color-warning, #f59e0b);
+  --conecta-icon-color-info: var(--conecta-color-info, #3b82f6);
+  --conecta-icon-color-neutral: var(--conecta-color-text-primary, #111827);
+
+  --conecta-icon-transition: var(--conecta-transition, all 0.2s ease-in-out);
+}
+
+/* Estilos base */
+.conecta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: var(--conecta-icon-current-color, currentColor);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+/* Tamanhos */
+.conecta-icon--small {
+  width: var(--conecta-icon-size-small);
+  height: var(--conecta-icon-size-small);
+}
+
+.conecta-icon--medium {
+  width: var(--conecta-icon-size-medium);
+  height: var(--conecta-icon-size-medium);
+}
+
+.conecta-icon--large {
+  width: var(--conecta-icon-size-large);
+  height: var(--conecta-icon-size-large);
+}
+
+.conecta-icon--xlarge {
+  width: var(--conecta-icon-size-xlarge);
+  height: var(--conecta-icon-size-xlarge);
+}
+
+/* Variantes de cor */
+.conecta-icon--currentColor {
+  --conecta-icon-current-color: currentColor;
+}
+
+.conecta-icon--primary {
+  --conecta-icon-current-color: var(--conecta-icon-color-primary);
+}
+
+.conecta-icon--secondary {
+  --conecta-icon-current-color: var(--conecta-icon-color-secondary);
+}
+
+.conecta-icon--success {
+  --conecta-icon-current-color: var(--conecta-icon-color-success);
+}
+
+.conecta-icon--danger {
+  --conecta-icon-current-color: var(--conecta-icon-color-danger);
+}
+
+.conecta-icon--warning {
+  --conecta-icon-current-color: var(--conecta-icon-color-warning);
+}
+
+.conecta-icon--info {
+  --conecta-icon-current-color: var(--conecta-icon-color-info);
+}
+
+.conecta-icon--neutral {
+  --conecta-icon-current-color: var(--conecta-icon-color-neutral);
+}

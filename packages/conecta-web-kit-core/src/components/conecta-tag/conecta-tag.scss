@@ -1,0 +1,106 @@
+:host {
+  display: inline-block;
+
+  /* Variáveis CSS customizáveis */
+  --conecta-tag-radius: var(--conecta-radius-sm, 4px);
+
+  --conecta-tag-primary-bg: var(--conecta-color-primary, #172f57);
+  --conecta-tag-primary-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-tag-primary-border: var(--conecta-color-primary, #172f57);
+
+  --conecta-tag-secondary-bg: var(--conecta-color-secondary, #f1f5f9);
+  --conecta-tag-secondary-color: var(--conecta-color-text-brand, #111827);
+  --conecta-tag-secondary-border: var(--conecta-color-secondary-border, #e2e8f0);
+
+  --conecta-tag-danger-bg: var(--conecta-color-danger, #ef4444);
+  --conecta-tag-danger-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-tag-danger-border: var(--conecta-color-danger, #ef4444);
+
+  --conecta-tag-success-bg: var(--conecta-color-success, #10b981);
+  --conecta-tag-success-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-tag-success-border: var(--conecta-color-success, #10b981);
+
+  --conecta-tag-warning-bg: var(--conecta-color-warning, #f59e0b);
+  --conecta-tag-warning-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-tag-warning-border: var(--conecta-color-warning, #f59e0b);
+
+  --conecta-tag-info-bg: var(--conecta-color-info, #3b82f6);
+  --conecta-tag-info-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-tag-info-border: var(--conecta-color-info, #3b82f6);
+
+  --conecta-tag-focus-outline: var(--conecta-color-border-focus, #3b82f6);
+}
+
+/* Estilos base */
+.conecta-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--conecta-tag-radius);
+  font-family: var(--conecta-font-family);
+  font-weight: var(--conecta-font-weight-medium);
+  line-height: 1.5;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+/* Tamanhos */
+.conecta-tag--small {
+  padding: var(--conecta-spacing-xs, 0.25rem) var(--conecta-spacing-sm, 0.5rem);
+  font-size: var(--conecta-font-size-xs);
+  line-height: 1rem;
+}
+
+.conecta-tag--medium {
+  padding: var(--conecta-spacing-xs, 0.25rem) var(--conecta-spacing-md, 0.75rem);
+  font-size: var(--conecta-font-size-sm);
+  line-height: 1.25rem;
+}
+
+.conecta-tag--large {
+  padding: var(--conecta-spacing-sm, 0.5rem) var(--conecta-spacing-lg, 1rem);
+  font-size: var(--conecta-font-size-md);
+  line-height: 1.5rem;
+}
+
+/* Variante Primary */
+.conecta-tag--primary {
+  background-color: var(--conecta-tag-primary-bg);
+  color: var(--conecta-tag-primary-color);
+  border: 1px solid var(--conecta-tag-primary-border);
+}
+
+/* Variante Secondary */
+.conecta-tag--secondary {
+  background-color: var(--conecta-tag-secondary-bg);
+  color: var(--conecta-tag-secondary-color);
+  border: 1px solid var(--conecta-tag-secondary-border);
+}
+
+/* Variante Danger */
+.conecta-tag--danger {
+  background-color: var(--conecta-tag-danger-bg);
+  color: var(--conecta-tag-danger-color);
+  border: 1px solid var(--conecta-tag-danger-border);
+}
+
+/* Variante Success */
+.conecta-tag--success {
+  background-color: var(--conecta-tag-success-bg);
+  color: var(--conecta-tag-success-color);
+  border: 1px solid var(--conecta-tag-success-border);
+}
+
+/* Variante Warning */
+.conecta-tag--warning {
+  background-color: var(--conecta-tag-warning-bg);
+  color: var(--conecta-tag-warning-color);
+  border: 1px solid var(--conecta-tag-warning-border);
+}
+
+/* Variante Info */
+.conecta-tag--info {
+  background-color: var(--conecta-tag-info-bg);
+  color: var(--conecta-tag-info-color);
+  border: 1px solid var(--conecta-tag-info-border);
+}

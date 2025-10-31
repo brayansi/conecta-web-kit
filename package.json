@@ -1,0 +1,48 @@
+{
+  "name": "conecta-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo para Conecta Web Kit e integrações Angular",
+  "private": true,
+  "workspaces": [
+    "packages/conecta-web-kit-core",
+    "packages/conecta-web-kit-angular"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "build:stencil": "npm run build --workspace=packages/conecta-web-kit-core",
+    "build:angular": "npm run build --workspace=packages/conecta-web-kit-angular",
+    "start:stencil": "npm run start --workspace=packages/conecta-web-kit-core",
+    "deploy:stencil": "npm run deploy --workspace=packages/conecta-web-kit-core",
+    "deploy:angular": "npm run deploy --workspace=packages/conecta-web-kit-angular",
+    "test": "npm run test --workspaces",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.38.0",
+    "eslint-plugin-stencil": "^0.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{scss,css}": [
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "packageManager": "npm@10.0.0"
+}

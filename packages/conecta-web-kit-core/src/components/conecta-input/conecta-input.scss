@@ -1,0 +1,171 @@
+:host {
+  display: block;
+
+  /* Variáveis CSS customizáveis */
+  --conecta-input-bg: var(--conecta-color-bg-primary, #ffffff);
+  --conecta-input-bg-disabled: var(--conecta-color-bg-disabled, #f9fafb);
+  --conecta-input-text: var(--conecta-color-text-primary, #111827);
+  --conecta-input-text-disabled: var(--conecta-color-text-disabled, #6b7280);
+  --conecta-input-text-placeholder: var(--conecta-color-text-placeholder, #9ca3af);
+
+  --conecta-input-border: var(--conecta-color-border, #d1d5db);
+  --conecta-input-border-focus: var(--conecta-color-border-focus, #3b82f6);
+  --conecta-input-border-error: var(--conecta-color-border-error, #ef4444);
+  --conecta-input-border-disabled: var(--conecta-color-border-disabled, #e5e7eb);
+
+  --conecta-input-label-color: var(--conecta-color-text-secondary, #374151);
+  --conecta-input-error-color: var(--conecta-color-border-error, #ef4444);
+  --conecta-input-help-color: var(--conecta-color-text-disabled, #6b7280);
+
+  --conecta-input-shadow-focus: var(--conecta-shadow-focus);
+  --conecta-input-shadow-focus-error: var(--conecta-shadow-focus-error);
+}
+
+/* Container principal */
+.conecta-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--conecta-spacing-sm);
+}
+
+/* Label */
+.conecta-input__label {
+  font-family: var(--conecta-font-family);
+  font-size: var(--conecta-font-size-sm);
+  font-weight: var(--conecta-font-weight-medium);
+  color: var(--conecta-input-label-color);
+  display: flex;
+  align-items: center;
+  gap: var(--conecta-spacing-xs);
+}
+
+.conecta-input__required {
+  color: var(--conecta-input-error-color);
+  font-weight: var(--conecta-font-weight-semibold);
+}
+
+/* Wrapper do campo */
+.conecta-input__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--conecta-input-border);
+  border-radius: var(--conecta-radius-md);
+  background-color: var(--conecta-input-bg);
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.conecta-input__wrapper:hover:not(.conecta-input__wrapper--disabled):not(.conecta-input__wrapper--error) {
+  border-color: var(--conecta-input-border-focus);
+}
+
+.conecta-input__wrapper--error:hover:not(.conecta-input__wrapper--disabled) {
+  border-color: var(--conecta-input-border-error);
+}
+
+.conecta-input__wrapper--focused:not(.conecta-input__wrapper--error) {
+  border-color: var(--conecta-input-border-focus);
+  box-shadow: var(--conecta-input-shadow-focus);
+  outline: none;
+}
+
+.conecta-input__wrapper--error {
+  border-color: var(--conecta-input-border-error);
+}
+
+.conecta-input__wrapper--error:focus-within,
+.conecta-input__wrapper--error.conecta-input__wrapper--focused {
+  border-color: var(--conecta-input-border-error);
+  box-shadow: var(--conecta-input-shadow-focus-error);
+  outline: none;
+}
+
+.conecta-input__wrapper--disabled {
+  background-color: var(--conecta-input-bg-disabled);
+  border-color: var(--conecta-input-border-disabled);
+  cursor: not-allowed;
+}
+
+/* Prefix e suffix (slots) */
+.conecta-input__prefix,
+.conecta-input__suffix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--conecta-input-text-placeholder);
+}
+
+/* Campo de input */
+.conecta-input__field {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--conecta-font-family);
+  font-size: var(--conecta-font-size-md);
+  color: var(--conecta-input-text);
+  outline: none;
+}
+
+.conecta-input__field::placeholder {
+  color: var(--conecta-input-text-placeholder);
+}
+
+.conecta-input__field:disabled {
+  color: var(--conecta-input-text-disabled);
+  cursor: not-allowed;
+}
+
+/* Tamanhos do wrapper */
+.conecta-input__wrapper--small {
+  padding: var(--conecta-spacing-xs) var(--conecta-spacing-md);
+  gap: var(--conecta-spacing-sm);
+}
+
+.conecta-input__wrapper--small .conecta-input__field {
+  font-size: var(--conecta-font-size-sm);
+  line-height: 1.25rem;
+}
+
+.conecta-input__wrapper--medium {
+  padding: var(--conecta-spacing-sm) var(--conecta-spacing-md);
+  gap: var(--conecta-spacing-sm);
+}
+
+.conecta-input__wrapper--medium .conecta-input__field {
+  font-size: var(--conecta-font-size-md);
+  line-height: 1.5rem;
+}
+
+.conecta-input__wrapper--large {
+  padding: var(--conecta-spacing-md) var(--conecta-spacing-lg);
+  gap: var(--conecta-spacing-md);
+}
+
+.conecta-input__wrapper--large .conecta-input__field {
+  font-size: var(--conecta-font-size-lg);
+  line-height: 1.75rem;
+}
+
+/* Mensagens */
+.conecta-input__error {
+  font-family: var(--conecta-font-family);
+  font-size: var(--conecta-font-size-sm);
+  color: var(--conecta-input-error-color);
+  display: flex;
+  align-items: center;
+  gap: var(--conecta-spacing-xs);
+}
+
+.conecta-input__error::before {
+  content: '⚠';
+  font-size: var(--conecta-font-size-xs);
+}
+
+.conecta-input__help {
+  font-family: var(--conecta-font-family);
+  font-size: var(--conecta-font-size-sm);
+  color: var(--conecta-input-help-color);
+}

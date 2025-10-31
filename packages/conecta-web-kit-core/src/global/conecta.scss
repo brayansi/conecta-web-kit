@@ -1,0 +1,179 @@
+/* conecta Web Kit - Sistema de Temas */
+/* Este arquivo define as variáveis CSS globais para customização de temas */
+
+:root {
+  /* ===== CORES BASE ===== */
+
+  /* Cores primárias */
+  --conecta-color-primary: #63a18f;
+  --conecta-color-primary-hover: #72b09e;
+  --conecta-color-primary-active: #548b7a;
+
+  /* Cores secundárias */
+  --conecta-color-secondary: #f5f5f5;
+  --conecta-color-secondary-hover: #e8e8e8;
+  --conecta-color-secondary-active: #d1d1d1;
+  --conecta-color-secondary-border: #e0e0e0;
+
+  /* ===== CORES NEUTRAS ===== */
+  /* Escala de cinzas para maior flexibilidade na customização de temas */
+  --conecta-color-gray-50: #fafafa;
+  --conecta-color-gray-100: #f5f5f5;
+  --conecta-color-gray-200: #eeeeee;
+  --conecta-color-gray-300: #e0e0e0;
+  --conecta-color-gray-400: #bdbdbd;
+  --conecta-color-gray-500: #9e9e9e;
+  --conecta-color-gray-600: #757575;
+  --conecta-color-gray-700: #616161;
+  --conecta-color-gray-800: #424242;
+  --conecta-color-gray-900: #212121;
+
+  /* ===== CORES DE ESTADO ===== */
+
+  /* Danger - usado para erros, ações destrutivas */
+  --conecta-color-danger: #ef4444;
+  --conecta-color-danger-hover: #dc2626;
+  --conecta-color-danger-active: #b91c1c;
+
+  /* Success - usado para confirmações, ações bem-sucedidas */
+  --conecta-color-success: #10b981;
+  --conecta-color-success-hover: #059669;
+  --conecta-color-success-active: #047857;
+
+  /* Warning - usado para avisos, alertas importantes */
+  --conecta-color-warning: #f59e0b;
+  --conecta-color-warning-hover: #d97706;
+  --conecta-color-warning-active: #b45309;
+
+  /* Info - usado para informações, dicas */
+  --conecta-color-info: #63a18f;
+  --conecta-color-info-hover: #72b09e;
+  --conecta-color-info-active: #548b7a;
+
+  /* ===== CORES DE TEXTO ===== */
+
+  /* Textos principais */
+  --conecta-color-text-primary: #212121;
+  --conecta-color-text-secondary: #616161;
+  --conecta-color-text-disabled: #9e9e9e;
+  --conecta-color-text-inverse: #ffffff;
+  --conecta-color-text-brand: var(--conecta-color-primary);
+
+  /* Textos adicionais */
+  --conecta-color-text-placeholder: #bdbdbd;
+  --conecta-color-text-muted: #9e9e9e;
+  --conecta-color-text-subtle: #bdbdbd;
+
+  /* ===== CORES DE BACKGROUND ===== */
+
+  /* Backgrounds principais */
+  --conecta-color-bg-primary: #ffffff;
+  --conecta-color-bg-secondary: #fafafa;
+  --conecta-color-bg-disabled: #fafafa;
+
+  /* Backgrounds interativos */
+  --conecta-color-bg-hover: #f5f5f5;
+  --conecta-color-bg-selected: #eff8f6;
+  --conecta-color-bg-active: #d1ece5;
+  --conecta-color-bg-hover-light: #fafafa;
+
+  /* Backgrounds de estado */
+  --conecta-color-bg-danger: #fef2f2;
+  --conecta-color-bg-success: #f0fdf4;
+  --conecta-color-bg-warning: #fffbeb;
+  --conecta-color-bg-info: #eff8f6;
+
+  /* ===== CORES DE BORDAS ===== */
+
+  /* Bordas base */
+  --conecta-color-border: #e0e0e0;
+  --conecta-color-border-disabled: #eeeeee;
+  --conecta-color-border-light: #eeeeee;
+  --conecta-color-border-medium: #e0e0e0;
+  --conecta-color-border-dark: #bdbdbd;
+
+  /* Bordas de estado */
+  --conecta-color-border-focus: #63a18f;
+  --conecta-color-border-error: #ef4444;
+  --conecta-color-border-success: #10b981;
+  --conecta-color-border-warning: #f59e0b;
+  --conecta-color-border-info: #63a18f;
+
+  /* ===== CORES DE LINKS ===== */
+
+  /* Links e seus estados */
+  --conecta-color-link: var(--conecta-color-info);
+  --conecta-color-link-hover: var(--conecta-color-info-hover);
+  --conecta-color-link-active: var(--conecta-color-info-active);
+  --conecta-color-link-visited: #9333ea;
+
+  /* ===== OVERLAYS E BACKDROPS ===== */
+
+  /* Overlays para modais, popovers, etc. */
+  --conecta-color-overlay: rgba(0, 0, 0, 0.5);
+  --conecta-color-overlay-light: rgba(0, 0, 0, 0.25);
+  --conecta-color-overlay-dark: rgba(0, 0, 0, 0.75);
+  --conecta-color-backdrop: rgba(17, 24, 39, 0.5);
+
+  /* ===== SOMBRAS E ELEVAÇÃO ===== */
+
+  /* Sombras de foco */
+  --conecta-shadow-focus: 0 0 0 3px rgba(99, 161, 143, 0.1);
+  --conecta-shadow-focus-error: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  --conecta-shadow-focus-success: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  --conecta-shadow-focus-warning: 0 0 0 3px rgba(245, 158, 11, 0.1);
+
+  /* Níveis de elevação */
+  --conecta-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --conecta-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --conecta-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --conecta-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Sombras específicas */
+  --conecta-shadow-elevation: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --conecta-shadow-dropdown: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* ===== OPACIDADES ===== */
+
+  /* Opacidades padrão para consistência visual */
+  --conecta-opacity-disabled: 0.5;
+  --conecta-opacity-hover: 0.8;
+  --conecta-opacity-overlay: 0.5;
+  --conecta-opacity-light: 0.25;
+  --conecta-opacity-medium: 0.5;
+  --conecta-opacity-heavy: 0.75;
+
+  /* ===== ESPAÇAMENTOS ===== */
+  --conecta-spacing-xs: 0.25rem;
+  --conecta-spacing-sm: 0.5rem;
+  --conecta-spacing-md: 0.75rem;
+  --conecta-spacing-lg: 1rem;
+  --conecta-spacing-xl: 1.5rem;
+
+  /* ===== BORDAS RADIUS ===== */
+  --conecta-radius-sm: 4px;
+  --conecta-radius-md: 6px;
+  --conecta-radius-lg: 8px;
+
+  /* ===== TRANSIÇÕES ===== */
+  --conecta-transition: all 0.2s ease-in-out;
+
+  /* ===== TIPOGRAFIA ===== */
+
+  /* Font Family */
+  --conecta-font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Font Sizes */
+  --conecta-font-size-xs: 0.75rem; /* 12px */
+  --conecta-font-size-sm: 0.875rem; /* 14px */
+  --conecta-font-size-md: 1rem; /* 16px */
+  --conecta-font-size-lg: 1.125rem; /* 18px */
+  --conecta-font-size-xl: 1.25rem; /* 20px */
+  --conecta-font-size-2xl: 1.5rem; /* 24px */
+
+  /* Font Weights */
+  --conecta-font-weight-regular: 400;
+  --conecta-font-weight-medium: 500;
+  --conecta-font-weight-semibold: 600;
+  --conecta-font-weight-bold: 700;
+}

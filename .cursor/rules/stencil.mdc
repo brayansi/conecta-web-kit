@@ -1,0 +1,173 @@
+---
+alwaysApply: true
+---
+
+Siga a documentação oficial
+
+Fonte primária: https://stenciljs.com/docs
+
+Todas as decisões de arquitetura, configuração e uso de decoradores (@Component, @Prop, @State, @Event, etc.) devem seguir estritamente a documentação oficial.
+
+Em casos de dúvida ou ambiguidade, priorize o comportamento real descrito na documentação e nos exemplos oficiais — e não em fóruns ou postagens externas.
+
+2. Componentização Correta
+
+Cada componente deve ser autônomo, reutilizável e possuir uma única responsabilidade.
+
+Evite lógica de negócio complexa dentro dos componentes — mova-a para serviços ou utilitários externos.
+
+Respeite a filosofia “web components first” — os componentes devem poder ser usados fora do Stencil (por exemplo, em React, Angular, etc.) sem dependências internas.
+
+3. Convenções de Nomenclatura
+
+Nome do componente em kebab-case (my-component)
+
+Nome da classe em PascalCase (export class MyComponent)
+
+Props e métodos públicos devem ser expressivos e previsíveis (onSubmit, isVisible, userData)
+
+4. Organização do Projeto
+/src/components/ → cada componente em seu próprio diretório:
+
+/my-component/
+  my-component.tsx
+  my-component.css
+
+/src/utils/ → funções puras e auxiliares.
+
+/src/global/ → configurações e estilos globais.
+
+
+🎨 Estilo e UI/UX
+
+5. CSS e Shadow DOM
+
+Prefira encapsulamento nativo com shadow: true.
+
+Use variáveis CSS para customização externa.
+
+Evite dependências de frameworks CSS dentro do Shadow DOM (ex.: Bootstrap).
+
+6. Acessibilidade
+
+Garanta suporte a aria-*, role, tabindex e navegação por teclado.
+
+Teste os componentes com leitores de tela quando aplicável.
+
+🧩 Código e Performance
+
+7. Props, States e Imutabilidade
+
+@Prop() → apenas para dados de entrada; nunca modificar internamente.
+
+@State() → apenas para dados internos mutáveis.
+
+Sempre mantenha imutabilidade (use operadores spread/rest ou funções puras).
+
+8. Eventos e Comunicação
+
+Use @Event() e EventEmitter para comunicação de dentro para fora.
+
+Use props para comunicação de fora para dentro.
+
+Evite variáveis globais para sincronização de estado.
+
+9. Renderização
+
+Os métodos render() devem ser puros e previsíveis.
+
+Use JSX nativo (sem dependências do React).
+
+Evite recomputações desnecessárias — use @Watch() quando apropriado.
+
+✅ Regra Final
+
+A IA deve sempre seguir as práticas oficiais e o estilo recomendado pela equipe do Stencil.
+
+Nada deve ser implementado de forma “semelhante ao React” ou usando padrões não nativos do Stencil.
+
+Se o comportamento desejado não for oficialmente suportado, deve-se sugerir uma alternativa que esteja alinhada à filosofia dos Web Components.Siga a documentação oficial
+
+Fonte primária: https://stenciljs.com/docs
+
+Todas as decisões de arquitetura, configuração e uso de decoradores (@Component, @Prop, @State, @Event, etc.) devem seguir estritamente a documentação oficial.
+
+Em casos de dúvida ou ambiguidade, priorize o comportamento real descrito na documentação e nos exemplos oficiais — e não em fóruns ou postagens externas.
+
+2. Componentização Correta
+
+Cada componente deve ser autônomo, reutilizável e possuir uma única responsabilidade.
+
+Evite lógica de negócio complexa dentro dos componentes — mova-a para serviços ou utilitários externos.
+
+Respeite a filosofia “web components first” — os componentes devem poder ser usados fora do Stencil (por exemplo, em React, Angular, etc.) sem dependências internas.
+
+3. Convenções de Nomenclatura
+
+Nome do componente em kebab-case (my-component)
+
+Nome da classe em PascalCase (export class MyComponent)
+
+Props e métodos públicos devem ser expressivos e previsíveis (onSubmit, isVisible, userData)
+
+4. Organização do Projeto
+/src/components/ → cada componente em seu próprio diretório:
+
+/my-component/
+  my-component.tsx
+  my-component.css
+
+/src/utils/ → funções puras e auxiliares.
+
+/src/global/ → configurações e estilos globais.
+
+
+🎨 Estilo e UI/UX
+
+5. CSS e Shadow DOM
+
+Prefira encapsulamento nativo com shadow: true.
+
+Use variáveis CSS para customização externa.
+
+Evite dependências de frameworks CSS dentro do Shadow DOM (ex.: Bootstrap).
+
+6. Acessibilidade
+
+Garanta suporte a aria-*, role, tabindex e navegação por teclado.
+
+Teste os componentes com leitores de tela quando aplicável.
+
+🧩 Código e Performance
+
+7. Props, States e Imutabilidade
+
+@Prop() → apenas para dados de entrada; nunca modificar internamente.
+
+@State() → apenas para dados internos mutáveis.
+
+Sempre mantenha imutabilidade (use operadores spread/rest ou funções puras).
+
+8. Eventos e Comunicação
+
+Use @Event() e EventEmitter para comunicação de dentro para fora.
+
+Use props para comunicação de fora para dentro.
+
+Evite variáveis globais para sincronização de estado.
+
+9. Renderização
+
+Os métodos render() devem ser puros e previsíveis.
+
+Use JSX nativo (sem dependências do React).
+
+Evite recomputações desnecessárias — use @Watch() quando apropriado.
+
+✅ Regra Final
+
+A IA deve sempre seguir as práticas oficiais e o estilo recomendado pela equipe do Stencil.
+
+Nada deve ser implementado de forma “semelhante ao React” ou usando padrões não nativos do Stencil.
+
+Se o comportamento desejado não for oficialmente suportado, deve-se sugerir uma alternativa que esteja alinhada à filosofia dos Web Components.
