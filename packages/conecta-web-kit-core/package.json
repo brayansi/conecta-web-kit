@@ -1,6 +1,6 @@
 {
   "name": "@techconecta/conecta-web-kit-core",
-  "version": "0.0.38",
+  "version": "0.0.40",
   "description": "Biblioteca de componentes web reutilizáveis da conecta",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
