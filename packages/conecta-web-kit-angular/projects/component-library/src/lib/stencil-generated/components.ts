@@ -7,6 +7,7 @@ import { ProxyCmp } from './angular-component-lib/utils';
 import type { Components } from '@conecta.fit/conecta-web-kit-core/dist/components';
 
 import { defineCustomElement as defineConectaButton } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-button.js';
+import { defineCustomElement as defineConectaCard } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-card.js';
 import { defineCustomElement as defineConectaCheckbox } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-checkbox.js';
 import { defineCustomElement as defineConectaIcon } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-icon.js';
 import { defineCustomElement as defineConectaInput } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-input.js';
@@ -41,6 +42,29 @@ export declare interface ConectaButton extends Components.ConectaButton {
    */
   buttonClick: EventEmitter<CustomEvent<MouseEvent>>;
 }
+
+
+@ProxyCmp({
+  defineCustomElementFn: defineConectaCard,
+  inputs: ['hasHover', 'variant']
+})
+@Component({
+  selector: 'conecta-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['hasHover', 'variant'],
+})
+export class ConectaCard {
+  protected el: HTMLConectaCardElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface ConectaCard extends Components.ConectaCard {}
 
 
 @ProxyCmp({

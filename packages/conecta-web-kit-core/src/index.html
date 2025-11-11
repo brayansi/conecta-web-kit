@@ -337,6 +337,7 @@
           <li><a href="#documentacao" class="sidebar-link">📚 Documentação</a></li>
           <li><a href="#conecta-button" class="sidebar-link">🔘 conecta Button</a></li>
           <li><a href="#conecta-checkbox" class="sidebar-link">☑️ conecta Checkbox</a></li>
+          <li><a href="#conecta-card" class="sidebar-link">🧾 conecta Card</a></li>
           <li><a href="#conecta-input" class="sidebar-link">📝 conecta Input</a></li>
           <li><a href="#conecta-select" class="sidebar-link">📋 conecta Select</a></li>
           <li><a href="#conecta-icon" class="sidebar-link">🎨 conecta Icon</a></li>
@@ -772,6 +773,147 @@
               </div>
             </div>
           </div>
+
+        <!-- Documentação do conecta Card -->
+        <div class="component-docs" id="conecta-card">
+          <h3>🧾 conecta-card</h3>
+          <p>Componente de cartão com suporte a variantes visuais para destacar conteúdos, listas e agrupamentos de informações. Funciona como contêiner flexível para qualquer conteúdo fornecido pelo slot padrão.</p>
+
+          <h4>📋 Propriedades</h4>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Propriedade</th>
+                  <th>Atributo</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                  <th>Padrão</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>variant</code></td>
+                  <td><code>variant</code></td>
+                  <td>Variante visual do card</td>
+                  <td><code>"flat" | "outlined" | "elevated"</code></td>
+                  <td><code>'flat'</code></td>
+                </tr>
+                <tr>
+                  <td><code>hasHover</code></td>
+                  <td><code>has-hover</code></td>
+                  <td>Controla se o card aplica estilos de hover</td>
+                  <td><code>boolean</code></td>
+                  <td><code>true</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>🎯 Slots</h4>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Slot</th>
+                  <th>Descrição</th>
+                  <th>Posição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>(default)</code></td>
+                  <td>Conteúdo exibido dentro do card (texto, listas, botões, etc.)</td>
+                  <td>Centro</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>💻 Exemplos de Uso</h4>
+          <div class="usage-examples">
+            <div class="example-item">
+              <h5>1. Card Básico</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-card&gt;
+  &lt;h3&gt;Título do Card&lt;/h3&gt;
+  &lt;p&gt;Conteúdo principal do card.&lt;/p&gt;
+&lt;/conecta-card&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>2. Card Outlined</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-card variant="outlined"&gt;
+  &lt;h4&gt;Título&lt;/h4&gt;
+  &lt;p&gt;Card com borda destacada.&lt;/p&gt;
+&lt;/conecta-card&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>3. Card Elevated</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-card variant="elevated"&gt;
+  &lt;h4&gt;Item com Destaque&lt;/h4&gt;
+  &lt;p&gt;Card com sombra sutil para enfatizar o conteúdo.&lt;/p&gt;
+&lt;/conecta-card&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>4. Card com Hover Desativado</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-card has-hover="false"&gt;
+  &lt;h4&gt;Card Estático&lt;/h4&gt;
+  &lt;p&gt;Ideal para áreas que não devem reagir ao cursor.&lt;/p&gt;
+&lt;/conecta-card&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h4>🎨 Exemplos Visuais</h4>
+          <p>Teste os componentes abaixo com o tema padrão (Default).</p>
+
+          <div class="demo-grid">
+            <div class="demo-item">
+              <h4>Cards - Variantes</h4>
+              <conecta-card>
+                <h4>Flat (padrão)</h4>
+                <p>Ideal para superfícies neutras.</p>
+              </conecta-card>
+              <conecta-card variant="outlined">
+                <h4>Outlined</h4>
+                <p>Card com borda para separar conteúdos.</p>
+              </conecta-card>
+              <conecta-card variant="elevated">
+                <h4>Elevated</h4>
+                <p>Card com sombra para dar profundidade.</p>
+              </conecta-card>
+              <conecta-card has-hover="false">
+                <h4>Sem Hover</h4>
+                <p>Card estático que mantém o mesmo estilo ao passar o cursor.</p>
+              </conecta-card>
+            </div>
+
+            <div class="demo-item">
+              <h4>Cards - Com Conteúdo</h4>
+              <conecta-card>
+                <h4>Usuário</h4>
+                <p>Confira os detalhes abaixo:</p>
+                <ul>
+                  <li>Nome: Ana Souza</li>
+                  <li>Status: Ativa</li>
+                  <li>Plano: Premium</li>
+                </ul>
+                <conecta-button variant="primary" size="small">Ver detalhes</conecta-button>
+              </conecta-card>
+              <conecta-card variant="outlined">
+                <h4>Status do Projeto</h4>
+                <p>Projeto em andamento com 75% concluído.</p>
+                <conecta-tag variant="success" size="small">Em andamento</conecta-tag>
+              </conecta-card>
+            </div>
+          </div>
+        </div>
 
           <!-- Documentação do conecta Input -->
           <div class="component-docs" id="conecta-input">
