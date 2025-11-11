@@ -13,6 +13,7 @@ export { format } from './utils/utils.js';
 
 // Export component types for TypeScript support
 export type { ConectaButton } from './components/conecta-button/conecta-button.js';
+export type { ConectaCard } from './components/conecta-card/conecta-card.js';
 export type { ConectaCheckbox } from './components/conecta-checkbox/conecta-checkbox.js';
 export type { ConectaIcon } from './components/conecta-icon/conecta-icon.js';
 export type { ConectaInput } from './components/conecta-input/conecta-input.js';
