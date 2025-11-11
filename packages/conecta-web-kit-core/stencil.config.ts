@@ -35,7 +35,7 @@ export const config: Config = {
       customElementsExportBehavior: 'single-export-module',
     },
     angularOutputTarget({
-      componentCorePackage: '@techconecta/conecta-web-kit-core/dist',
+      componentCorePackage: '@conecta.fit/conecta-web-kit-core/dist',
       outputType: 'standalone',
       directivesProxyFile: '../conecta-web-kit-angular/projects/component-library/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../conecta-web-kit-angular/projects/component-library/src/lib/stencil-generated/index.ts',

@@ -1,6 +1,6 @@
 {
-  "name": "@techconecta/conecta-web-kit-core",
-  "version": "0.0.40",
+  "name": "@conecta.fit/conecta-web-kit-core",
+  "version": "0.0.2",
   "description": "Biblioteca de componentes web reutilizáveis da conecta",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -20,12 +20,11 @@
     "deploy": "npm run build && npm publish --access public"
   },
   "dependencies": {
-    "@stencil/core": "^4.18.2",
+    "@stencil/core": "^4.38.3",
     "lucide": "^0.469.0"
   },
   "devDependencies": {
     "@stencil/angular-output-target": "^1.1.1",
-    "@stencil/core": "^4.27.1",
     "@stencil/sass": "^3.2.2",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.5",

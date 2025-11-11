@@ -111,7 +111,7 @@ Sistema de ícones baseado no Lucide com suporte a customização.
 ## 🚀 Instalação
 
 ```bash
-npm install @techconecta/conecta-web-kit-angular
+npm install @conecta.fit/conecta-web-kit-angular
 ```
 
 ## 💻 Uso
@@ -122,7 +122,7 @@ npm install @techconecta/conecta-web-kit-angular
 
 ```typescript
 import { Component } from '@angular/core';
-import { conectaButton, conectaInput, conectaCheckbox, conectaIcon } from '@techconecta/conecta-web-kit-angular';
+import { conectaButton, conectaInput, conectaCheckbox, conectaIcon } from '@conecta.fit/conecta-web-kit-angular';
 
 @Component({
   selector: 'app-root',
@@ -138,7 +138,7 @@ export class AppComponent {}
 ```json
 {
   "styles": [
-    "node_modules/@techconecta/conecta-web-kit-angular/dist/conecta-web-kit.css",
+    "node_modules/@conecta.fit/conecta-web-kit-angular/dist/conecta-web-kit.css",
     "src/styles.css"
   ]
 }

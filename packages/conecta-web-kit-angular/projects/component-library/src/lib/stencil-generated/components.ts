@@ -4,15 +4,15 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
 
 import { ProxyCmp } from './angular-component-lib/utils';
 
-import type { Components } from '@techconecta/conecta-web-kit-core/dist/components';
+import type { Components } from '@conecta.fit/conecta-web-kit-core/dist/components';
 
-import { defineCustomElement as defineConectaButton } from '@techconecta/conecta-web-kit-core/dist/components/conecta-button.js';
-import { defineCustomElement as defineConectaCheckbox } from '@techconecta/conecta-web-kit-core/dist/components/conecta-checkbox.js';
-import { defineCustomElement as defineConectaIcon } from '@techconecta/conecta-web-kit-core/dist/components/conecta-icon.js';
-import { defineCustomElement as defineConectaInput } from '@techconecta/conecta-web-kit-core/dist/components/conecta-input.js';
-import { defineCustomElement as defineConectaSelect } from '@techconecta/conecta-web-kit-core/dist/components/conecta-select.js';
-import { defineCustomElement as defineConectaTag } from '@techconecta/conecta-web-kit-core/dist/components/conecta-tag.js';
-import { defineCustomElement as defineConectaToggleIcon } from '@techconecta/conecta-web-kit-core/dist/components/conecta-toggle-icon.js';
+import { defineCustomElement as defineConectaButton } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-button.js';
+import { defineCustomElement as defineConectaCheckbox } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-checkbox.js';
+import { defineCustomElement as defineConectaIcon } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-icon.js';
+import { defineCustomElement as defineConectaInput } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-input.js';
+import { defineCustomElement as defineConectaSelect } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-select.js';
+import { defineCustomElement as defineConectaTag } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-tag.js';
+import { defineCustomElement as defineConectaToggleIcon } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-toggle-icon.js';
 @ProxyCmp({
   defineCustomElementFn: defineConectaButton,
   inputs: ['disabled', 'loading', 'size', 'type', 'variant']

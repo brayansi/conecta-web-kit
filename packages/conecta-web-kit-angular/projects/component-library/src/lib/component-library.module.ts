@@ -1,5 +1,5 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { defineCustomElements } from '@techconecta/conecta-web-kit-core/loader';
+import { defineCustomElements } from '@conecta.fit/conecta-web-kit-core/loader';
 
 @NgModule({
   providers: [
