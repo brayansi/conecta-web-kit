@@ -52,11 +52,6 @@ export class ConectaInput {
   @Prop({ reflect: true }) errorMessage: string = '';
 
   /**
-   * Mensagem de ajuda
-   */
-  @Prop({ reflect: true }) helpText: string = '';
-
-  /**
    * Nome do input
    */
   @Prop({ reflect: true }) name: string = '';
@@ -145,8 +140,7 @@ export class ConectaInput {
           />
           <slot name="suffix"></slot>
         </div>
-        {this.error && this.errorMessage && <div class="conecta-input__error">{this.errorMessage}</div>}
-        {!this.error && this.helpText && <div class="conecta-input__help">{this.helpText}</div>}
+        <div class="conecta-input__error">{this.error && this.errorMessage && this.errorMessage}</div>
       </div>
     );
   }

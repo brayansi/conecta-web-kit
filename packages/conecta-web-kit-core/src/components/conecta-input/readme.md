@@ -10,7 +10,6 @@
 | `disabled`     | `disabled`      | Se o input está desabilitado | `boolean`                                                       | `false`                             |
 | `error`        | `error`         | Estado de erro               | `boolean`                                                       | `false`                             |
 | `errorMessage` | `error-message` | Mensagem de erro             | `string`                                                        | `''`                                |
-| `helpText`     | `help-text`     | Mensagem de ajuda            | `string`                                                        | `''`                                |
 | `inputId`      | `input-id`      | ID do input                  | `string`                                                        | `` `conecta-input-${inputIds++}` `` |
 | `label`        | `label`         | Label do input               | `string`                                                        | `''`                                |
 | `name`         | `name`          | Nome do input                | `string`                                                        | `''`                                |

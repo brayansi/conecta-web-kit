@@ -15,7 +15,6 @@
 
   --conecta-input-label-color: var(--conecta-color-text-secondary, #374151);
   --conecta-input-error-color: var(--conecta-color-border-error, #ef4444);
-  --conecta-input-help-color: var(--conecta-color-text-disabled, #6b7280);
 
   --conecta-input-shadow-focus: var(--conecta-shadow-focus);
   --conecta-input-shadow-focus-error: var(--conecta-shadow-focus-error);
@@ -25,7 +24,7 @@
 .conecta-input {
   display: flex;
   flex-direction: column;
-  gap: var(--conecta-spacing-sm);
+  gap: var(--conecta-spacing-xs);
 }
 
 /* Label */
@@ -152,20 +151,10 @@
 /* Mensagens */
 .conecta-input__error {
   font-family: var(--conecta-font-family);
-  font-size: var(--conecta-font-size-sm);
+  font-size: var(--conecta-font-size-xs);
   color: var(--conecta-input-error-color);
   display: flex;
   align-items: center;
   gap: var(--conecta-spacing-xs);
-}
-
-.conecta-input__error::before {
-  content: '⚠';
-  font-size: var(--conecta-font-size-xs);
-}
-
-.conecta-input__help {
-  font-family: var(--conecta-font-family);
-  font-size: var(--conecta-font-size-sm);
-  color: var(--conecta-input-help-color);
+  min-height: 1.25rem;
 }

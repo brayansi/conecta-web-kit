@@ -132,14 +132,14 @@ export declare interface ConectaIcon extends Components.ConectaIcon {}
 
 @ProxyCmp({
   defineCustomElementFn: defineConectaInput,
-  inputs: ['disabled', 'error', 'errorMessage', 'helpText', 'inputId', 'label', 'name', 'placeholder', 'required', 'size', 'type', 'value']
+  inputs: ['disabled', 'error', 'errorMessage', 'inputId', 'label', 'name', 'placeholder', 'required', 'size', 'type', 'value']
 })
 @Component({
   selector: 'conecta-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['disabled', 'error', 'errorMessage', 'helpText', 'inputId', 'label', 'name', 'placeholder', 'required', 'size', 'type', 'value'],
+  inputs: ['disabled', 'error', 'errorMessage', 'inputId', 'label', 'name', 'placeholder', 'required', 'size', 'type', 'value'],
   outputs: ['inputChange', 'inputFocus', 'inputBlur'],
 })
 export class ConectaInput {
