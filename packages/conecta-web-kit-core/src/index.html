@@ -935,13 +935,6 @@
                     <td><code>''</code></td>
                   </tr>
                   <tr>
-                    <td><code>helpText</code></td>
-                    <td><code>help-text</code></td>
-                    <td>Mensagem de ajuda</td>
-                    <td><code>string</code></td>
-                    <td><code>''</code></td>
-                  </tr>
-                  <tr>
                     <td><code>inputId</code></td>
                     <td><code>input-id</code></td>
                     <td>ID do input (gerado automaticamente se não fornecido)</td>
@@ -1077,17 +1070,7 @@
                 </div>
               </div>
               <div class="example-item">
-                <h5>3. Input com Ajuda</h5>
-                <div class="code-block">
-                  <pre><code>&lt;conecta-input
-  label="Senha"
-  type="password"
-  help-text="Mínimo 8 caracteres"&gt;
-&lt;/conecta-input&gt;</code></pre>
-                </div>
-              </div>
-              <div class="example-item">
-                <h5>4. Input Desabilitado</h5>
+                  <h5>3. Input Desabilitado</h5>
                 <div class="code-block">
                   <pre><code>&lt;conecta-input
   label="Campo Desabilitado"
@@ -1097,7 +1080,7 @@
                 </div>
               </div>
               <div class="example-item">
-                <h5>5. Input com Prefix (Slot no início)</h5>
+                  <h5>4. Input com Prefix (Slot no início)</h5>
                 <div class="code-block">
                   <pre><code>&lt;conecta-input label="Usuário"&gt;
   &lt;conecta-icon name="user" slot="prefix"&gt;&lt;/conecta-icon&gt;
@@ -1105,7 +1088,7 @@
                 </div>
               </div>
               <div class="example-item">
-                <h5>6. Input com Suffix (Slot no final)</h5>
+                  <h5>5. Input com Suffix (Slot no final)</h5>
                 <div class="code-block">
                   <pre><code>&lt;conecta-input label="Buscar"&gt;
   &lt;conecta-icon name="search" slot="suffix"&gt;&lt;/conecta-icon&gt;
@@ -1113,7 +1096,7 @@
                 </div>
               </div>
               <div class="example-item">
-                <h5>7. Input com Prefix e Suffix</h5>
+                  <h5>6. Input com Prefix e Suffix</h5>
                 <div class="code-block">
                   <pre><code>&lt;conecta-input label="Email" type="email"&gt;
   &lt;conecta-icon name="mail" slot="prefix"&gt;&lt;/conecta-icon&gt;
@@ -1122,7 +1105,7 @@
                 </div>
               </div>
               <div class="example-item">
-                <h5>8. Input com Slot Prefix Customizado</h5>
+                  <h5>7. Input com Slot Prefix Customizado</h5>
                 <div class="code-block">
                   <pre><code>&lt;conecta-input label="Preço"&gt;
   &lt;span slot="prefix"&gt;R$&lt;/span&gt;
@@ -1130,7 +1113,7 @@
                 </div>
               </div>
               <div class="example-item">
-                <h5>9. Input com Slot Suffix Customizado</h5>
+                  <h5>8. Input com Slot Suffix Customizado</h5>
                 <div class="code-block">
                   <pre><code>&lt;conecta-input label="Percentual"&gt;
   &lt;span slot="suffix"&gt;%&lt;/span&gt;
@@ -1138,7 +1121,7 @@
                 </div>
               </div>
               <div class="example-item">
-                <h5>10. Input com Múltiplos Elementos no Slot</h5>
+                  <h5>9. Input com Múltiplos Elementos no Slot</h5>
                 <div class="code-block">
                   <pre><code>&lt;conecta-input label="Busca Avançada"&gt;
   &lt;div slot="prefix"&gt;
@@ -1165,7 +1148,6 @@
                 <conecta-input label="Senha" type="password" placeholder="••••••••"></conecta-input>
                 <conecta-input label="Número" type="number" placeholder="123"></conecta-input>
                 <conecta-input label="Telefone" type="tel" placeholder="(11) 99999-9999"></conecta-input>
-                <conecta-input label="Data" type="date"></conecta-input>
               </div>
 
               <div class="demo-item">
@@ -1181,7 +1163,6 @@
                 <conecta-input label="Obrigatório" required placeholder="Campo obrigatório"></conecta-input>
                 <conecta-input label="Desabilitado" disabled placeholder="Campo desabilitado"></conecta-input>
                 <conecta-input label="Com Erro" error error-message="Este campo é obrigatório" placeholder="Campo com erro"></conecta-input>
-                <conecta-input label="Com Ajuda" help-text="Digite seu nome completo" placeholder="Campo com ajuda"></conecta-input>
               </div>
 
               <div class="demo-item">
