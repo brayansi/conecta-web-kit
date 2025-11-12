@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property   | Attribute   | Description                                      | Type                                 | Default  |
-| ---------- | ----------- | ------------------------------------------------ | ------------------------------------ | -------- |
-| `hasHover` | `has-hover` | Define se o card deve reagir ao estado de hover. | `boolean`                            | `true`   |
-| `variant`  | `variant`   | Variante visual do card.                         | `"elevated" \| "flat" \| "outlined"` | `'flat'` |
+| Property  | Attribute | Description              | Type                                 | Default  |
+| --------- | --------- | ------------------------ | ------------------------------------ | -------- |
+| `variant` | `variant` | Variante visual do card. | `"elevated" \| "flat" \| "outlined"` | `'flat'` |
 
 
 ----------------------------------------------

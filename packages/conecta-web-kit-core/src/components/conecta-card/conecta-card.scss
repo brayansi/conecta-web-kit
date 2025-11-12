@@ -12,11 +12,6 @@
   border: 1px solid transparent;
 }
 
-.conecta-card:focus-within,
-.conecta-card:not(.conecta-card--hover-disabled):hover {
-  box-shadow: var(--conecta-shadow-sm);
-}
-
 .conecta-card--flat {
   border-color: transparent;
 }
@@ -26,25 +21,7 @@
   box-shadow: none;
 }
 
-.conecta-card--outlined:focus-within {
-  border-color: var(--conecta-color-border-dark);
-  box-shadow: none;
-}
-
-.conecta-card--outlined:not(.conecta-card--hover-disabled):hover {
-  border-color: var(--conecta-color-border-dark);
-  box-shadow: none;
-}
-
 .conecta-card--elevated {
   box-shadow: var(--conecta-shadow-md);
   border-color: transparent;
-}
-
-.conecta-card--elevated:focus-within {
-  box-shadow: var(--conecta-shadow-lg);
-}
-
-.conecta-card--elevated:not(.conecta-card--hover-disabled):hover {
-  box-shadow: var(--conecta-shadow-lg);
 }

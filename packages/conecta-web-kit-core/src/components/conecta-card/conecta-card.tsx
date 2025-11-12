@@ -11,13 +11,8 @@ export class ConectaCard {
    */
   @Prop({ reflect: true }) variant: 'flat' | 'outlined' | 'elevated' = 'flat';
 
-  /**
-   * Define se o card deve reagir ao estado de hover.
-   */
-  @Prop({ reflect: true }) hasHover: boolean = true;
-
   private getCardClasses(): string {
-    const classes = ['conecta-card', `conecta-card--${this.variant}`, this.hasHover ? '' : 'conecta-card--hover-disabled'];
+    const classes = ['conecta-card', `conecta-card--${this.variant}`];
 
     return classes.filter(Boolean).join(' ');
   }

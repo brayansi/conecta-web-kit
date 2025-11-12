@@ -46,14 +46,14 @@ export declare interface ConectaButton extends Components.ConectaButton {
 
 @ProxyCmp({
   defineCustomElementFn: defineConectaCard,
-  inputs: ['hasHover', 'variant']
+  inputs: ['variant']
 })
 @Component({
   selector: 'conecta-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['hasHover', 'variant'],
+  inputs: ['variant'],
 })
 export class ConectaCard {
   protected el: HTMLConectaCardElement;
