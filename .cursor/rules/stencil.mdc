@@ -1,1 +1,95 @@
-Sempre seguir as boas pratica do framework stencil
+---
+alwaysApply: true
+---
+
+### Premissas e boas práticas agnósticas para projetos Stencil.js
+
+- **Estrutura e nomenclatura**
+  - **tag**: sempre em kebab-case (`meu-componente`).
+  - **arquivos**: um diretório por componente com `*.tsx` e `*.scss`.
+  - **coerência**: manter estrutura e convenções homogêneas entre componentes; nomes de props/eventos previsíveis.
+
+- **Shadow DOM e encapsulamento**
+  - Ativar `shadow: true` por padrão; desabilitar apenas com justificativa.
+  - Usar `:host`, `:host([attr])` e `:host([variant="x"])` para estados e variantes.
+  - Expor estilização externa com `::part`/`exportparts` quando necessário.
+
+- **Props e reatividade**
+  - Tipar todas as props e definir valores padrão estáveis.
+  - Usar `@Prop({ reflect: true })` somente quando o atributo HTML for necessário (CSS/SSR/interop).
+  - Usar `@Prop({ mutable: true })` apenas quando o componente altera a prop internamente (ex.: `value`, `checked`).
+  - Não duplicar estado: derive com `@State` quando preciso e evite refletir `@State`.
+  - Usar `@Watch` para validar/coagir entradas e reagir a mudanças, evitando loops de reatribuição.
+
+- **Eventos**
+  - Nomear em camelCase descritivo e estável (ex.: `valueChange`, `optionSelect`).
+  - Enviar somente o necessário em `event.detail` e com tipos adequados.
+  - Configurar `bubbles`, `composed` e `cancelable` conforme a necessidade de atravessar Shadow DOM e permitir `preventDefault`.
+  - Emitir eventos após atualizar o estado interno para que consumidores leiam o valor atualizado.
+
+- **Slots e composição**
+  - Preferir slots nomeados previsíveis (`prefix`, `suffix`, `start`, `end`) quando aplicável.
+  - Usar `slotchange` apenas quando necessário; manter acessibilidade de conteúdo slottado.
+  - Evitar dependência de estrutura interna como API pública (use `::part`/CSS vars quando for preciso expor).
+
+- **Estilos e temas**
+  - Expor e consumir CSS Custom Properties como API de tema; evitar valores fixos/hardcoded.
+  - Seguir convenção BEM para classes internas por legibilidade (não como API pública).
+  - Manter SCSS raso, evitando nesting profundo; centralizar tokens/utilitários em arquivos compartilhados.
+
+- **Acessibilidade (A11y)**
+  - Associar corretamente `label` ↔ `id`; garantir foco navegável e visível.
+  - Sincronizar `aria-*` com estados (`aria-checked`, `aria-invalid`, etc.).
+  - Suportar teclado conforme padrão do controle (setas/space/enter); não capturar foco sem interação.
+  - Usar `role` somente quando o papel não for nativo.
+
+- **Ciclo de vida e limpeza**
+  - `componentWillLoad` para inicialização síncrona; `componentDidLoad` para interações com o DOM.
+  - `disconnectedCallback` para remover listeners, observers e timers; evitar vazamentos.
+  - Evitar side-effects dentro de `render`.
+
+- **Desempenho**
+  - Minimizar trabalho em `render`; usar helpers/getters para classes e valores derivados.
+  - Evitar criar funções/objetos novos a cada render sem necessidade.
+  - Preferir divisão de responsabilidades em subcomponentes quando fizer sentido.
+
+- **API imperativa**
+  - Expor `@Method()` apenas quando necessário (ex.: `setFocus()`); documentar comportamento e timing.
+  - Manter superfície de API pequena, consistente e previsível.
+
+- **Documentação**
+  - Usar JSDoc em props/eventos/slots para enriquecer docs; habilitar `docs-readme` quando possível.
+  - Fornecer `index.html` do componente com exemplos cobrindo estados principais e casos de uso.
+
+- **Configuração de build**
+  - Definir `namespace` único e estável.
+  - Escolher `outputTargets` conforme distribuição (ex.: `dist`, `dist-custom-elements`, `www`, `docs-readme`).
+  - Centralizar estilos globais/tokens; evitar duplicidades.
+
+- **Qualidade e DX**
+  - Padronizar lint/format (ex.: `eslint-plugin-stencil`, Prettier) e seguir convenções de código claras.
+  - Evitar `console.*` persistente e erros silenciosos; mensagens de erro claras.
+  - Manter consistência de nomes: booleans (`disabled`, `required`, `error`, `checked`), tamanhos (`small`, `medium`, `large`) e variantes.
+
+- **Semver e compatibilidade**
+  - Não introduzir quebra sem major; deprecar antes de remover; comunicar mudanças.
+  - Preservar nomes de props/eventos/slots sempre que possível; evitar churn de API.
+
+- **Segurança**
+  - Evitar `innerHTML` sem sanitização; validar entradas quando apropriado.
+  - Não expor internals desnecessários via props ou métodos públicos.
+
+- **Internacionalização**
+  - Textos visíveis devem vir de props; não hardcodear strings no componente.
+
+- **Checklist de revisão rápida**
+  - Props tipadas, defaults definidos; `reflect` e `mutable` usados apenas quando necessários.
+  - Eventos nomeados, tipados e com propagação adequada.
+  - A11y validado: label/aria/teclado/foco.
+  - Estilos via CSS vars/`::part`; sem nesting excessivo.
+  - Lifecycle sem vazamentos; limpeza garantida.
+  - Documentação atualizada com exemplos de uso e estados.
+
+- **Princípio final**
+  - Priorizar consistência, acessibilidade, previsibilidade e uma superfície de API pequena e clara.
+

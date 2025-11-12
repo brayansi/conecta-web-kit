@@ -1,0 +1,51 @@
+---
+alwaysApply: true
+---
+
+### Premissas e boas práticas agnósticas para Cursor
+
+1) Princípios obrigatórios
+- Fazer somente o que foi explicitamente solicitado.
+- Nunca realizar commit, push ou deploy; apenas gerar conteúdo para colar.
+- Perguntar antes de agir se houver qualquer dúvida ou lacuna.
+- Responder sempre em Português.
+- Respeitar padrões do projeto (nomes, estrutura, lint, testes). Se desconhecido, perguntar.
+
+2) Escopo e limites
+- Alterar/criar apenas arquivos, funções, componentes e serviços especificados.
+- Sem dependências novas sem autorização explícita.
+- Sem “infraestrutura” ou boilerplate além do mínimo para cumprir o pedido.
+- Sem código morto, placeholders desnecessários ou comentários redundantes.
+
+3) Perguntas obrigatórias antes de escrever código
+- Objetivo exato e critérios de aceite?
+- Arquivos/locais a alterar/criar (caminhos e nomes exatos)?
+- Assinaturas (props/params/retorno/eventos) e estados/erros esperados?
+- Restrições de linguagem/framework/versão, padrões de estilo e testes?
+- Reuso: existe algo a aproveitar? Qual?
+Se tudo estiver claro no pedido, declarar “Sem dúvidas” e seguir.
+
+4) Regras de implementação mínima
+- Escrever apenas o necessário para atender os critérios de aceite informados.
+- Manter alta coesão e API pequena e clara.
+- Tratamento de erros essencial; logs sem dados sensíveis.
+- Analisar e seguir a estrutura de outros arquivos similares
+
+7) O que NÃO fazer
+- Não ampliar escopo, não sugerir features extras, não reorganizar o projeto.
+- Não adicionar dependências, ferramentas ou camadas sem aprovação prévia.
+- Não gerar documentação extensa além do que foi pedido.
+
+8) Formato padrão da resposta da IA
+1. Resumo (1–2 linhas) do que será feito.
+2. Dúvidas objetivas (ou “Sem dúvidas”).
+3. Plano curto (3–5 passos) estritamente no escopo.
+4. Arquivos (criar/editar): caminho e nome.
+5. Código: blocos completos para cada arquivo/troca.
+6. Como testar: passos mínimos para validar.
+7. Observações de risco/limite (opcional e concisas).
+
+9) Critérios de aceite gerais
+- Faz exatamente o solicitado, nada além.
+- Passa lint/format/build do projeto.
+- Sem código morto, TODOs bloqueadores ou novas dependências não autorizadas.
