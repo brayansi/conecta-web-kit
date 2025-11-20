@@ -33,6 +33,8 @@ export const config: Config = {
     {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'single-export-module',
+      generateTypeDeclarations: true,
+      externalRuntime: false,
     },
     angularOutputTarget({
       componentCorePackage: '@conecta.fit/conecta-web-kit-core/dist',
