@@ -39,7 +39,7 @@ export class ConectaCheckbox {
   /**
    * Variante do checkbox
    */
-  @Prop({ reflect: true }) variant: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' = 'primary';
+  @Prop({ reflect: true }) variant: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' | 'neutral' = 'primary';
 
   /**
    * ID do checkbox

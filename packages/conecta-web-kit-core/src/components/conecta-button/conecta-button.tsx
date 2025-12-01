@@ -9,7 +9,7 @@ export class ConectaButton {
   /**
    * Tipo do botão
    */
-  @Prop({ reflect: true }) variant: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' = 'primary';
+  @Prop({ reflect: true }) variant: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' | 'neutral' = 'primary';
 
   /**
    * Tamanho do botão

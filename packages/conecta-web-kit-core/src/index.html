@@ -20,11 +20,11 @@
         background: #ffffff;
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        border-left: 4px solid var(--conecta-color-primary, #172f57);
+        border-left: 4px solid var(--conecta-color-primary, #63a18f);
       }
 
       .component-docs h3 {
-        color: var(--conecta-color-primary, #172f57);
+        color: var(--conecta-color-primary, #63a18f);
         margin-bottom: 0.5rem;
         font-size: 1.5rem;
       }
@@ -61,7 +61,7 @@
 
       .props-table th,
       .events-table th {
-        background: var(--conecta-color-primary, #172f57);
+        background: var(--conecta-color-primary, #63a18f);
         color: #ffffff;
         padding: 0.75rem;
         text-align: left;
@@ -93,7 +93,7 @@
         border-radius: 4px;
         font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
         font-size: 0.8rem;
-        color: var(--conecta-color-primary, #172f57);
+        color: var(--conecta-color-primary, #63a18f);
         font-weight: 600;
       }
 
@@ -106,12 +106,12 @@
         padding: 1rem;
         background: var(--conecta-color-bg-secondary, #f9fafb);
         border-radius: 6px;
-        border-left: 3px solid var(--conecta-color-primary, #172f57);
+        border-left: 3px solid var(--conecta-color-primary, #63a18f);
       }
 
       .example-item h5 {
         margin-top: 0;
-        color: var(--conecta-color-primary, #172f57);
+        color: var(--conecta-color-primary, #63a18f);
         font-weight: 600;
       }
 
@@ -157,7 +157,7 @@
 
       .sidebar-header {
         padding: 1.5rem 1rem;
-        background: var(--conecta-color-primary, #172f57);
+        background: var(--conecta-color-primary, #63a18f);
         color: #ffffff;
         border-bottom: 1px solid var(--conecta-color-border, #d1d5db);
       }
@@ -190,14 +190,14 @@
 
       .sidebar-link:hover {
         background: var(--conecta-color-secondary, #f1f5f9);
-        color: var(--conecta-color-primary, #172f57);
-        border-left-color: var(--conecta-color-primary, #172f57);
+        color: var(--conecta-color-primary, #63a18f);
+        border-left-color: var(--conecta-color-primary, #63a18f);
       }
 
       .sidebar-link.active {
-        background: var(--conecta-color-primary, #172f57);
+        background: var(--conecta-color-primary, #63a18f);
         color: #ffffff;
-        border-left-color: var(--conecta-color-primary, #172f57);
+        border-left-color: var(--conecta-color-primary, #63a18f);
       }
 
       /* Divisor */
@@ -410,7 +410,7 @@
                     <td><code>variant</code></td>
                     <td><code>variant</code></td>
                     <td>Tipo do botão</td>
-                    <td><code>"danger" | "primary" | "secondary" | "success" | "warning" | "info"</code></td>
+                    <td><code>"danger" | "info" | "neutral" | "primary" | "secondary" | "success" | "warning"</code></td>
                     <td><code>'primary'</code></td>
                   </tr>
                 </tbody>
@@ -478,7 +478,8 @@
 &lt;conecta-button variant="danger"&gt;Perigo&lt;/conecta-button&gt;
 &lt;conecta-button variant="success"&gt;Sucesso&lt;/conecta-button&gt;
 &lt;conecta-button variant="warning"&gt;Aviso&lt;/conecta-button&gt;
-&lt;conecta-button variant="info"&gt;Informação&lt;/conecta-button&gt;</code></pre>
+&lt;conecta-button variant="info"&gt;Informação&lt;/conecta-button&gt;
+&lt;conecta-button variant="neutral"&gt;Neutro&lt;/conecta-button&gt;</code></pre>
                 </div>
               </div>
               <div class="example-item">
@@ -496,7 +497,7 @@
   Salvar
 &lt;/conecta-button&gt;</code></pre>
                 </div>
-                <p><strong>Nota:</strong> O ícone <code>conecta-icon</code> no slot prefix herda automaticamente a cor do texto do botão. Não é necessário especificar a variant do ícone - ele usará a mesma cor do texto baseada na variant do botão (primary, secondary, danger, success).</p>
+                <p><strong>Nota:</strong> O ícone <code>conecta-icon</code> no slot prefix herda automaticamente a cor do texto do botão. Não é necessário especificar a variant do ícone - ele usará a mesma cor do texto baseada na variant do botão (primary, secondary, danger, success, warning, info, neutral).</p>
               </div>
               <div class="example-item">
                 <h5>5. Botão com Prefix e Loading</h5>
@@ -531,6 +532,7 @@
                 <conecta-button variant="success">Sucesso</conecta-button>
                 <conecta-button variant="warning">Aviso</conecta-button>
                 <conecta-button variant="info">Informação</conecta-button>
+                <conecta-button variant="neutral">Neutro</conecta-button>
               </div>
 
               <div class="demo-item">
@@ -656,7 +658,7 @@
                     <td><code>variant</code></td>
                     <td><code>variant</code></td>
                     <td>Variante do checkbox</td>
-                    <td><code>"danger" | "primary" | "secondary" | "success" | "warning" | "info"</code></td>
+                    <td><code>"danger" | "info" | "neutral" | "primary" | "secondary" | "success" | "warning"</code></td>
                     <td><code>'primary'</code></td>
                   </tr>
                 </tbody>
@@ -737,7 +739,8 @@
 &lt;conecta-checkbox variant="success"&gt;Sucesso&lt;/conecta-checkbox&gt;
 &lt;conecta-checkbox variant="danger"&gt;Perigo&lt;/conecta-checkbox&gt;
 &lt;conecta-checkbox variant="warning"&gt;Aviso&lt;/conecta-checkbox&gt;
-&lt;conecta-checkbox variant="info"&gt;Informação&lt;/conecta-checkbox&gt;</code></pre>
+&lt;conecta-checkbox variant="info"&gt;Informação&lt;/conecta-checkbox&gt;
+&lt;conecta-checkbox variant="neutral"&gt;Neutro&lt;/conecta-checkbox&gt;</code></pre>
                 </div>
               </div>
             </div>
@@ -770,6 +773,7 @@
                 <conecta-checkbox variant="success">Sucesso</conecta-checkbox>
                 <conecta-checkbox variant="warning">Aviso</conecta-checkbox>
                 <conecta-checkbox variant="info">Informação</conecta-checkbox>
+                <conecta-checkbox variant="neutral">Neutro</conecta-checkbox>
               </div>
             </div>
           </div>
@@ -1783,7 +1787,7 @@ refresh-cw, eye, eye-off, star, tag</code></pre>
                   <td><code>variant</code></td>
                   <td><code>variant</code></td>
                   <td>Variante da tag</td>
-                  <td><code>"danger" | "primary" | "secondary" | "success" | "warning" | "info"</code></td>
+                  <td><code>"danger" | "info" | "neutral" | "primary" | "secondary" | "success" | "warning"</code></td>
                   <td><code>'primary'</code></td>
                 </tr>
               </tbody>
@@ -1826,7 +1830,8 @@ refresh-cw, eye, eye-off, star, tag</code></pre>
 &lt;conecta-tag variant="danger"&gt;Perigo&lt;/conecta-tag&gt;
 &lt;conecta-tag variant="success"&gt;Sucesso&lt;/conecta-tag&gt;
 &lt;conecta-tag variant="warning"&gt;Aviso&lt;/conecta-tag&gt;
-&lt;conecta-tag variant="info"&gt;Informação&lt;/conecta-tag&gt;</code></pre>
+&lt;conecta-tag variant="info"&gt;Informação&lt;/conecta-tag&gt;
+&lt;conecta-tag variant="neutral"&gt;Neutro&lt;/conecta-tag&gt;</code></pre>
               </div>
             </div>
             <div class="example-item">
@@ -1859,6 +1864,7 @@ refresh-cw, eye, eye-off, star, tag</code></pre>
               <conecta-tag variant="success">Sucesso</conecta-tag>
               <conecta-tag variant="warning">Aviso</conecta-tag>
               <conecta-tag variant="info">Informação</conecta-tag>
+              <conecta-tag variant="neutral">Neutro</conecta-tag>
             </div>
 
             <div class="demo-item">
@@ -1907,7 +1913,7 @@ refresh-cw, eye, eye-off, star, tag</code></pre>
                   <td><code>variant</code></td>
                   <td><code>variant</code></td>
                   <td>Variante quando ativo</td>
-                  <td><code>"primary" | "secondary" | "danger" | "success" | "warning" | "info"</code></td>
+                  <td><code>"danger" | "info" | "neutral" | "primary" | "secondary" | "success" | "warning"</code></td>
                   <td><code>'primary'</code></td>
                 </tr>
                 <tr>
@@ -1978,7 +1984,8 @@ refresh-cw, eye, eye-off, star, tag</code></pre>
 &lt;conecta-toggle-icon name="phone" variant="danger"&gt;&lt;/conecta-toggle-icon&gt;
 &lt;conecta-toggle-icon name="phone" variant="success"&gt;&lt;/conecta-toggle-icon&gt;
 &lt;conecta-toggle-icon name="phone" variant="warning"&gt;&lt;/conecta-toggle-icon&gt;
-&lt;conecta-toggle-icon name="phone" variant="info"&gt;&lt;/conecta-toggle-icon&gt;</code></pre>
+&lt;conecta-toggle-icon name="phone" variant="info"&gt;&lt;/conecta-toggle-icon&gt;
+&lt;conecta-toggle-icon name="phone" variant="neutral"&gt;&lt;/conecta-toggle-icon&gt;</code></pre>
               </div>
             </div>
             <div class="example-item">
@@ -2030,6 +2037,7 @@ refresh-cw, eye, eye-off, star, tag</code></pre>
               <conecta-toggle-icon name="star" variant="success" active></conecta-toggle-icon>
               <conecta-toggle-icon name="bell" variant="warning" active></conecta-toggle-icon>
               <conecta-toggle-icon name="info" variant="info" active></conecta-toggle-icon>
+              <conecta-toggle-icon name="settings" variant="neutral" active></conecta-toggle-icon>
             </div>
 
             <div class="demo-item">
@@ -2058,7 +2066,7 @@ refresh-cw, eye, eye-off, star, tag</code></pre>
           <h3>🎨 Como Funciona o Sistema de Temas</h3>
           <p>O conecta Web Kit utiliza CSS Custom Properties (variáveis CSS) definidas no escopo `:root` para permitir customização completa. Todas as cores, espaçamentos, bordas e outros aspectos visuais são controlados por variáveis CSS, permitindo personalização total sem precisar criar temas pré-definidos.</p>
 
-          <p>O tema padrão (Default) define a cor primária como <code>#172F57</code> (azul escuro) e todas as demais variáveis necessárias para uma interface consistente.</p>
+          <p>O tema padrão (Default) define a cor primária como <code>#63a18f</code> (verde-água) e todas as demais variáveis necessárias para uma interface consistente.</p>
 
           <h3>🔧 Variáveis CSS Disponíveis</h3>
           <p>O sistema oferece variáveis organizadas por categoria para máxima flexibilidade:</p>
@@ -2066,21 +2074,21 @@ refresh-cw, eye, eye-off, star, tag</code></pre>
           <h4>🎨 Cores Base</h4>
           <div class="variables-grid">
             <div class="variable-item">
-              <div class="variable-color" style="background-color: var(--conecta-color-primary, #172f57)"></div>
+              <div class="variable-color" style="background-color: var(--conecta-color-primary, #63a18f)"></div>
               <div class="variable-info">
                 <code>--conecta-color-primary</code>
                 <p>Cor primária do tema</p>
               </div>
             </div>
             <div class="variable-item">
-              <div class="variable-color" style="background-color: var(--conecta-color-primary-hover, #1a3a6b)"></div>
+              <div class="variable-color" style="background-color: var(--conecta-color-primary-hover, #72b09e)"></div>
               <div class="variable-info">
                 <code>--conecta-color-primary-hover</code>
                 <p>Cor primária no hover</p>
               </div>
             </div>
             <div class="variable-item">
-              <div class="variable-color" style="background-color: var(--conecta-color-primary-active, #1d457f)"></div>
+              <div class="variable-color" style="background-color: var(--conecta-color-primary-active, #548b7a)"></div>
               <div class="variable-info">
                 <code>--conecta-color-primary-active</code>
                 <p>Cor primária quando ativo</p>
@@ -2276,7 +2284,7 @@ refresh-cw, eye, eye-off, star, tag</code></pre>
             </div>
             <div class="variable-row">
               <code>variant</code>
-              <span>Variante: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' (padrão: 'primary')</span>
+              <span>Variante: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' | 'neutral' (padrão: 'primary')</span>
             </div>
             <div class="variable-row">
               <code>checkboxId</code>

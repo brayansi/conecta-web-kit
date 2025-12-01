@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property  | Attribute | Description     | Type                                                                       | Default     |
-| --------- | --------- | --------------- | -------------------------------------------------------------------------- | ----------- |
-| `size`    | `size`    | Tamanho da tag  | `"large" \| "medium" \| "small"`                                           | `'medium'`  |
-| `variant` | `variant` | Variante da tag | `"danger" \| "info" \| "primary" \| "secondary" \| "success" \| "warning"` | `'primary'` |
+| Property  | Attribute | Description     | Type                                                                                    | Default     |
+| --------- | --------- | --------------- | --------------------------------------------------------------------------------------- | ----------- |
+| `size`    | `size`    | Tamanho da tag  | `"large" \| "medium" \| "small"`                                                        | `'medium'`  |
+| `variant` | `variant` | Variante da tag | `"danger" \| "info" \| "neutral" \| "primary" \| "secondary" \| "success" \| "warning"` | `'primary'` |
 
 
 ----------------------------------------------

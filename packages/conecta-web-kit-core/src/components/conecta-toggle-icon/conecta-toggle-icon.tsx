@@ -10,7 +10,7 @@ export class ConectaToggleIcon {
   @Prop({ reflect: true }) name: string;
 
   /** Variante quando ativo */
-  @Prop({ reflect: true }) variant: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' = 'primary';
+  @Prop({ reflect: true }) variant: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' | 'neutral' = 'primary';
 
   /** Tamanho do toggle */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';

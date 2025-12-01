@@ -10,7 +10,7 @@
 
   --conecta-tag-secondary-bg: var(--conecta-color-secondary, #f1f5f9);
   --conecta-tag-secondary-color: var(--conecta-color-text-brand, #111827);
-  --conecta-tag-secondary-border: var(--conecta-color-secondary-border, #e2e8f0);
+  --conecta-tag-secondary-border: var(--conecta-color-secondary, #e2e8f0);
 
   --conecta-tag-danger-bg: var(--conecta-color-danger, #ef4444);
   --conecta-tag-danger-color: var(--conecta-color-text-inverse, #ffffff);
@@ -27,6 +27,10 @@
   --conecta-tag-info-bg: var(--conecta-color-info, #3b82f6);
   --conecta-tag-info-color: var(--conecta-color-text-inverse, #ffffff);
   --conecta-tag-info-border: var(--conecta-color-info, #3b82f6);
+
+  --conecta-tag-neutral-bg: var(--conecta-color-neutral, #6b7280);
+  --conecta-tag-neutral-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-tag-neutral-border: var(--conecta-color-neutral, #6b7280);
 
   --conecta-tag-focus-outline: var(--conecta-color-border-focus, #3b82f6);
 }
@@ -103,4 +107,11 @@
   background-color: var(--conecta-tag-info-bg);
   color: var(--conecta-tag-info-color);
   border: 1px solid var(--conecta-tag-info-border);
+}
+
+/* Variante Neutral */
+.conecta-tag--neutral {
+  background-color: var(--conecta-tag-neutral-bg);
+  color: var(--conecta-tag-neutral-color);
+  border: 1px solid var(--conecta-tag-neutral-border);
 }

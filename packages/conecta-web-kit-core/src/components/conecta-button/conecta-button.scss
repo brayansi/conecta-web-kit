@@ -14,7 +14,7 @@
   --conecta-button-secondary-bg-hover: var(--conecta-color-secondary-hover, #e2e8f0);
   --conecta-button-secondary-bg-active: var(--conecta-color-secondary-active, #cbd5e1);
   --conecta-button-secondary-color: var(--conecta-color-text-brand, #111827);
-  --conecta-button-secondary-border: var(--conecta-color-secondary-border, #e2e8f0);
+  --conecta-button-secondary-border: var(--conecta-color-secondary, #e2e8f0);
 
   --conecta-button-danger-bg: var(--conecta-color-danger, #ef4444);
   --conecta-button-danger-bg-hover: var(--conecta-color-danger-hover, #dc2626);
@@ -35,6 +35,11 @@
   --conecta-button-info-bg-hover: var(--conecta-color-info-hover, #2563eb);
   --conecta-button-info-bg-active: var(--conecta-color-info-active, #1d4ed8);
   --conecta-button-info-color: var(--conecta-color-text-inverse, #ffffff);
+
+  --conecta-button-neutral-bg: var(--conecta-color-neutral, #6b7280);
+  --conecta-button-neutral-bg-hover: var(--conecta-color-neutral-hover, #4b5563);
+  --conecta-button-neutral-bg-active: var(--conecta-color-neutral-active, #374151);
+  --conecta-button-neutral-color: var(--conecta-color-text-inverse, #ffffff);
 
   --conecta-button-disabled-opacity: var(--conecta-opacity-disabled, 0.5);
   --conecta-button-focus-outline: var(--conecta-color-border-focus);
@@ -178,6 +183,20 @@
 
 .conecta-button--info:active:not(:disabled) {
   background-color: var(--conecta-button-info-bg-active);
+}
+
+/* Variante Neutral */
+.conecta-button--neutral {
+  background-color: var(--conecta-button-neutral-bg);
+  color: var(--conecta-button-neutral-color);
+}
+
+.conecta-button--neutral:hover:not(:disabled) {
+  background-color: var(--conecta-button-neutral-bg-hover);
+}
+
+.conecta-button--neutral:active:not(:disabled) {
+  background-color: var(--conecta-button-neutral-bg-active);
 }
 
 /* Spinner de loading */

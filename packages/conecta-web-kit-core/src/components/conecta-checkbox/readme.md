@@ -5,16 +5,16 @@
 
 ## Properties
 
-| Property        | Attribute       | Description                                | Type                                                                       | Default                                   |
-| --------------- | --------------- | ------------------------------------------ | -------------------------------------------------------------------------- | ----------------------------------------- |
-| `checkboxId`    | `checkbox-id`   | ID do checkbox                             | `string`                                                                   | `` `conecta-checkbox-${checkboxIds++}` `` |
-| `checked`       | `checked`       | Se o checkbox está marcado                 | `boolean`                                                                  | `false`                                   |
-| `disabled`      | `disabled`      | Se o checkbox está desabilitado            | `boolean`                                                                  | `false`                                   |
-| `indeterminate` | `indeterminate` | Se o checkbox está em estado indeterminado | `boolean`                                                                  | `false`                                   |
-| `name`          | `name`          | Nome do checkbox                           | `string`                                                                   | `''`                                      |
-| `size`          | `size`          | Tamanho do checkbox                        | `"large" \| "medium" \| "small"`                                           | `'medium'`                                |
-| `value`         | `value`         | Valor do checkbox                          | `string`                                                                   | `''`                                      |
-| `variant`       | `variant`       | Variante do checkbox                       | `"danger" \| "info" \| "primary" \| "secondary" \| "success" \| "warning"` | `'primary'`                               |
+| Property        | Attribute       | Description                                | Type                                                                                    | Default                                   |
+| --------------- | --------------- | ------------------------------------------ | --------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `checkboxId`    | `checkbox-id`   | ID do checkbox                             | `string`                                                                                | `` `conecta-checkbox-${checkboxIds++}` `` |
+| `checked`       | `checked`       | Se o checkbox está marcado                 | `boolean`                                                                               | `false`                                   |
+| `disabled`      | `disabled`      | Se o checkbox está desabilitado            | `boolean`                                                                               | `false`                                   |
+| `indeterminate` | `indeterminate` | Se o checkbox está em estado indeterminado | `boolean`                                                                               | `false`                                   |
+| `name`          | `name`          | Nome do checkbox                           | `string`                                                                                | `''`                                      |
+| `size`          | `size`          | Tamanho do checkbox                        | `"large" \| "medium" \| "small"`                                                        | `'medium'`                                |
+| `value`         | `value`         | Valor do checkbox                          | `string`                                                                                | `''`                                      |
+| `variant`       | `variant`       | Variante do checkbox                       | `"danger" \| "info" \| "neutral" \| "primary" \| "secondary" \| "success" \| "warning"` | `'primary'`                               |
 
 
 ## Events
