@@ -323,10 +323,236 @@
 
         // Atualizar link ativo no carregamento da página
         updateActiveLink();
+
+        // Funcionalidade do Toaster Demo
+        // Aguarda um pouco para garantir que os componentes estejam carregados
+        setTimeout(() => {
+          const demoToaster = document.querySelector('conecta-toaster#demo-toaster');
+          
+          if (!demoToaster) {
+            console.warn('Toaster demo não encontrado');
+            return;
+          }
+
+          function addToastToaster(options) {
+            if (demoToaster && typeof demoToaster.addToast === 'function') {
+              demoToaster.addToast(options).catch(err => {
+                console.error('Erro ao adicionar toast:', err);
+              });
+            } else {
+              console.error('Método addToast não disponível no toaster');
+            }
+          }
+
+          const btnSuccess = document.querySelector('#btn-success');
+          const btnError = document.querySelector('#btn-error');
+          const btnWarning = document.querySelector('#btn-warning');
+          const btnInfo = document.querySelector('#btn-info');
+          const btnPrimary = document.querySelector('#btn-primary');
+          const btnClear = document.querySelector('#btn-clear');
+
+          // Botões de demonstração de posição
+          const btnPosTopRight = document.querySelector('#btn-pos-top-right');
+          const btnPosTopLeft = document.querySelector('#btn-pos-top-left');
+          const btnPosTopCenter = document.querySelector('#btn-pos-top-center');
+          const btnPosBottomRight = document.querySelector('#btn-pos-bottom-right');
+          const btnPosBottomLeft = document.querySelector('#btn-pos-bottom-left');
+          const btnPosBottomCenter = document.querySelector('#btn-pos-bottom-center');
+
+          // Função para obter o toaster pela posição
+          function getToasterByPosition(position) {
+            const toasterIds = {
+              'top-right': 'demo-toaster',
+              'top-left': 'demo-toaster-top-left',
+              'top-center': 'demo-toaster-top-center',
+              'bottom-right': 'demo-toaster-bottom-right',
+              'bottom-left': 'demo-toaster-bottom-left',
+              'bottom-center': 'demo-toaster-bottom-center'
+            };
+            const toasterId = toasterIds[position];
+            return toasterId ? document.querySelector(`#${toasterId}`) : null;
+          }
+
+          function addToastWithPosition(position, message) {
+            const toaster = getToasterByPosition(position);
+            if (!toaster || typeof toaster.addToast !== 'function') return;
+
+            toaster.addToast({
+              message,
+              variant: 'info',
+              duration: 4000,
+              closable: true,
+            }).catch(err => {
+              console.error('Erro ao adicionar toast:', err);
+            });
+          }
+
+          if (btnSuccess) {
+            btnSuccess.addEventListener('click', () => {
+              addToastToaster({
+                message: 'Operação realizada com sucesso!',
+                variant: 'success',
+                duration: 5000,
+                closable: true
+              });
+            });
+          }
+
+          if (btnError) {
+            btnError.addEventListener('click', () => {
+              addToastToaster({
+                message: 'Erro ao processar a solicitação',
+                variant: 'danger',
+                duration: 5000,
+                closable: true
+              });
+            });
+          }
+
+          if (btnWarning) {
+            btnWarning.addEventListener('click', () => {
+              addToastToaster({
+                message: 'Atenção: Verifique os dados inseridos',
+                variant: 'warning',
+                duration: 5000,
+                closable: true
+              });
+            });
+          }
+
+          if (btnInfo) {
+            btnInfo.addEventListener('click', () => {
+              addToastToaster({
+                message: 'Nova atualização disponível',
+                variant: 'info',
+                duration: 5000,
+                closable: true
+              });
+            });
+          }
+
+          if (btnPrimary) {
+            btnPrimary.addEventListener('click', () => {
+              addToastToaster({
+                message: 'Notificação importante',
+                variant: 'primary',
+                duration: 5000,
+                closable: true
+              });
+            });
+          }
+
+          if (btnClear && demoToaster) {
+            btnClear.addEventListener('click', () => {
+              if (typeof demoToaster.clearAll === 'function') {
+                demoToaster.clearAll().catch(err => {
+                  console.error('Erro ao limpar toasts:', err);
+                });
+              }
+            });
+          }
+
+          // Listeners para demonstração de posições
+          if (btnPosTopRight) {
+            btnPosTopRight.addEventListener('click', () => {
+              addToastWithPosition('top-right', 'Toast na posição top-right');
+            });
+          }
+
+          if (btnPosTopLeft) {
+            btnPosTopLeft.addEventListener('click', () => {
+              addToastWithPosition('top-left', 'Toast na posição top-left');
+            });
+          }
+
+          if (btnPosTopCenter) {
+            btnPosTopCenter.addEventListener('click', () => {
+              addToastWithPosition('top-center', 'Toast na posição top-center');
+            });
+          }
+
+          if (btnPosBottomRight) {
+            btnPosBottomRight.addEventListener('click', () => {
+              addToastWithPosition('bottom-right', 'Toast na posição bottom-right');
+            });
+          }
+
+          if (btnPosBottomLeft) {
+            btnPosBottomLeft.addEventListener('click', () => {
+              addToastWithPosition('bottom-left', 'Toast na posição bottom-left');
+            });
+          }
+
+          if (btnPosBottomCenter) {
+            btnPosBottomCenter.addEventListener('click', () => {
+              addToastWithPosition('bottom-center', 'Toast na posição bottom-center');
+            });
+          }
+
+          // Exemplos adicionais
+          const btnDurationShort = document.querySelector('#btn-duration-short');
+          const btnDurationLong = document.querySelector('#btn-duration-long');
+          const btnDurationInfinite = document.querySelector('#btn-duration-infinite');
+          const btnNonClosable = document.querySelector('#btn-non-closable');
+
+          // Exemplo de duração curta
+          if (btnDurationShort) {
+            btnDurationShort.addEventListener('click', () => {
+              addToastToaster({
+                message: 'Este toast desaparecerá rapidamente (2 segundos)',
+                variant: 'primary',
+                duration: 2000,
+                closable: true
+              });
+            });
+          }
+
+          // Exemplo de duração longa
+          if (btnDurationLong) {
+            btnDurationLong.addEventListener('click', () => {
+              addToastToaster({
+                message: 'Este toast permanecerá visível por 10 segundos',
+                variant: 'info',
+                duration: 10000,
+                closable: true
+              });
+            });
+          }
+
+          // Exemplo de toast persistente (não fecha automaticamente)
+          if (btnDurationInfinite) {
+            btnDurationInfinite.addEventListener('click', () => {
+              addToastToaster({
+                message: 'Este toast não fecha automaticamente. Você precisa fechá-lo manualmente usando o botão X.',
+                variant: 'warning',
+                duration: 0,
+                closable: true
+              });
+            });
+          }
+
+          // Exemplo de toast sem botão de fechar
+          if (btnNonClosable) {
+            btnNonClosable.addEventListener('click', () => {
+              addToastToaster({
+                message: 'Este toast não pode ser fechado manualmente. Ele desaparecerá automaticamente após 5 segundos.',
+                variant: 'warning',
+                duration: 5000,
+                closable: false
+              });
+            });
+          }
+        }, 1000);
       });
     </script>
   </head>
   <body>
+    <conecta-toaster id="demo-toaster" position="top-right"></conecta-toaster>
+    <conecta-toaster id="demo-toaster-top-left" position="top-left"></conecta-toaster>
+    <conecta-toaster id="demo-toaster-top-center" position="top-center"></conecta-toaster>
+    <conecta-toaster id="demo-toaster-bottom-right" position="bottom-right"></conecta-toaster>
+    <conecta-toaster id="demo-toaster-bottom-left" position="bottom-left"></conecta-toaster>
+    <conecta-toaster id="demo-toaster-bottom-center" position="bottom-center"></conecta-toaster>
     <div class="main-layout">
       <!-- Menu Lateral Inline -->
       <nav class="sidebar-inline">
@@ -343,6 +569,7 @@
           <li><a href="#conecta-icon" class="sidebar-link">🎨 conecta Icon</a></li>
           <li><a href="#conecta-tag" class="sidebar-link">🏷️ conecta Tag</a></li>
           <li><a href="#conecta-toggle-icon" class="sidebar-link">🔄 conecta Toggle Icon</a></li>
+          <li><a href="#conecta-toaster" class="sidebar-link">🍞 conecta Toaster</a></li>
           <li><a href="#sistema-temas" class="sidebar-link">🎨 Sistema de Temas</a></li>
         </ul>
       </nav>
@@ -2056,6 +2283,359 @@ refresh-cw, eye, eye-off, star, tag</code></pre>
               <conecta-toggle-icon name="bookmark" variant="primary" readonly active></conecta-toggle-icon>
             </div>
           </div>
+        </div>
+
+        <!-- Documentação do conecta Toaster -->
+        <div class="component-docs" id="conecta-toaster">
+          <h3>🍞 conecta-toaster</h3>
+          <p>Sistema de notificações toast para exibir mensagens temporárias ao usuário. Componente autocontido que gerencia múltiplos toasts internamente com suporte a variantes, posicionamento configurável e animações.</p>
+
+          <h4>📋 Propriedades</h4>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Propriedade</th>
+                  <th>Atributo</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                  <th>Padrão</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>position</code></td>
+                  <td><code>position</code></td>
+                  <td>Posição do toaster na tela</td>
+                  <td><code>"top-right" | "top-left" | "bottom-right" | "bottom-left" | "top-center" | "bottom-center"</code></td>
+                  <td><code>'top-right'</code></td>
+                </tr>
+                <tr>
+                  <td><code>maxToasts</code></td>
+                  <td><code>max-toasts</code></td>
+                  <td>Número máximo de toasts simultâneos</td>
+                  <td><code>number</code></td>
+                  <td><code>5</code></td>
+                </tr>
+                <tr>
+                  <td><code>zIndex</code></td>
+                  <td><code>z-index</code></td>
+                  <td>Z-index do container</td>
+                  <td><code>number</code></td>
+                  <td><code>9999</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>📡 Métodos</h4>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Método</th>
+                  <th>Descrição</th>
+                  <th>Retorno</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>addToast(toast)</code></td>
+                  <td>Adiciona um toast ao toaster</td>
+                  <td><code>Promise&lt;string&gt;</code> (ID do toast)</td>
+                </tr>
+                <tr>
+                  <td><code>removeToast(id)</code></td>
+                  <td>Remove um toast pelo ID</td>
+                  <td><code>Promise&lt;void&gt;</code></td>
+                </tr>
+                <tr>
+                  <td><code>clearAll()</code></td>
+                  <td>Limpa todos os toasts</td>
+                  <td><code>Promise&lt;void&gt;</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>💻 Exemplos de Uso</h4>
+          <div class="usage-examples">
+            <div class="example-item">
+              <h5>1. Toaster Básico</h5>
+              <div class="code-block">
+                <pre><code>&lt;conecta-toaster id="toaster"&gt;&lt;/conecta-toaster&gt;
+
+&lt;script&gt;
+  const toaster = document.querySelector('#toaster');
+  await toaster.addToast({
+    message: 'Operação realizada com sucesso!',
+    variant: 'success',
+    duration: 5000,
+    closable: true
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>2. Múltiplos Toasters Independentes</h5>
+              <div class="code-block">
+                <pre><code>&lt;!-- Cada toaster é independente e gerencia seus próprios toasts --&gt;
+&lt;conecta-toaster id="toaster-top-right" position="top-right"&gt;&lt;/conecta-toaster&gt;
+&lt;conecta-toaster id="toaster-top-left" position="top-left"&gt;&lt;/conecta-toaster&gt;
+&lt;conecta-toaster id="toaster-top-center" position="top-center"&gt;&lt;/conecta-toaster&gt;
+&lt;conecta-toaster id="toaster-bottom-right" position="bottom-right"&gt;&lt;/conecta-toaster&gt;
+&lt;conecta-toaster id="toaster-bottom-left" position="bottom-left"&gt;&lt;/conecta-toaster&gt;
+&lt;conecta-toaster id="toaster-bottom-center" position="bottom-center"&gt;&lt;/conecta-toaster&gt;
+
+&lt;script&gt;
+  // Adiciona toast no toaster específico
+  const toasterTopRight = document.querySelector('#toaster-top-right');
+  await toasterTopRight.addToast({
+    message: 'Toast no topo à direita',
+    variant: 'success'
+  });
+
+  const toasterBottomLeft = document.querySelector('#toaster-bottom-left');
+  await toasterBottomLeft.addToast({
+    message: 'Toast na parte inferior esquerda',
+    variant: 'info'
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+              <p><strong>Nota:</strong> Cada toaster é completamente independente. Você pode ter múltiplos toasters na mesma página, cada um com sua própria posição e gerenciando seus próprios toasts.</p>
+            </div>
+            <div class="example-item">
+              <h5>3. Toast com Variantes</h5>
+              <div class="code-block">
+                <pre><code>const toaster = document.querySelector('#toaster');
+
+// Toast de sucesso
+await toaster.addToast({
+  message: 'Dados salvos com sucesso!',
+  variant: 'success'
+});
+
+// Toast de erro
+await toaster.addToast({
+  message: 'Erro ao processar a solicitação',
+  variant: 'danger'
+});
+
+// Toast de aviso
+await toaster.addToast({
+  message: 'Atenção: Verifique os dados',
+  variant: 'warning'
+});
+
+// Toast de informação
+await toaster.addToast({
+  message: 'Nova atualização disponível',
+  variant: 'info'
+});</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>4. Toast com Opções Avançadas</h5>
+              <div class="code-block">
+                <pre><code>const toaster = document.querySelector('#toaster');
+
+// Toast que não fecha automaticamente
+await toaster.addToast({
+  message: 'Esta mensagem permanece até ser fechada',
+  variant: 'info',
+  duration: 0,
+  closable: true
+});
+
+// Toast sem botão de fechar
+await toaster.addToast({
+  message: 'Esta mensagem não pode ser fechada manualmente',
+  variant: 'warning',
+  duration: 10000,
+  closable: false
+});</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>5. Controle de Toasts</h5>
+              <div class="code-block">
+                <pre><code>const toaster = document.querySelector('#toaster');
+
+// Adiciona toast e obtém ID
+const toastId = await toaster.addToast({
+  message: 'Operação iniciada',
+  variant: 'info'
+});
+
+// Remove toast específico
+await toaster.removeToast(toastId);
+
+// Limpa todos os toasts
+await toaster.clearAll();</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>6. Toast com Durações Personalizadas</h5>
+              <div class="code-block">
+                <pre><code>// Toast rápido (2 segundos)
+await toaster.addToast({
+  message: 'Mensagem rápida',
+  variant: 'success',
+  duration: 2000
+});
+
+// Toast longo (10 segundos)
+await toaster.addToast({
+  message: 'Mensagem que permanece por mais tempo',
+  variant: 'info',
+  duration: 10000
+});
+
+// Toast persistente (não fecha automaticamente)
+await toaster.addToast({
+  message: 'Esta mensagem permanece até ser fechada',
+  variant: 'warning',
+  duration: 0,  // 0 = não fecha automaticamente
+  closable: true
+});</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>7. Toast sem Botão de Fechar</h5>
+              <div class="code-block">
+                <pre><code>// Toast que não pode ser fechado manualmente
+await toaster.addToast({
+  message: 'Esta mensagem não pode ser fechada manualmente',
+  variant: 'warning',
+  duration: 5000,
+  closable: false  // Sem botão de fechar
+});</code></pre>
+              </div>
+            </div>
+            <div class="example-item">
+              <h5>8. Toast com Múltiplas Opções</h5>
+              <div class="code-block">
+                <pre><code>// Toast completo com todas as opções
+await toaster.addToast({
+  message: 'Notificação completa com todas as opções configuradas',
+  variant: 'success',
+  duration: 8000,        // 8 segundos
+  closable: true         // Com botão de fechar
+});</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h4>🎨 Exemplos Visuais</h4>
+          <p>Teste os componentes abaixo. Clique nos botões para ver os toasts em ação.</p>
+
+          <div class="demo-grid">
+            <div class="demo-item">
+              <h4>Toaster - Variantes Básicas</h4>
+              <conecta-button variant="success" id="btn-success">Toast Success</conecta-button>
+              <conecta-button variant="danger" id="btn-error">Toast Error</conecta-button>
+              <conecta-button variant="warning" id="btn-warning">Toast Warning</conecta-button>
+              <conecta-button variant="info" id="btn-info">Toast Info</conecta-button>
+              <conecta-button variant="primary" id="btn-primary">Toast Primary</conecta-button>
+              <conecta-button variant="secondary" id="btn-clear">Limpar Todos</conecta-button>
+            </div>
+
+            <div class="demo-item">
+              <h4>Toaster - Durações</h4>
+              <p>Controle quanto tempo o toast fica visível:</p>
+              <conecta-button variant="primary" id="btn-duration-short">Toast Rápido (2s)</conecta-button>
+              <conecta-button variant="primary" id="btn-duration-long">Toast Longo (10s)</conecta-button>
+              <conecta-button variant="primary" id="btn-duration-infinite">Toast Persistente (sem fechar)</conecta-button>
+            </div>
+
+            <div class="demo-item">
+              <h4>Toaster - Sem Botão de Fechar</h4>
+              <p>Toasts que não podem ser fechados manualmente:</p>
+              <conecta-button variant="warning" id="btn-non-closable">Toast Sem Botão Fechar</conecta-button>
+            </div>
+
+            <div class="demo-item">
+              <h4>Toaster - Posições</h4>
+              <p>Cada toaster é <strong>independente</strong> e pode ser posicionado em diferentes locais da tela. Você pode ter múltiplos toasters simultaneamente, cada um com sua própria posição:</p>
+              <ul>
+                <li><code>top-right</code> (padrão)</li>
+                <li><code>top-left</code></li>
+                <li><code>top-center</code></li>
+                <li><code>bottom-right</code></li>
+                <li><code>bottom-left</code></li>
+                <li><code>bottom-center</code></li>
+              </ul>
+              <p><strong>Demonstração:</strong> cada botão abaixo adiciona um toast no toaster correspondente à sua posição. Cada toaster é independente e gerencia seus próprios toasts.</p>
+              <div class="demo-grid">
+                <conecta-button variant="primary" id="btn-pos-top-left">Top Left</conecta-button>
+                <conecta-button variant="primary" id="btn-pos-top-center">Top Center</conecta-button>
+                <conecta-button variant="primary" id="btn-pos-top-right">Top Right</conecta-button>
+                <conecta-button variant="primary" id="btn-pos-bottom-left">Bottom Left</conecta-button>
+                <conecta-button variant="primary" id="btn-pos-bottom-center">Bottom Center</conecta-button>
+                <conecta-button variant="primary" id="btn-pos-bottom-right">Bottom Right</conecta-button>
+              </div>
+            </div>
+          </div>
+
+          <h4>📋 Opções do Toast</h4>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Opção</th>
+                  <th>Tipo</th>
+                  <th>Padrão</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>message</code></td>
+                  <td><code>string</code></td>
+                  <td><code>required</code></td>
+                  <td>Mensagem exibida no toast</td>
+                </tr>
+                <tr>
+                  <td><code>variant</code></td>
+                  <td><code>"primary" | "secondary" | "danger" | "success" | "warning" | "info" | "neutral"</code></td>
+                  <td><code>'primary'</code></td>
+                  <td>Variante visual do toast</td>
+                </tr>
+                <tr>
+                  <td><code>duration</code></td>
+                  <td><code>number</code></td>
+                  <td><code>5000</code></td>
+                  <td>Duração em milissegundos. Use <code>0</code> para não fechar automaticamente.</td>
+                </tr>
+                <tr>
+                  <td><code>closable</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>true</code></td>
+                  <td>Se mostra botão de fechar</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>📏 Tamanho</h4>
+          <p>Os toasts têm tamanho fixo de <strong>400px de largura</strong> (300px mínimo, 500px máximo). Para garantir consistência visual:</p>
+          <ul>
+            <li>Em telas menores (mobile), a largura se adapta para <code>calc(100vw - 2rem)</code></li>
+            <li>O tamanho fixo garante que múltiplos toasts mantenham alinhamento consistente</li>
+          </ul>
+
+          <h4>🎯 Variantes</h4>
+          <p>O toaster suporta as mesmas variantes dos outros componentes:</p>
+          <ul>
+            <li><code>primary</code> - Cor primária do tema</li>
+            <li><code>secondary</code> - Estilo secundário</li>
+            <li><code>success</code> - Sucesso/confirmação (verde)</li>
+            <li><code>danger</code> - Erro/ação destrutiva (vermelho)</li>
+            <li><code>warning</code> - Aviso/alerta (amarelo)</li>
+            <li><code>info</code> - Informação (azul)</li>
+            <li><code>neutral</code> - Neutro/cinza</li>
+          </ul>
+
         </div>
 
         <!-- Documentação do Sistema de Temas -->

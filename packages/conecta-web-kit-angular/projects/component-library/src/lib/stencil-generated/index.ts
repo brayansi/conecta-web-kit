@@ -9,5 +9,6 @@ export const DIRECTIVES = [
   d.ConectaInput,
   d.ConectaSelect,
   d.ConectaTag,
+  d.ConectaToaster,
   d.ConectaToggleIcon
 ];

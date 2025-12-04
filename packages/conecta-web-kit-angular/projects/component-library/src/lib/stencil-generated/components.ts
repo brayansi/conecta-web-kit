@@ -13,6 +13,7 @@ import { defineCustomElement as defineConectaIcon } from '@conecta.fit/conecta-w
 import { defineCustomElement as defineConectaInput } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-input.js';
 import { defineCustomElement as defineConectaSelect } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-select.js';
 import { defineCustomElement as defineConectaTag } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-tag.js';
+import { defineCustomElement as defineConectaToaster } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-toaster.js';
 import { defineCustomElement as defineConectaToggleIcon } from '@conecta.fit/conecta-web-kit-core/dist/components/conecta-toggle-icon.js';
 @ProxyCmp({
   defineCustomElementFn: defineConectaButton,
@@ -231,6 +232,30 @@ export class ConectaTag {
 
 
 export declare interface ConectaTag extends Components.ConectaTag {}
+
+
+@ProxyCmp({
+  defineCustomElementFn: defineConectaToaster,
+  inputs: ['maxToasts', 'position', 'zIndex'],
+  methods: ['addToast', 'removeToast', 'clearAll']
+})
+@Component({
+  selector: 'conecta-toaster',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['maxToasts', 'position', 'zIndex'],
+})
+export class ConectaToaster {
+  protected el: HTMLConectaToasterElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface ConectaToaster extends Components.ConectaToaster {}
 
 
 @ProxyCmp({

@@ -17,12 +17,14 @@
 ### Used by
 
  - [conecta-select](../conecta-select)
+ - [conecta-toaster](../conecta-toaster)
  - [conecta-toggle-icon](../conecta-toggle-icon)
 
 ### Graph
 ```mermaid
 graph TD;
   conecta-select --> conecta-icon
+  conecta-toaster --> conecta-icon
   conecta-toggle-icon --> conecta-icon
   style conecta-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

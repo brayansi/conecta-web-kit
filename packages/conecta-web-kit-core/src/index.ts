@@ -19,4 +19,5 @@ export type { ConectaIcon } from './components/conecta-icon/conecta-icon.js';
 export type { ConectaInput } from './components/conecta-input/conecta-input.js';
 export type { ConectaSelect } from './components/conecta-select/conecta-select.js';
 export type { ConectaTag } from './components/conecta-tag/conecta-tag.js';
+export type { ConectaToaster } from './components/conecta-toaster/conecta-toaster.js';
 export type { ConectaToggleIcon } from './components/conecta-toggle-icon/conecta-toggle-icon.js';

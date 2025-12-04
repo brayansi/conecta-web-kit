@@ -1,0 +1,294 @@
+:host {
+  display: block;
+  position: fixed;
+  pointer-events: none;
+  z-index: var(--conecta-toaster-z-index, 9999);
+
+  /* Variáveis CSS customizáveis */
+  --conecta-toaster-spacing: var(--conecta-spacing-lg, 1rem);
+  --conecta-toast-radius: var(--conecta-radius-md, 6px);
+  --conecta-toast-padding: var(--conecta-spacing-md, 0.75rem) var(--conecta-spacing-lg, 1rem);
+  --conecta-toast-width: 400px;
+  --conecta-toast-min-width: 300px;
+  --conecta-toast-max-width: 500px;
+  --conecta-toast-gap: var(--conecta-spacing-md, 0.75rem);
+
+  /* Cores por variante */
+  --conecta-toast-primary-bg: var(--conecta-color-primary, #63a18f);
+  --conecta-toast-primary-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-toast-primary-border: var(--conecta-color-primary, #63a18f);
+
+  --conecta-toast-secondary-bg: var(--conecta-color-bg-primary, #ffffff);
+  --conecta-toast-secondary-color: var(--conecta-color-text-primary, #212121);
+  --conecta-toast-secondary-border: var(--conecta-color-border, #e0e0e0);
+
+  --conecta-toast-danger-bg: var(--conecta-color-danger, #ef4444);
+  --conecta-toast-danger-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-toast-danger-border: var(--conecta-color-danger, #ef4444);
+
+  --conecta-toast-success-bg: var(--conecta-color-success, #10b981);
+  --conecta-toast-success-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-toast-success-border: var(--conecta-color-success, #10b981);
+
+  --conecta-toast-warning-bg: var(--conecta-color-warning, #f59e0b);
+  --conecta-toast-warning-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-toast-warning-border: var(--conecta-color-warning, #f59e0b);
+
+  --conecta-toast-info-bg: var(--conecta-color-info, #3b82f6);
+  --conecta-toast-info-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-toast-info-border: var(--conecta-color-info, #3b82f6);
+
+  --conecta-toast-neutral-bg: var(--conecta-color-neutral, #212121);
+  --conecta-toast-neutral-color: var(--conecta-color-text-inverse, #ffffff);
+  --conecta-toast-neutral-border: var(--conecta-color-neutral, #212121);
+}
+
+/* Posicionamento no :host */
+:host([position='top-right']) {
+  top: 0;
+  right: 0;
+}
+
+:host([position='top-left']) {
+  top: 0;
+  left: 0;
+}
+
+:host([position='top-center']) {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+:host([position='bottom-right']) {
+  bottom: 0;
+  right: 0;
+}
+
+:host([position='bottom-left']) {
+  bottom: 0;
+  left: 0;
+}
+
+:host([position='bottom-center']) {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Container do toaster */
+.conecta-toaster {
+  display: flex;
+  flex-direction: column;
+  gap: var(--conecta-toast-gap);
+  padding: var(--conecta-toaster-spacing);
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  pointer-events: none;
+  box-sizing: border-box;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Alinhamento dos toasts no container */
+:host([position='top-right']) .conecta-toaster,
+:host([position='bottom-right']) .conecta-toaster {
+  align-items: flex-end;
+}
+
+:host([position='top-left']) .conecta-toaster,
+:host([position='bottom-left']) .conecta-toaster {
+  align-items: flex-start;
+}
+
+:host([position='top-center']) .conecta-toaster,
+:host([position='bottom-center']) .conecta-toaster {
+  align-items: center;
+}
+
+/* Toast individual */
+.conecta-toast {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--conecta-spacing-md, 0.75rem);
+  width: var(--conecta-toast-width);
+  min-width: var(--conecta-toast-min-width);
+  max-width: var(--conecta-toast-max-width);
+  padding: var(--conecta-toast-padding);
+  border-radius: var(--conecta-toast-radius);
+  box-shadow: var(--conecta-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05));
+  font-family: var(--conecta-font-family);
+  font-size: var(--conecta-font-size-sm, 0.875rem);
+  line-height: 1.5;
+  pointer-events: all;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Anima apenas toasts novos (que acabaram de ser adicionados) */
+.conecta-toast[data-toast-new='true'] {
+  animation: toast-enter 0.3s ease-out forwards;
+}
+
+:host([position='bottom-right']) .conecta-toast[data-toast-new='true'],
+:host([position='bottom-left']) .conecta-toast[data-toast-new='true'],
+:host([position='bottom-center']) .conecta-toast[data-toast-new='true'] {
+  animation-name: toast-enter-bottom;
+}
+
+/* Variante Primary */
+.conecta-toast--primary {
+  background-color: var(--conecta-toast-primary-bg);
+  color: var(--conecta-toast-primary-color);
+  border-color: var(--conecta-toast-primary-border);
+}
+
+/* Variante Secondary */
+.conecta-toast--secondary {
+  background-color: var(--conecta-toast-secondary-bg);
+  color: var(--conecta-toast-secondary-color);
+  border-color: var(--conecta-toast-secondary-border);
+}
+
+/* Variante Danger */
+.conecta-toast--danger {
+  background-color: var(--conecta-toast-danger-bg);
+  color: var(--conecta-toast-danger-color);
+  border-color: var(--conecta-toast-danger-border);
+}
+
+/* Variante Success */
+.conecta-toast--success {
+  background-color: var(--conecta-toast-success-bg);
+  color: var(--conecta-toast-success-color);
+  border-color: var(--conecta-toast-success-border);
+}
+
+/* Variante Warning */
+.conecta-toast--warning {
+  background-color: var(--conecta-toast-warning-bg);
+  color: var(--conecta-toast-warning-color);
+  border-color: var(--conecta-toast-warning-border);
+}
+
+/* Variante Info */
+.conecta-toast--info {
+  background-color: var(--conecta-toast-info-bg);
+  color: var(--conecta-toast-info-color);
+  border-color: var(--conecta-toast-info-border);
+}
+
+/* Variante Neutral */
+.conecta-toast--neutral {
+  background-color: var(--conecta-toast-neutral-bg);
+  color: var(--conecta-toast-neutral-color);
+  border-color: var(--conecta-toast-neutral-border);
+}
+
+/* Conteúdo do toast */
+.conecta-toast__content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--conecta-spacing-sm, 0.5rem);
+  flex: 1;
+  min-width: 0;
+}
+
+.conecta-toast__icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.conecta-toast__message {
+  flex: 1;
+  min-width: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Botão de fechar */
+.conecta-toast__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--conecta-radius-sm, 4px);
+  color: inherit;
+  opacity: 0.7;
+  transition: var(--conecta-transition, all 0.2s ease-in-out);
+}
+
+.conecta-toast__close:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.conecta-toast__close:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.conecta-toast__close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Animações */
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toast-enter-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+  :host {
+    --conecta-toast-width: calc(100vw - 2rem);
+    --conecta-toast-min-width: calc(100vw - 2rem);
+    --conecta-toast-max-width: calc(100vw - 2rem);
+  }
+
+  .conecta-toaster {
+    padding: var(--conecta-spacing-md, 0.75rem);
+  }
+
+  :host([position='top-center']),
+  :host([position='bottom-center']) {
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+  }
+}
